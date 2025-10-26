@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nutricosmetics - Landing Page</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="nav-logo">
+                    <h2>Nutricosmetics</h2>
+                </div>
+                <ul class="nav-menu">
+                    <li class="nav-item">
+                        <a href="#home" class="nav-link">Trang chủ</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#products" class="nav-link">Sản phẩm</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#about" class="nav-link">Về chúng tôi</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#contact" class="nav-link">Liên hệ</a>
+                    </li>
+                </ul>
+                <div class="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section with Slider and Product Info -->
+    <section id="home" class="hero">
+        <div class="hero-container">
+            <!-- Slider Section -->
+            <div class="slider-section">
+                <div class="slider-container">
+                    <div class="slider">
+                        <div class="slide active">
+                            <img src="images/1.png" alt="Sản phẩm chăm sóc da Nutricosmetics">
+                        </div>
+                        <div class="slide">
+                            <img src="images/2.png" alt="Serum dưỡng da chất lượng cao">
+                        </div>
+                        <div class="slide">
+                            <img src="images/3.png" alt="Kem dưỡng ẩm từ thiên nhiên">
+                        </div>
+                        <div class="slide">
+                            <img src="images/4.png" alt="Mặt nạ dưỡng da cao cấp">
+                        </div>
+                        <div class="slide">
+                            <img src="images/5.png" alt="Bộ sản phẩm chăm sóc da hoàn chỉnh">
+                        </div>
+                    </div>
+                    
+                    <!-- Navigation arrows -->
+                    <button class="slider-btn prev-btn" onclick="changeSlide(-1)">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button class="slider-btn next-btn" onclick="changeSlide(1)">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                    
+                    <!-- Dots indicator -->
+                    <div class="slider-dots">
+                        <span class="dot active" onclick="currentSlide(1)"></span>
+                        <span class="dot" onclick="currentSlide(2)"></span>
+                        <span class="dot" onclick="currentSlide(3)"></span>
+                        <span class="dot" onclick="currentSlide(4)"></span>
+                        <span class="dot" onclick="currentSlide(5)"></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product Info Section -->
+            <div class="product-info-section">
+                <div class="product-info">
+                    <div class="product-badge">
+                        <span>Sản phẩm mới</span>
+                    </div>
+                    
+                    <h1 class="product-title">Nutricosmetics Premium Collection</h1>
+                    
+                    <div class="product-rating">
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <span class="rating-text">(4.9/5 - 2,847 đánh giá)</span>
+                    </div>
+                    
+                    <p class="product-description">
+                        Bộ sản phẩm chăm sóc da cao cấp từ Nutricosmetics với công thức độc quyền từ 
+                        thiên nhiên. Giúp dưỡng ẩm sâu, làm sáng da và chống lão hóa hiệu quả.
+                    </p>
+                    
+                    <div class="product-features">
+                        <div class="feature-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>100% thành phần tự nhiên</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Không chứa paraben</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Phù hợp mọi loại da</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Hiệu quả sau 7 ngày</span>
+                        </div>
+                    </div>
+                    
+                    <div class="product-price">
+                        <span class="current-price">1.299.000 VNĐ</span>
+                        <span class="original-price">1.699.000 VNĐ</span>
+                        <span class="discount">-24%</span>
+                    </div>
+                    
+                    <div class="product-quantity">
+                        <label for="quantity">Số lượng:</label>
+                        <div class="quantity-selector">
+                            <button class="quantity-btn minus" onclick="decreaseQuantity()">-</button>
+                            <input type="number" id="quantity" value="1" min="1" max="10" readonly>
+                            <button class="quantity-btn plus" onclick="increaseQuantity()">+</button>
+                        </div>
+                    </div>
+                    
+                    <div class="product-actions">
+                        <button class="buy-now-btn" onclick="buyNow()">
+                            <i class="fas fa-shopping-cart"></i>
+                            Mua ngay
+                        </button>
+                        <button class="add-to-cart-btn" onclick="addToCart()">
+                            <i class="fas fa-heart"></i>
+                            Thêm vào giỏ
+                        </button>
+                    </div>
+                    
+                    <div class="product-guarantee">
+                        <div class="guarantee-item">
+                            <i class="fas fa-shipping-fast"></i>
+                            <span>Giao hàng miễn phí toàn quốc</span>
+                        </div>
+                        <div class="guarantee-item">
+                            <i class="fas fa-undo"></i>
+                            <span>Hoàn tiền 100% nếu không hài lòng</span>
+                        </div>
+                        <div class="guarantee-item">
+                            <i class="fas fa-phone"></i>
+                            <span>Hỗ trợ 24/7</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="products" class="features">
+        <div class="container">
+            <h2 class="section-title">Tại sao chọn Nutricosmetics?</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <h3>Thiên nhiên 100%</h3>
+                    <p>Sản phẩm từ những nguyên liệu tự nhiên tốt nhất, an toàn cho mọi loại da.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-flask"></i>
+                    </div>
+                    <h3>Công nghệ tiên tiến</h3>
+                    <p>Ứng dụng công nghệ hiện đại trong việc chiết xuất và bảo quản dưỡng chất.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h3>An toàn tuyệt đối</h3>
+                    <p>Đã được kiểm nghiệm lâm sàng, không gây kích ứng hay tác dụng phụ.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>Về Nutricosmetics</h2>
+                    <p>Chúng tôi là thương hiệu chăm sóc da hàng đầu, chuyên cung cấp các sản phẩm chất lượng cao từ thiên nhiên. Với hơn 10 năm kinh nghiệm trong ngành, chúng tôi cam kết mang đến những giải pháp tốt nhất cho làn da của bạn.</p>
+                    <p>Sứ mệnh của chúng tôi là giúp mọi người có được làn da khỏe mạnh và rạng rỡ một cách tự nhiên nhất.</p>
+                    <button class="learn-more-btn">Tìm hiểu thêm</button>
+                </div>
+                <div class="about-image">
+                    <img src="images/3.png" alt="About Nutricosmetics">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Liên hệ với chúng tôi</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h4>Địa chỉ</h4>
+                            <p>123 Đường ABC, Quận XYZ, TP.HCM</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <h4>Điện thoại</h4>
+                            <p>+84 123 456 789</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h4>Email</h4>
+                            <p>info@nutricosmetics.com</p>
+                        </div>
+                    </div>
+                </div>
+                <form class="contact-form">
+                    <input type="text" placeholder="Họ và tên" required>
+                    <input type="email" placeholder="Email" required>
+                    <textarea placeholder="Tin nhắn" rows="5" required></textarea>
+                    <button type="submit">Gửi tin nhắn</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Nutricosmetics</h3>
+                    <p>Thương hiệu chăm sóc da hàng đầu Việt Nam</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Liên kết nhanh</h4>
+                    <ul>
+                        <li><a href="#home">Trang chủ</a></li>
+                        <li><a href="#products">Sản phẩm</a></li>
+                        <li><a href="#about">Về chúng tôi</a></li>
+                        <li><a href="#contact">Liên hệ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Thông tin</h4>
+                    <ul>
+                        <li><a href="#">Chính sách bảo mật</a></li>
+                        <li><a href="#">Điều khoản sử dụng</a></li>
+                        <li><a href="#">Hướng dẫn mua hàng</a></li>
+                        <li><a href="#">Chăm sóc khách hàng</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Nutricosmetics. Tất cả quyền được bảo lưu.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
