@@ -1,47 +1,86 @@
 <script setup>
-import HelloWorld from './components/HelloWorld.vue'
-import TheWelcome from './components/TheWelcome.vue'
+import ProductSection from './components/ProductSection.vue'
 </script>
 
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
+  <div class="app">
+    <header class="header">
+      <nav class="navbar">
+        <div class="nav-brand">
+          <h2>NutriCosmetics</h2>
+        </div>
+        <div class="nav-links">
+          <a href="#products">Products</a>
+          <a href="#about">About</a>
+          <a href="#contact">Contact</a>
+        </div>
+      </nav>
+    </header>
 
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-    </div>
-  </header>
-
-  <main>
-    <TheWelcome />
-  </main>
+    <main>
+      <ProductSection />
+    </main>
+  </div>
 </template>
 
 <style scoped>
-header {
-  line-height: 1.5;
+.app {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f8f4ff 0%, #fff0f5 100%);
 }
 
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
+.header {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
+.navbar {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 
-  .logo {
-    margin: 0 2rem 0 0;
-  }
+.nav-brand h2 {
+  color: #2c3e50;
+  margin: 0;
+  font-weight: 700;
+  font-size: 1.8rem;
+}
 
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
+.nav-links {
+  display: flex;
+  gap: 2rem;
+}
+
+.nav-links a {
+  color: #2c3e50;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: #e74c3c;
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    padding: 1rem;
+  }
+  
+  .nav-links {
+    gap: 1rem;
+  }
+  
+  .nav-brand h2 {
+    font-size: 1.5rem;
   }
 }
 </style>
