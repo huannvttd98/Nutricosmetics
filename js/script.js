@@ -402,3 +402,45 @@ function preloadImages() {
 
 // Call preload images
 preloadImages();
+
+// Usage Section Tab Functionality
+document.addEventListener('DOMContentLoaded', function() {
+    const tabButtons = document.querySelectorAll('.tab-btn');
+    const tabPanels = document.querySelectorAll('.tab-panel');
+    
+    // Tab switching function
+    function switchTab(targetTab) {
+        // Remove active class from all buttons and panels
+        tabButtons.forEach(btn => btn.classList.remove('active'));
+        tabPanels.forEach(panel => panel.classList.remove('active'));
+        
+        // Add active class to clicked button
+        const activeButton = document.querySelector(`[data-tab="${targetTab}"]`);
+        if (activeButton) {
+            activeButton.classList.add('active');
+        }
+        
+        // Show target panel
+        const targetPanel = document.getElementById(targetTab);
+        if (targetPanel) {
+            targetPanel.classList.add('active');
+        }
+    }
+    
+    // Add click event listeners to tab buttons
+    tabButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const targetTab = this.getAttribute('data-tab');
+            switchTab(targetTab);
+        });
+    });
+    
+    // Initialize first tab as active if no tab is active
+    if (!document.querySelector('.tab-btn.active')) {
+        const firstTab = document.querySelector('.tab-btn');
+        if (firstTab) {
+            const firstTabTarget = firstTab.getAttribute('data-tab');
+            switchTab(firstTabTarget);
+        }
+    }
+});
