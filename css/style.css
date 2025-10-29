@@ -458,6 +458,7 @@ body {
     line-height: 1.6;
     margin-bottom: 1.5rem;
     font-size: 1.1rem;
+    text-align: justify;
 }
 
 .product-features {
