@@ -265,13 +265,17 @@
     }
 
     .reviews-grid {
-        grid-template-columns: 1fr;
-        gap: 2rem;
-        margin-bottom: 3rem;
+        display: flex;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        gap: 10px;
+        padding: 10px;
     }
 
     .review-card {
-        padding: 1.5rem;
+        min-width: 300px;          /* chiều rộng 1 slide */
+        
+        border-radius: 10px;
     }
 
     .review-header {
@@ -312,11 +316,8 @@
         height: 30px;
     }
 
-    .testimonials-grid {
-     
+    .testimonials-grid {     
         margin: 0.5rem; 
-
-
         display: flex;
         overflow-x: auto;
         scroll-snap-type: x mandatory;
@@ -370,8 +371,9 @@
         padding: 5px;
     }
     .feature-card > .text-justify {
-          text-align: justify;
-          font-size: 0.5rem;
+        text-align: left;
+        font-size: 0.8rem;
+        padding:  6px 0;
     }
     .feature-icon {
         font-size: 20px;
@@ -380,7 +382,7 @@
         margin: 0 auto 5px auto;
     }
     .label-title{
-        font-size: 0.6rem;
+        font-size: 0.9rem;
     }
     .hero-container {
         padding: 0.5rem;
@@ -510,7 +512,7 @@
     }
     .highlight-text > p{
         text-align: justify;
-        font-size: 0.7rem;
+        font-size: 0.8rem;
     }
     .facility-content{
         gap: 1rem;
