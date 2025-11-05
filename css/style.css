@@ -2050,3 +2050,115 @@ body {
         font-size: 0.9rem;
     }
 }
+
+/* Manufacturing Facility Section */
+.manufacturing-facility {
+    padding: 5rem 0;
+    background-color: #f9f9f9;
+}
+
+.facility-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    margin-top: 3rem;
+}
+
+.facility-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.facility-item {
+    display: flex;
+    gap: 1.5rem;
+    align-items: flex-start;
+    padding: 1.5rem;
+    background-color: var(--white);
+    border-radius: 10px;
+    box-shadow: var(--shadow);
+    transition: transform 0.3s ease;
+}
+
+.facility-item:hover {
+    transform: translateY(-5px);
+}
+
+.facility-icon {
+    padding: 1rem;
+    font-size: 2rem;
+    color: var(--accent-color);
+    background-color: var(--primary-color);
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+}
+
+.facility-text h3 {
+    color: var(--text-dark);
+    margin-bottom: 0.5rem;
+    font-size: 1.2rem;
+}
+
+.facility-text p {
+    color: var(--text-light);
+    line-height: 1.6;
+}
+
+.facility-images {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    gap: 1.5rem;
+}
+
+.facility-image {
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: var(--shadow);
+}
+
+.facility-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.facility-image:hover img {
+    transform: scale(1.05);
+}
+
+@media screen and (max-width: 992px) {
+    .facility-content {
+        grid-template-columns: 1fr;
+    }
+    
+    .facility-images {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: none;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .logo-placeholder {
+        width: 60px;
+        height: 60px;
+    }
+    .media-logos{
+        height: 130px;
+    }
+    .facility-item {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    
+    .facility-images {
+        grid-template-columns: 1fr;
+    }
+}
