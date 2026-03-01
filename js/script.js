@@ -23,13 +23,13 @@ function initSlider() {
 function addKeyboardNavigation() {
     document.addEventListener('keydown', (e) => {
         if (isTransitioning) return;
-        
+
         const sliderSection = document.querySelector('.slider-section');
         const rect = sliderSection.getBoundingClientRect();
         const isInView = rect.top < window.innerHeight && rect.bottom > 0;
-        
+
         if (!isInView) return;
-        
+
         switch(e.key) {
             case 'ArrowLeft':
                 e.preventDefault();
@@ -71,14 +71,14 @@ function addThumbnailEvents() {
                 thumbnail.style.zIndex = '10';
             }
         });
-        
+
         thumbnail.addEventListener('mouseleave', () => {
             if (!thumbnail.classList.contains('active')) {
                 thumbnail.style.transform = 'scale(1)';
                 thumbnail.style.zIndex = '1';
             }
         });
-        
+
         // Click event
         thumbnail.addEventListener('click', () => {
             if (!isTransitioning) {
@@ -94,19 +94,19 @@ function addThumbnailEvents() {
 // Show specific slide
 function showSlide(index) {
     if (isTransitioning) return;
-    
+
     isTransitioning = true;
-    
+
     // Update slider position with smooth transform
     const translateX = -index * 20; // 20% per slide
     slider.style.transform = `translateX(${translateX}%)`;
-    
+
     // Update dots
     dots.forEach(dot => dot.classList.remove('active'));
     if (dots[index]) {
         dots[index].classList.add('active');
     }
-    
+
     // Update thumbnails
     thumbnails.forEach(thumbnail => thumbnail.classList.remove('active'));
     if (thumbnails[index]) {
@@ -114,7 +114,7 @@ function showSlide(index) {
         // Scroll thumbnail into view if needed
         scrollThumbnailIntoView(index);
     }
-    
+
     // Reset transition flag after animation
     setTimeout(() => {
         isTransitioning = false;
@@ -125,13 +125,13 @@ function showSlide(index) {
 function scrollThumbnailIntoView(index) {
     const thumbnailsColumn = document.querySelector('.thumbnails-column');
     const thumbnail = thumbnails[index];
-    
+
     if (thumbnailsColumn && thumbnail) {
         const columnHeight = thumbnailsColumn.clientHeight;
         const thumbnailHeight = thumbnail.offsetHeight;
         const thumbnailTop = thumbnail.offsetTop;
         const scrollTop = thumbnailsColumn.scrollTop;
-        
+
         if (thumbnailTop < scrollTop) {
             thumbnailsColumn.scrollTop = thumbnailTop - 15;
         } else if (thumbnailTop + thumbnailHeight > scrollTop + columnHeight) {
@@ -157,7 +157,7 @@ function prevSlide() {
 // Change slide (called by navigation buttons)
 function changeSlide(direction) {
     if (isTransitioning) return;
-    
+
     stopAutoPlay();
     if (direction === 1) {
         nextSlide();
@@ -170,7 +170,7 @@ function changeSlide(direction) {
 // Go to specific slide (called by dots)
 function currentSlide(index) {
     if (isTransitioning) return;
-    
+
     stopAutoPlay();
     currentSlideIndex = index - 1;
     showSlide(currentSlideIndex);
@@ -191,30 +191,30 @@ function stopAutoPlay() {
 function addTouchSupport() {
     const sliderContainer = document.querySelector('.slider-container');
     if (!sliderContainer) return;
-    
+
     let startX = 0;
     let currentX = 0;
     let isDragging = false;
-    
+
     // Touch events
     sliderContainer.addEventListener('touchstart', (e) => {
         startX = e.touches[0].clientX;
         isDragging = true;
         stopAutoPlay();
     });
-    
+
     sliderContainer.addEventListener('touchmove', (e) => {
         if (!isDragging) return;
         currentX = e.touches[0].clientX;
     });
-    
+
     sliderContainer.addEventListener('touchend', (e) => {
         if (!isDragging) return;
         isDragging = false;
-        
+
         const deltaX = startX - currentX;
         const threshold = 50;
-        
+
         if (Math.abs(deltaX) > threshold) {
             if (deltaX > 0) {
                 nextSlide();
@@ -222,10 +222,10 @@ function addTouchSupport() {
                 prevSlide();
             }
         }
-        
+
         startAutoPlay();
     });
-    
+
     // Mouse events for desktop
     sliderContainer.addEventListener('mousedown', (e) => {
         startX = e.clientX;
@@ -233,19 +233,19 @@ function addTouchSupport() {
         stopAutoPlay();
         sliderContainer.style.cursor = 'grabbing';
     });
-    
+
     sliderContainer.addEventListener('mousemove', (e) => {
         if (!isDragging) return;
         currentX = e.clientX;
     });
-    
+
     sliderContainer.addEventListener('mouseup', (e) => {
         if (!isDragging) return;
         isDragging = false;
-        
+
         const deltaX = startX - currentX;
         const threshold = 50;
-        
+
         if (Math.abs(deltaX) > threshold) {
             if (deltaX > 0) {
                 nextSlide();
@@ -253,17 +253,17 @@ function addTouchSupport() {
                 prevSlide();
             }
         }
-        
+
         sliderContainer.style.cursor = 'grab';
         startAutoPlay();
     });
-    
+
     sliderContainer.addEventListener('mouseleave', () => {
         isDragging = false;
         sliderContainer.style.cursor = 'grab';
         startAutoPlay();
     });
-    
+
     // Set initial cursor
     sliderContainer.style.cursor = 'grab';
 }
@@ -271,7 +271,7 @@ function addTouchSupport() {
 // Pause auto play when hovering over slider
 function pauseOnHover() {
     const sliderContainer = document.querySelector('.slider-container');
-    
+
     if (sliderContainer) {
         sliderContainer.addEventListener('mouseenter', () => {
             stopAutoPlay();
@@ -306,7 +306,7 @@ function buyNow() {
     const quantity = document.getElementById('quantity').value;
     const productName = "Nutricosmetics Premium Collection";
     const price = "1.299.000 VNĐ";
-    
+
     // Show confirmation dialog
     const confirmed = confirm(
         `Xác nhận mua hàng:\n\n` +
@@ -315,13 +315,13 @@ function buyNow() {
         `Giá: ${price} x ${quantity}\n\n` +
         `Bạn có muốn tiếp tục thanh toán không?`
     );
-    
+
     if (confirmed) {
         // Simulate redirect to checkout page
         alert('Đang chuyển hướng đến trang thanh toán...');
         // In real application, you would redirect to checkout page
         // window.location.href = '/checkout';
-        
+
         // For demo, show success message
         setTimeout(() => {
             alert('Cảm ơn bạn đã mua hàng! Chúng tôi sẽ liên hệ xác nhận đơn hàng sớm nhất.');
@@ -333,19 +333,19 @@ function buyNow() {
 function addToCart() {
     const quantity = document.getElementById('quantity').value;
     const productName = "Nutricosmetics Premium Collection";
-    
+
     // Animate add to cart button
     const addToCartBtn = document.querySelector('.add-to-cart-btn');
     const originalText = addToCartBtn.innerHTML;
-    
+
     addToCartBtn.innerHTML = '<i class="fas fa-check"></i> Đã thêm!';
     addToCartBtn.style.background = '#28a745';
     addToCartBtn.style.color = 'white';
     addToCartBtn.style.border = '2px solid #28a745';
-    
+
     // Show notification
     showNotification(`Đã thêm ${quantity} sản phẩm vào giỏ hàng!`);
-    
+
     // Reset button after 2 seconds
     setTimeout(() => {
         addToCartBtn.innerHTML = originalText;
@@ -364,7 +364,7 @@ function showNotification(message) {
         <i class="fas fa-check-circle"></i>
         <span>${message}</span>
     `;
-    
+
     // Add styles
     notification.style.cssText = `
         position: fixed;
@@ -382,7 +382,7 @@ function showNotification(message) {
         font-weight: bold;
         animation: slideInRight 0.3s ease;
     `;
-    
+
     // Add animation keyframes
     if (!document.querySelector('#notification-styles')) {
         const style = document.createElement('style');
@@ -411,10 +411,10 @@ function showNotification(message) {
         `;
         document.head.appendChild(style);
     }
-    
+
     // Add to page
     document.body.appendChild(notification);
-    
+
     // Remove after 3 seconds
     setTimeout(() => {
         notification.style.animation = 'slideOutRight 0.3s ease';
@@ -428,13 +428,13 @@ function showNotification(message) {
 function initMobileMenu() {
     const hamburger = document.querySelector('.hamburger');
     const navMenu = document.querySelector('.nav-menu');
-    
+
     if (hamburger && navMenu) {
         hamburger.addEventListener('click', () => {
             hamburger.classList.toggle('active');
             navMenu.classList.toggle('active');
         });
-        
+
         // Close menu when clicking on a link
         document.querySelectorAll('.nav-link').forEach(link => {
             link.addEventListener('click', () => {
@@ -454,7 +454,7 @@ function initSmoothScrolling() {
             if (target) {
                 const headerHeight = document.querySelector('.header').offsetHeight;
                 const targetPosition = target.offsetTop - headerHeight;
-                
+
                 window.scrollTo({
                     top: targetPosition,
                     behavior: 'smooth'
@@ -467,7 +467,7 @@ function initSmoothScrolling() {
 // Header background opacity on scroll
 function initHeaderScroll() {
     const header = document.querySelector('.header');
-    
+
     window.addEventListener('scroll', () => {
         if (window.scrollY > 100) {
             header.style.background = 'rgba(255, 255, 255, 0.98)';
@@ -483,7 +483,7 @@ function initScrollAnimations() {
         threshold: 0.1,
         rootMargin: '0px 0px -50px 0px'
     };
-    
+
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -492,7 +492,7 @@ function initScrollAnimations() {
             }
         });
     }, observerOptions);
-    
+
     // Observe elements for animation
     document.querySelectorAll('.feature-card, .about-text, .contact-item').forEach(el => {
         el.style.opacity = '0';
@@ -505,22 +505,22 @@ function initScrollAnimations() {
 // Contact form handling
 function initContactForm() {
     const contactForm = document.querySelector('.contact-form');
-    
+
     if (contactForm) {
         contactForm.addEventListener('submit', function(e) {
             e.preventDefault();
-            
+
             // Get form data
             const formData = new FormData(this);
             const name = this.querySelector('input[type="text"]').value;
             const email = this.querySelector('input[type="email"]').value;
             const message = this.querySelector('textarea').value;
-            
+
             // Simple validation
             if (name && email && message) {
                 // Show success message (you can customize this)
                 showNotification('Cảm ơn bạn đã liên hệ! Chúng tôi sẽ phản hồi sớm nhất có thể.');
-                
+
                 // Reset form
                 this.reset();
             } else {
@@ -546,20 +546,20 @@ function initTouchSupport() {
     const slider = document.querySelector('.slider');
     let startX = 0;
     let endX = 0;
-    
+
     if (slider) {
         slider.addEventListener('touchstart', (e) => {
             startX = e.touches[0].clientX;
         });
-        
+
         slider.addEventListener('touchend', (e) => {
             endX = e.changedTouches[0].clientX;
             handleSwipe();
         });
-        
+
         function handleSwipe() {
             const threshold = 50; // Minimum swipe distance
-            
+
             if (startX - endX > threshold) {
                 // Swipe left - next slide
                 changeSlide(1);
@@ -602,7 +602,7 @@ function preloadImages() {
         'images/4.png',
         'images/5.png'
     ];
-    
+
     imageUrls.forEach(url => {
         const img = new Image();
         img.src = url;
@@ -611,3 +611,68 @@ function preloadImages() {
 
 // Call preload images
 preloadImages();
+
+// Product Gallery Logic
+const galleryImages = [
+    'images/1.png',
+    'images/2.png',
+    'images/3.png',
+    'images/4.png',
+    'images/5.png'
+];
+// let currentGalleryIndex = 0; // Already declared in script.js line 2, wait.
+// No, line 2 is currentSlideIndex. This one is currentGalleryIndex. Safe.
+
+let currentGalleryIndex = 0;
+
+function setGalleryImage(index) {
+    currentGalleryIndex = index;
+    updateGalleryDisplay();
+}
+
+function changeGalleryImage(direction) {
+    currentGalleryIndex += direction;
+    if (currentGalleryIndex >= galleryImages.length) currentGalleryIndex = 0;
+    if (currentGalleryIndex < 0) currentGalleryIndex = galleryImages.length - 1;
+    updateGalleryDisplay();
+}
+
+function updateGalleryDisplay() {
+    // Update main image with fade effect
+    const mainImg = document.getElementById('gallery-main-image');
+    if (!mainImg) return;
+
+    mainImg.style.opacity = '0';
+    setTimeout(() => {
+        mainImg.src = galleryImages[currentGalleryIndex];
+        mainImg.style.opacity = '1';
+    }, 200);
+
+    // Update active thumbnail styling
+    const thumbs = document.querySelectorAll('.gallery-thumb');
+    thumbs.forEach((thumb, idx) => {
+        if (idx === currentGalleryIndex) {
+            thumb.classList.add('border-accent');
+            thumb.classList.remove('border-transparent');
+        } else {
+            thumb.classList.remove('border-accent');
+            thumb.classList.add('border-transparent');
+        }
+    });
+}
+
+// About Section Toggle Logic
+function toggleAbout() {
+    const content = document.getElementById('about-more-content');
+    const btn = document.getElementById('about-toggle-btn');
+
+    if (content && btn) {
+        if (content.classList.contains('hidden')) {
+            content.classList.remove('hidden');
+            btn.textContent = 'Thu gọn';
+        } else {
+            content.classList.add('hidden');
+            btn.textContent = 'Tìm hiểu thêm';
+        }
+    }
+}
