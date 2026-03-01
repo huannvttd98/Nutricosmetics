@@ -4,6 +4,41 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Shinzo Kijo- Landing Page</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: '#FFD9E1',
+              secondary: '#FFB6C1',
+              accent: '#FF69B4',
+              dark: '#333',
+              light: '#666',
+            },
+            fontFamily: {
+              sans: ['Helvetica Neue', 'Helvetica', 'Arial', 'sans-serif'],
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      /* Custom active states for mobile menu toggle */
+      .nav-menu.active {
+        left: 0 !important;
+        display: flex !important; /* Ensure it shows up */
+      }
+      .hamburger.active .bar:nth-child(2) {
+        opacity: 0;
+      }
+      .hamburger.active .bar:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+      }
+      .hamburger.active .bar:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+      }
+    </style>
     <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="css/mobile.css" />
     <link
@@ -13,30 +48,42 @@
   </head>
   <body>
     <!-- Header -->
-    <header class="header">
-      <nav class="navbar">
-        <div class="nav-container">
+    <header class="fixed top-0 w-full bg-white/95 backdrop-blur-md z-50 transition-all duration-300 ease-in-out">
+      <nav class="py-4">
+        <div class="container mx-auto px-5 flex justify-between items-center max-w-[1200px]">
           <div class="nav-logo">
-            <h2>Shinzo Kijo</h2>
+            <h2 class="text-accent text-2xl font-bold">Shinzo Kijo</h2>
           </div>
-          <ul class="nav-menu">
+          <ul class="nav-menu hidden md:flex flex-col md:flex-row gap-8 list-none fixed md:relative top-[70px] md:top-0 left-[-100%] md:left-0 w-full md:w-auto bg-white md:bg-transparent p-8 md:p-0 transition-all duration-300 shadow-lg md:shadow-none items-center z-40">
             <li class="nav-item">
-              <a href="#home" class="nav-link">Trang chủ</a>
+              <a href="#home" class="text-dark font-medium transition-colors duration-300 relative hover:text-accent group block py-2">
+                Trang chủ
+                <span class="absolute bottom-[-5px] left-0 w-0 h-0.5 bg-accent transition-all duration-300 group-hover:w-full hidden md:block"></span>
+              </a>
             </li>
             <li class="nav-item">
-              <a href="#products" class="nav-link">Sản phẩm</a>
+              <a href="#products" class="text-dark font-medium transition-colors duration-300 relative hover:text-accent group block py-2">
+                Sản phẩm
+                <span class="absolute bottom-[-5px] left-0 w-0 h-0.5 bg-accent transition-all duration-300 group-hover:w-full hidden md:block"></span>
+              </a>
             </li>
             <li class="nav-item">
-              <a href="#about" class="nav-link">Về chúng tôi</a>
+              <a href="#about" class="text-dark font-medium transition-colors duration-300 relative hover:text-accent group block py-2">
+                Về chúng tôi
+                <span class="absolute bottom-[-5px] left-0 w-0 h-0.5 bg-accent transition-all duration-300 group-hover:w-full hidden md:block"></span>
+              </a>
             </li>
             <li class="nav-item">
-              <a href="#contact" class="nav-link">Liên hệ</a>
+              <a href="#contact" class="text-dark font-medium transition-colors duration-300 relative hover:text-accent group block py-2">
+                Liên hệ
+                <span class="absolute bottom-[-5px] left-0 w-0 h-0.5 bg-accent transition-all duration-300 group-hover:w-full hidden md:block"></span>
+              </a>
             </li>
           </ul>
-          <div class="hamburger">
-            <span class="bar"></span>
-            <span class="bar"></span>
-            <span class="bar"></span>
+          <div class="hamburger md:hidden cursor-pointer flex flex-col justify-between w-[25px] h-[18px]">
+            <span class="bar block w-[25px] h-[3px] bg-dark transition-all duration-300"></span>
+            <span class="bar block w-[25px] h-[3px] bg-dark transition-all duration-300"></span>
+            <span class="bar block w-[25px] h-[3px] bg-dark transition-all duration-300"></span>
           </div>
         </div>
       </nav>
@@ -115,10 +162,7 @@
           <div class="product-info">
 
             <div class="product-title">
-                <span style="font-size: 16px;">
-                    Shinzo Kijo
-                </span>
-                <span style="font-size: 14px;">Viên uống nội tiết cao cấp từ Nhật Bản</span>
+                <span class="font-bold text-2xl">Shinzo Kijo - Viên uống nội tiết đến từ Nhật Bản</span>
             </div>
 
             <div class="product-rating">
@@ -132,24 +176,26 @@
               <span class="rating-text">(4.9/5 - 2,847 đánh giá)</span>
             </div>
 
-
-
             <div class="product-features">
               <div class="feature-item">
                 <i class="fas fa-check-circle"></i>
-                <span>Chiết xuất thiên nhiên, lành tính an toàn</span>
+                <span>Hỗ trợ chống oxy hóa</span>
               </div>
               <div class="feature-item">
                 <i class="fas fa-check-circle"></i>
-                <span>Dành cho phụ nữ tiền mãn kinh</span>
+                <span>Hỗ trợ cải thiện tình trạng bốc hỏa</span>
               </div>
               <div class="feature-item">
                 <i class="fas fa-check-circle"></i>
-                <span>Không chứa hóa chất độc hại</span>
+                <span>Hỗ trợ giảm khô da</span>
               </div>
               <div class="feature-item">
                 <i class="fas fa-check-circle"></i>
-                <span>Liều dùng: 2 viên/ngày</span>
+                <span>Dành cho phụ nữ tiền mãn kinh, mãn kinh</span>
+              </div>
+                <div class="feature-item">
+                <i class="fas fa-check-circle"></i>
+                <span>Chiết xuất từ thiên nhiên an toàn khi sử dụng lâu dài</span>
               </div>
             </div>
 
@@ -212,38 +258,28 @@
     <!-- Features Section -->
     <section id="products" class="features">
       <div class="container">
-        <h2 class="section-title">Tại sao chọn Shinzo Kijo</h2>
+        <h2 class="text-center text-2xl">Tại sao chọn Shinzo Kijo</h2>
         <div class="features-grid">
           <div class="feature-card">
             <div class="feature-icon">
-              <i class="fas fa-leaf"></i>
+              <i class="fas fa-female"></i>
             </div>
-            <p class="label-title">Chiết xuất thiên nhiên</p>
-            <p class="text-justify">
-              Sản phẩm từ những nguyên liệu tự nhiên tốt nhất
-              <b>Sâm tố nữ Thái Lan</b>, <b>chiết xuất hạt nho</b>,
-              <b>tảo xoắn fucoidan</b>
-            </p>
+            <p class="label-title">Phù hợp với thể trạng phụ nữ Việt</p>
+
           </div>
           <div class="feature-card">
             <div class="feature-icon">
               <i class="fas fa-flask"></i>
             </div>
-            <p class="label-title">Công nghệ Nhật Bản</p>
-            <p class="text-justify">
-              Nghiên cứu và phát triển bởi các chuyên gia, các nhà khoa học hàng
-              đầu trong lĩnh vực bảo vệ sức khỏe.
-            </p>
+            <p class="label-title">Sản phẩm cao cấp đến từ Nhật Bản</p>
+
           </div>
           <div class="feature-card">
             <div class="feature-icon">
               <i class="fas fa-heart"></i>
             </div>
-            <p class="label-title">An toàn lành tính</p>
-            <p class="text-justify">
-              Phát triển dựa trên thể trạng phụ nữ Việt, mang lại hiệu quả an
-              toàn và lâu dài.
-            </p>
+            <p class="label-title">Chất lượng được kiểm định rõ ràng</p>
+
           </div>
         </div>
       </div>
@@ -252,130 +288,46 @@
     <!-- Product Information Section -->
     <section class="product-information">
       <div class="container">
-        <h2 class="section-title">Thông tin sản phẩm</h2>
+        <h2 class="text-center text-2xl">Thông tin sản phẩm</h2>
         <div class="product-info-grid">
-          <!-- Ưu điểm nổi bật -->
-          <div class="info-box highlights">
-            <div class="info-header">
-              <i class="fas fa-star"></i>
-              <h3>Ưu điểm nổi bật</h3>
-            </div>
-            <div class="info-content">
-              <div class="highlight-item">
-                <div class="highlight-icon">
-                  <i class="fas fa-leaf"></i>
-                </div>
-                <div class="highlight-text">
-                  <h4>Thành phần tự nhiên</h4>
-                  <p>
-                    Chứa các hoạt chất nội tiết, được khoa học thế giới công
-                    nhận như Pueraria Mirifica, Fucoidan Mozuku
-                  </p>
-                </div>
-              </div>
-              <div class="highlight-item">
-                <div class="highlight-icon">
-                  <i class="fas fa-certificate"></i>
-                </div>
-                <div class="highlight-text">
-                  <h4>Chất lượng Nhật Bản</h4>
-                  <p>
-                    Được nghiên cứu và phát triển bởi các chuyên gia, nhà khoa
-                    học hàng đầu từ Nhật Bản
-                  </p>
-                </div>
-              </div>
-              <div class="highlight-item">
-                <div class="highlight-icon">
-                  <i class="fas fa-heart"></i>
-                </div>
-                <div class="highlight-text">
-                  <h4>Hỗ trợ cân bằng nội tiết</h4>
-                  <p>
-                    Hỗ trợ bổ sung Estrogen cân bằng nội tiết tố nữ, giúp phụ nữ
-                    tươi trẻ và khỏe mạnh
-                  </p>
-                </div>
-              </div>
-              <div class="highlight-item">
-                <div class="highlight-icon">
-                  <i class="fas fa-sun"></i>
-                </div>
-                <div class="highlight-text">
-                  <h4>Cải thiện tình trạng lão hóa hiệu quả</h4>
-                  <p>
-                    Chiết xuất Grape seed extract từ hạt nho trung hòa các gốc
-                    tự do (ROS) cải thiện tình trạng lão hóa của da
-                  </p>
-                </div>
-              </div>
-              <div class="highlight-item">
-                <div class="highlight-icon">
-                  <i class="fas fa-seedling"></i>
-                </div>
-                <div class="highlight-text">
-                  <h4>Cải thiện tình trạng khô da</h4>
-                  <p>
-                    Chiết xuất cam thảo và niacinamide giúp làm mờ đốm nâu, đều
-                    màu da an toàn
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
+
 
           <!-- Nghiên cứu khoa học -->
           <div class="info-box research">
-            <div class="info-header">
-              <i class="fas fa-microscope"></i>
-              <h3>Nghiên cứu khoa học</h3>
-            </div>
-            <div class="info-content">
-              <div class="research-stats">
-                <div class="stat-item">
-                  <div class="stat-number">100%</div>
-                  <div class="stat-label">Nguyên liệu tự nhiên</div>
-                  <div class="stat-description">từ Nhật Bản</div>
-                </div>
-                <div class="stat-item">
-                  <div class="stat-number">15g</div>
-                  <div class="stat-label">Hàm lượng mỗi viên</div>
-                  <div class="stat-description">tiêu chuẩn Nhật</div>
-                </div>
-                <div class="stat-item">
-                  <div class="stat-number">60</div>
-                  <div class="stat-label">Viên/Hộp</div>
-                  <div class="stat-description">sử dụng 1 tháng</div>
-                </div>
-              </div>
+
 
               <div class="research-details">
                 <div class="research-item">
-                  <h4><i class="fas fa-certificate"></i> Chứng nhận GMP</h4>
-                  <p>
-                    Sản xuất theo tiêu chuẩn GMP tại Nhật Bản, đảm bảo chất
-                    lượng cao nhất
+                  <h4 class="text-2xl md:text-4xl lg:text-6xl font-bold">
+                    <i class="fas fa-certificate"></i>
+                     Sản phẩm đến từ Nhật Bản
+                  </h4>
+                  <p class="text-1xl md:text-2xl lg:text-3xl">
+                    Sản xuất bởi Seiko Yakuhin Kogyo Co,Ltd (Chiba, Nhật Bản) <br>
+                    Đáp ứng tiêu chuẩn GMP trong sản xuất thực phẩm bảo vệ sức khỏe
                   </p>
                 </div>
                 <div class="research-item">
-                  <h4><i class="fas fa-flask"></i> Thành phần khoa học</h4>
-                  <p>
-                    Chứa Pueraria Mirifica 50,000mg, Fucoidan Mozuku và nhiều
-                    vitamin thiết yếu
-                  </p>
+                     <h4 class="text-2xl md:text-4xl lg:text-6xl font-bold">
+                       <i class="fas fa-vials"></i> Thành phẩn chính
+                    </h4>
+                    <p class="text-1xl md:text-2xl lg:text-3xl">
+                        Sâm tố nữ (Pueraria Mirifica): 25mg <br>
+                        Chiết xuất hạt nho (Vitis Vinifera): 110,5mg <br>
+                        Chiết xuất rễ rau diếp xoăn (Inulin): 90mg <br>
+                    </p>
                 </div>
                 <div class="research-item">
-                  <h4>
+                  <h4 class="text-2xl md:text-4xl lg:text-6xl font-bold">
                     <i class="fas fa-shield-alt"></i> Kiểm định chất lượng
                   </h4>
-                  <p>
-                    Được kiểm định nghiêm ngặt bởi Bộ Y tế với độ an toàn tuyệt
-                    đối
+                  <p class="text-1xl md:text-2xl lg:text-3xl">
+                    Sản phẩm đã được cấp Giấy phép tiếp nhận đăng ký bản công bố sản phẩm số 885/2025/ĐKSP do Cục An toàn thực phẩm - Bộ Y tế
                   </p>
                 </div>
                 <div class="research-item">
-                  <h4><i class="fas fa-leaf"></i> Công nghệ độc quyền</h4>
-                  <p>
+                  <h4 class="text-2xl md:text-4xl lg:text-6xl font-bold"><i class="fas fa-leaf"></i> Công thức sản phẩm độc quyền </h4>
+                  <p class="text-1xl md:text-2xl lg:text-3xl">
                     Phát triển bởi các chuyên gia hàng đầu Nhật Bản trong lĩnh
                     vực thực phẩm chức năng
                   </p>
@@ -412,19 +364,7 @@
                         </p>
                       </div>
                     </div>
-                    <div class="dosage-item">
-                      <div class="dosage-icon">
-                        <i class="fas fa-calendar-alt"></i>
-                      </div>
-                      <div class="dosage-text">
-                        <h5>Chu kỳ sử dụng</h5>
-                        <p>
-                          Nên bổ sung <strong>mỗi năm 2 đợt</strong>, mỗi đợt sử
-                          dụng <strong>3 tháng</strong> để đem lại hiệu quả tốt
-                          nhất
-                        </p>
-                      </div>
-                    </div>
+
                   </div>
                 </div>
               </div>
@@ -571,8 +511,8 @@
     <!-- Customer Reviews Section -->
     <section class="customer-reviews">
       <div class="container">
-        <h2 class="section-title">
-          Câu chuyện trước và sau từ khách hàng thực tế
+        <h2 class="text-center text-2xl md:text-4xl lg:text-6xl font-bold">
+          Feedback từ khách hàng
         </h2>
 
         <div class="reviews-grid">
