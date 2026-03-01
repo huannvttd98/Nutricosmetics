@@ -1,889 +1,999 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="vi">
-<head>
-        <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Shinzo Kijo- Landing Page</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/mobile.css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-</head>
-<body>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/mobile.css" />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
     <!-- Header -->
     <header class="header">
-        <nav class="navbar">
-            <div class="nav-container">
-                <div class="nav-logo">
-                    <h2>Shinzo Kijo</h2>
-                </div>
-                <ul class="nav-menu">
-                    <li class="nav-item">
-                        <a href="#home" class="nav-link">Trang chủ</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#products" class="nav-link">Sản phẩm</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#about" class="nav-link">Về chúng tôi</a>
-                    </li>   
-                    <li class="nav-item">
-                        <a href="#contact" class="nav-link">Liên hệ</a>
-                    </li>
-                </ul>
-                <div class="hamburger">
-                    <span class="bar"></span>
-                    <span class="bar"></span>
-                    <span class="bar"></span>
-                </div>
-            </div>
-        </nav>
+      <nav class="navbar">
+        <div class="nav-container">
+          <div class="nav-logo">
+            <h2>Shinzo Kijo</h2>
+          </div>
+          <ul class="nav-menu">
+            <li class="nav-item">
+              <a href="#home" class="nav-link">Trang chủ</a>
+            </li>
+            <li class="nav-item">
+              <a href="#products" class="nav-link">Sản phẩm</a>
+            </li>
+            <li class="nav-item">
+              <a href="#about" class="nav-link">Về chúng tôi</a>
+            </li>
+            <li class="nav-item">
+              <a href="#contact" class="nav-link">Liên hệ</a>
+            </li>
+          </ul>
+          <div class="hamburger">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+          </div>
+        </div>
+      </nav>
     </header>
 
     <!-- Hero Section with Slider and Product Info -->
     <section id="home" class="hero">
-        <div class="hero-container">
-            <!-- Slider Section -->
-            <div class="slider-section">
-                <!-- Thumbnails Column -->
-                <div class="thumbnails-column">
-                    <div class="thumbnail active" onclick="currentSlide(1)">
-                        <img src="images/1.png" alt="Thumbnail 1">
-                    </div>
-                    <div class="thumbnail" onclick="currentSlide(2)">
-                        <img src="images/2.png" alt="Thumbnail 2">
-                    </div>
-                    <div class="thumbnail" onclick="currentSlide(3)">
-                        <img src="images/3.png" alt="Thumbnail 3">
-                    </div>
-                    <div class="thumbnail" onclick="currentSlide(4)">
-                        <img src="images/4.png" alt="Thumbnail 4">
-                    </div>
-                    <div class="thumbnail" onclick="currentSlide(5)">
-                        <img src="images/5.png" alt="Thumbnail 5">
-                    </div>
-                </div>
-
-                <!-- Main Slider -->
-                <div class="slider-container">
-                    <div class="slider">
-                        <div class="slide">
-                            <img src="images/1.png" alt="Sản phẩm chăm sóc da Shinzo Kijo">
-                        </div>
-                        <div class="slide">
-                            <img src="images/2.png" alt="Serum dưỡng da chất lượng cao">
-                        </div>
-                        <div class="slide">
-                            <img src="images/3.png" alt="Kem dưỡng ẩm từ thiên nhiên">
-                        </div>
-                        <div class="slide">
-                            <img src="images/4.png" alt="Mặt nạ dưỡng da cao cấp">
-                        </div>
-                        <div class="slide">
-                            <img src="images/5.png" alt="Bộ sản phẩm chăm sóc da hoàn chỉnh">
-                        </div>
-                    </div>
-
-                    <!-- Navigation arrows -->
-                    <button class="slider-btn prev-btn" onclick="changeSlide(-1)">
-                        <i class="fas fa-chevron-left"></i>
-                    </button>
-                    <button class="slider-btn next-btn" onclick="changeSlide(1)">
-                        <i class="fas fa-chevron-right"></i>
-                    </button>
-
-                    <!-- Dots indicator -->
-                    <div class="slider-dots">
-                        <span class="dot active" onclick="currentSlide(1)"></span>
-                        <span class="dot" onclick="currentSlide(2)"></span>
-                        <span class="dot" onclick="currentSlide(3)"></span>
-                        <span class="dot" onclick="currentSlide(4)"></span>
-                        <span class="dot" onclick="currentSlide(5)"></span>
-                    </div>
-                </div>
+      <div class="hero-container">
+        <!-- Slider Section -->
+        <div class="slider-section">
+          <!-- Main Slider -->
+          <div class="slider-container">
+            <div class="slider">
+              <div class="slide">
+                <img
+                  src="images/1.png"
+                  alt="Sản phẩm chăm sóc da Shinzo Kijo"
+                />
+              </div>
+              <div class="slide">
+                <img src="images/2.png" alt="Serum dưỡng da chất lượng cao" />
+              </div>
+              <div class="slide">
+                <img src="images/3.png" alt="Kem dưỡng ẩm từ thiên nhiên" />
+              </div>
+              <div class="slide">
+                <img src="images/4.png" alt="Mặt nạ dưỡng da cao cấp" />
+              </div>
+              <div class="slide">
+                <img
+                  src="images/5.png"
+                  alt="Bộ sản phẩm chăm sóc da hoàn chỉnh"
+                />
+              </div>
             </div>
 
-            <!-- Product Info Section -->
-            <div class="product-info-section">
-                <div class="product-info">
-                    <div class="product-badge">
-                        <span>Sản phẩm mới</span>
-                    </div>
+            <!-- Navigation arrows -->
+            <button class="slider-btn prev-btn" onclick="changeSlide(-1)">
+              <i class="fas fa-chevron-left"></i>
+            </button>
+            <button class="slider-btn next-btn" onclick="changeSlide(1)">
+              <i class="fas fa-chevron-right"></i>
+            </button>
 
-                    <h1 class="product-title">Shinzo Kijo </h1>
-
-                    <div class="product-rating">
-                        <div class="stars">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
-                        <span class="rating-text">(4.9/5 - 2,847 đánh giá)</span>
-                    </div>
-
-                    <p class="product-description">
-                        Thực phẩm bảo vệ sức khỏe hỗ trợ chống oxy hóa, cải thiện tình trạng bốc hỏa , khô da.
-                        Được sản xuất bởi Tập đoàn Dược Phẩm Shiratori.
-                        <b>Shiratori</b> là thương hiệu uy tín số 1 Nhật bản với lịch sử hơn 100 năm về thực phẩm, dinh
-                        dưỡng sức khỏe chăm sóc da.
-                    </p>
-
-                    <div class="product-features">
-                        <div class="feature-item">
-                            <i class="fas fa-check-circle"></i>
-                            <span>Chiết xuất thiên nhiên, lành tính an toàn</span>
-                        </div>
-                        <div class="feature-item">
-                            <i class="fas fa-check-circle"></i>
-                            <span>Dành cho phụ nữ tiền mãn kinh</span>
-                        </div>
-                        <div class="feature-item">
-                            <i class="fas fa-check-circle"></i>
-                            <span>Không chứa hóa chất độc hại</span>
-                        </div>
-                        <div class="feature-item">
-                            <i class="fas fa-check-circle"></i>
-                            <span>Liều dùng: 2 viên/ngày</span>
-                        </div>
-                    </div>
-
-                    <div class="product-price">
-                        <span class="current-price">750.000 VNĐ</span>
-                        <span class="original-price">1.699.000 VNĐ</span>
-                        <span class="discount">-45%</span>
-                    </div>
-
-                    <div class="product-quantity">
-                        <label for="quantity">Số lượng:</label>
-                        <div class="quantity-selector">
-                            <button class="quantity-btn minus" onclick="decreaseQuantity()">-</button>
-                            <input type="number" id="quantity" value="1" min="1" max="10" readonly>
-                            <button class="quantity-btn plus" onclick="increaseQuantity()">+</button>
-                        </div>
-                    </div>
-
-                    <div class="product-actions">
-                        <button class="buy-now-btn" onclick="buyNow()">
-                            <i class="fas fa-shopping-cart"></i>
-                            Mua ngay
-                        </button>
-                        <button class="add-to-cart-btn" onclick="addToCart()">
-                            <i class="fas fa-heart"></i>
-                            Thêm vào giỏ
-                        </button>
-                    </div>
-
-                    <div class="product-guarantee">
-                        <div class="guarantee-item">
-                            <i class="fas fa-shipping-fast"></i>
-                            <span>Giao hàng miễn phí toàn quốc</span>
-                        </div>
-                        <div class="guarantee-item">
-                            <i class="fas fa-undo"></i>
-                            <span>Đổi trả trong 30 ngày</span>
-                        </div>
-                        <div class="guarantee-item">
-                            <i class="fas fa-phone"></i>
-                            <span>Hỗ trợ 24/7</span>
-                        </div>
-                    </div>
-                </div>
+            <!-- Dots indicator -->
+            <div class="slider-dots">
+              <span class="dot active" onclick="currentSlide(1)"></span>
+              <span class="dot" onclick="currentSlide(2)"></span>
+              <span class="dot" onclick="currentSlide(3)"></span>
+              <span class="dot" onclick="currentSlide(4)"></span>
+              <span class="dot" onclick="currentSlide(5)"></span>
             </div>
+          </div>
+          <!-- Thumbnails Column -->
+          <div class="thumbnails-column">
+            <div class="thumbnail active" onclick="currentSlide(1)">
+              <img src="images/1.png" alt="Thumbnail 1" />
+            </div>
+            <div class="thumbnail" onclick="currentSlide(2)">
+              <img src="images/2.png" alt="Thumbnail 2" />
+            </div>
+            <div class="thumbnail" onclick="currentSlide(3)">
+              <img src="images/3.png" alt="Thumbnail 3" />
+            </div>
+            <div class="thumbnail" onclick="currentSlide(4)">
+              <img src="images/4.png" alt="Thumbnail 4" />
+            </div>
+            <div class="thumbnail" onclick="currentSlide(5)">
+              <img src="images/5.png" alt="Thumbnail 5" />
+            </div>
+          </div>
         </div>
+
+        <!-- Product Info Section -->
+        <div class="product-info-section">
+          <div class="product-info">
+
+            <div class="product-title">
+                <span style="font-size: 16px;">
+                    Shinzo Kijo
+                </span>
+                <span style="font-size: 14px;">Viên uống nội tiết cao cấp từ Nhật Bản</span>
+            </div>
+
+            <div class="product-rating">
+              <div class="stars">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+              </div>
+              <span class="rating-text">(4.9/5 - 2,847 đánh giá)</span>
+            </div>
+
+
+
+            <div class="product-features">
+              <div class="feature-item">
+                <i class="fas fa-check-circle"></i>
+                <span>Chiết xuất thiên nhiên, lành tính an toàn</span>
+              </div>
+              <div class="feature-item">
+                <i class="fas fa-check-circle"></i>
+                <span>Dành cho phụ nữ tiền mãn kinh</span>
+              </div>
+              <div class="feature-item">
+                <i class="fas fa-check-circle"></i>
+                <span>Không chứa hóa chất độc hại</span>
+              </div>
+              <div class="feature-item">
+                <i class="fas fa-check-circle"></i>
+                <span>Liều dùng: 2 viên/ngày</span>
+              </div>
+            </div>
+
+            <div class="product-price">
+              <span class="current-price">750.000 VNĐ</span>
+              <span class="original-price">1.699.000 VNĐ</span>
+              <span class="discount">-45%</span>
+            </div>
+
+            <div class="product-quantity">
+              <label for="quantity">Số lượng:</label>
+              <div class="quantity-selector">
+                <button class="quantity-btn minus" onclick="decreaseQuantity()">
+                  -
+                </button>
+                <input
+                  type="number"
+                  id="quantity"
+                  value="1"
+                  min="1"
+                  max="10"
+                  readonly
+                />
+                <button class="quantity-btn plus" onclick="increaseQuantity()">
+                  +
+                </button>
+              </div>
+            </div>
+
+            <div class="product-actions">
+              <button class="buy-now-btn" onclick="buyNow()">
+                <i class="fas fa-shopping-cart"></i>
+                Mua ngay
+              </button>
+              <button class="add-to-cart-btn" onclick="addToCart()">
+                <i class="fas fa-heart"></i>
+                Thêm vào giỏ
+              </button>
+            </div>
+
+            <div class="product-guarantee">
+              <div class="guarantee-item">
+                <i class="fas fa-shipping-fast"></i>
+                <span>Giao hàng miễn phí toàn quốc</span>
+              </div>
+              <div class="guarantee-item">
+                <i class="fas fa-undo"></i>
+                <span>Đổi trả trong 30 ngày</span>
+              </div>
+              <div class="guarantee-item">
+                <i class="fas fa-phone"></i>
+                <span>Hỗ trợ 24/7</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- Features Section -->
     <section id="products" class="features">
-        <div class="container">
-            <h2 class="section-title">Tại sao chọn Shinzo Kijo</h2>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-leaf"></i>
-                    </div>
-                    <p class="label-title">Chiết xuất thiên nhiên</p>
-                    <p class="text-justify">
-                        Sản phẩm từ những nguyên liệu tự nhiên tốt nhất
-                        <b>Sâm tố nữ Thái Lan</b>, <b>chiết xuất hạt nho</b>, <b>tảo xoắn fucoidan</b>
-                    </p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-flask"></i>
-                    </div>
-                    <p class="label-title">Công nghệ Nhật Bản</p>
-                    <p class="text-justify">Nghiên cứu và phát triển bởi các chuyên
-                        gia, các nhà khoa học hàng đầu trong lĩnh vực bảo vệ sức khỏe.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-heart"></i>
-                    </div>
-                    <p class="label-title">An toàn lành tính</p>
-                    <p class="text-justify"> Phát triển dựa trên thể trạng phụ nữ Việt, mang lại hiệu quả an toàn và lâu dài.</p>
-                </div>
+      <div class="container">
+        <h2 class="section-title">Tại sao chọn Shinzo Kijo</h2>
+        <div class="features-grid">
+          <div class="feature-card">
+            <div class="feature-icon">
+              <i class="fas fa-leaf"></i>
             </div>
+            <p class="label-title">Chiết xuất thiên nhiên</p>
+            <p class="text-justify">
+              Sản phẩm từ những nguyên liệu tự nhiên tốt nhất
+              <b>Sâm tố nữ Thái Lan</b>, <b>chiết xuất hạt nho</b>,
+              <b>tảo xoắn fucoidan</b>
+            </p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">
+              <i class="fas fa-flask"></i>
+            </div>
+            <p class="label-title">Công nghệ Nhật Bản</p>
+            <p class="text-justify">
+              Nghiên cứu và phát triển bởi các chuyên gia, các nhà khoa học hàng
+              đầu trong lĩnh vực bảo vệ sức khỏe.
+            </p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">
+              <i class="fas fa-heart"></i>
+            </div>
+            <p class="label-title">An toàn lành tính</p>
+            <p class="text-justify">
+              Phát triển dựa trên thể trạng phụ nữ Việt, mang lại hiệu quả an
+              toàn và lâu dài.
+            </p>
+          </div>
         </div>
+      </div>
     </section>
 
     <!-- Product Information Section -->
     <section class="product-information">
-        <div class="container">
-            <h2 class="section-title">Thông tin sản phẩm</h2>
-            <div class="product-info-grid">
-                <!-- Ưu điểm nổi bật -->
-                <div class="info-box highlights">
-                    <div class="info-header">
-                        <i class="fas fa-star"></i>
-                        <h3>Ưu điểm nổi bật</h3>
-                    </div>
-                    <div class="info-content">
-                        <div class="highlight-item">
-                            <div class="highlight-icon">
-                                <i class="fas fa-leaf"></i>
-                            </div>
-                            <div class="highlight-text">
-                                <h4>Thành phần tự nhiên</h4>
-                                <p>Chứa các hoạt chất nội tiết, được khoa học thế giới công nhận như Pueraria Mirifica,
-                                    Fucoidan Mozuku</p>
-                            </div>
-                        </div>
-                        <div class="highlight-item">
-                            <div class="highlight-icon">
-                                <i class="fas fa-certificate"></i>
-                            </div>
-                            <div class="highlight-text">
-                                <h4>Chất lượng Nhật Bản</h4>
-                                <p>Được nghiên cứu và phát triển bởi các chuyên gia, nhà khoa học hàng đầu từ Nhật Bản
-                                </p>
-                            </div>
-                        </div>
-                        <div class="highlight-item">
-                            <div class="highlight-icon">
-                                <i class="fas fa-heart"></i>
-                            </div>
-                            <div class="highlight-text">
-                                <h4> Hỗ trợ cân bằng nội tiết</h4>
-                                <p>Hỗ trợ bổ sung Estrogen cân bằng nội tiết tố nữ, giúp phụ nữ tươi trẻ và khỏe mạnh
-                                </p>
-                            </div>
-                        </div>
-                        <div class="highlight-item">
-                            <div class="highlight-icon">
-                                <i class="fas fa-sun"></i>
-                            </div>
-                            <div class="highlight-text">
-                                <h4>Cải thiện tình trạng lão hóa hiệu quả</h4>
-                                <p>Chiết xuất Grape seed extract từ hạt nho trung hòa các gốc tự do (ROS) cải thiện tình
-                                    trạng lão hóa của da</p>
-                            </div>
-                        </div>
-                        <div class="highlight-item">
-                            <div class="highlight-icon">
-                                <i class="fas fa-seedling"></i>
-                            </div>
-                            <div class="highlight-text">
-                                <h4>Cải thiện tình trạng khô da</h4>
-                                <p>Chiết xuất cam thảo và niacinamide giúp làm mờ đốm nâu, đều màu da an toàn</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Nghiên cứu khoa học -->
-                <div class="info-box research">
-                    <div class="info-header">
-                        <i class="fas fa-microscope"></i>
-                        <h3>Nghiên cứu khoa học</h3>
-                    </div>
-                    <div class="info-content">
-                        <div class="research-stats">
-                            <div class="stat-item">
-                                <div class="stat-number">100%</div>
-                                <div class="stat-label">Nguyên liệu tự nhiên</div>
-                                <div class="stat-description">từ Nhật Bản</div>
-                            </div>
-                            <div class="stat-item">
-                                <div class="stat-number">15g</div>
-                                <div class="stat-label">Hàm lượng mỗi viên</div>
-                                <div class="stat-description">tiêu chuẩn Nhật</div>
-                            </div>
-                            <div class="stat-item">
-                                <div class="stat-number">60</div>
-                                <div class="stat-label">Viên/Hộp</div>
-                                <div class="stat-description">sử dụng 1 tháng</div>
-                            </div>
-                        </div>
-
-                        <div class="research-details">
-                            <div class="research-item">
-                                <h4><i class="fas fa-certificate"></i> Chứng nhận GMP</h4>
-                                <p>Sản xuất theo tiêu chuẩn GMP tại Nhật Bản, đảm bảo chất lượng cao nhất</p>
-                            </div>
-                            <div class="research-item">
-                                <h4><i class="fas fa-flask"></i> Thành phần khoa học</h4>
-                                <p>Chứa Pueraria Mirifica 50,000mg, Fucoidan Mozuku và nhiều vitamin thiết yếu</p>
-                            </div>
-                            <div class="research-item">
-                                <h4><i class="fas fa-shield-alt"></i> Kiểm định chất lượng</h4>
-                                <p>Được kiểm định nghiêm ngặt bởi Bộ Y tế với độ an toàn tuyệt đối</p>
-                            </div>
-                            <div class="research-item">
-                                <h4><i class="fas fa-leaf"></i> Công nghệ độc quyền</h4>
-                                <p>Phát triển bởi các chuyên gia hàng đầu Nhật Bản trong lĩnh vực thực phẩm chức năng
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+      <div class="container">
+        <h2 class="section-title">Thông tin sản phẩm</h2>
+        <div class="product-info-grid">
+          <!-- Ưu điểm nổi bật -->
+          <div class="info-box highlights">
+            <div class="info-header">
+              <i class="fas fa-star"></i>
+              <h3>Ưu điểm nổi bật</h3>
             </div>
-
-            <!-- Cách sử dụng -->
-            <div class="usage-section">
-                <div class="info-box usage">
-                    <div class="info-header">
-                        <i class="fas fa-hand-sparkles"></i>
-                        <h3>Hướng dẫn sử dụng</h3>
-                    </div>
-                    <div class="info-content">
-                        <!-- Công dụng -->
-
-                        <!-- Cách sử dụng/Liều dùng -->
-                        <div class="dosage-section">
-                            <h4><i class="fas fa-pills"></i> Cách sử dụng/Liều dùng</h4>
-                            <div class="dosage-info">
-                                <div class="dosage-main">
-                                    <div class="dosage-item">
-                                        <div class="dosage-icon">
-                                            <i class="fas fa-capsules"></i>
-                                        </div>
-                                        <div class="dosage-text">
-                                            <h5>Liều dùng hàng ngày</h5>
-                                            <p>Sử dụng <strong>2 viên/ngày</strong>, uống sau ăn với nước hoặc nước ấm
-                                            </p>
-                                        </div>
-                                    </div>
-                                    <div class="dosage-item">
-                                        <div class="dosage-icon">
-                                            <i class="fas fa-calendar-alt"></i>
-                                        </div>
-                                        <div class="dosage-text">
-                                            <h5>Chu kỳ sử dụng</h5>
-                                            <p>Nên bổ sung <strong>mỗi năm 2 đợt</strong>, mỗi đợt sử dụng <strong>3
-                                                    tháng</strong> để đem lại hiệu quả tốt nhất</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Đối tượng sử dụng -->
-                        <div class="target-section">
-                            <h4><i class="fas fa-users"></i> Đối tượng sử dụng</h4>
-                            <div class="target-list">
-                                <div class="target-item">
-                                    <i class="fas fa-user-nurse"></i>
-                                    <span>Độ tuổi phụ nữ sau 30 tuổi</span>
-                                </div>
-                                <div class="target-item">
-                                    <i class="fas fa-user-nurse"></i>
-                                    <span>Phụ nữ đang bị rối loạn nội tiết</span>
-                                </div>
-                                <div class="target-item">
-                                    <i class="fas fa-user-clock"></i>
-                                    <span>Phụ nữ đang trong giai đoạn tiền mãn kinh, mãn kinh</span>
-                                </div>
-                            </div>
-
-                            <div class="warning-note">
-                                <i class="fas fa-exclamation-triangle"></i>
-                                <span><strong>Lưu ý:</strong> 
-                                    Tham khảo ý kiến bác sĩ, chuyên gia trước khi sử dụng(nếu có bệnh nền)
-                                </span>
-                            </div>
-                        </div>
-                    </div>
+            <div class="info-content">
+              <div class="highlight-item">
+                <div class="highlight-icon">
+                  <i class="fas fa-leaf"></i>
                 </div>
+                <div class="highlight-text">
+                  <h4>Thành phần tự nhiên</h4>
+                  <p>
+                    Chứa các hoạt chất nội tiết, được khoa học thế giới công
+                    nhận như Pueraria Mirifica, Fucoidan Mozuku
+                  </p>
+                </div>
+              </div>
+              <div class="highlight-item">
+                <div class="highlight-icon">
+                  <i class="fas fa-certificate"></i>
+                </div>
+                <div class="highlight-text">
+                  <h4>Chất lượng Nhật Bản</h4>
+                  <p>
+                    Được nghiên cứu và phát triển bởi các chuyên gia, nhà khoa
+                    học hàng đầu từ Nhật Bản
+                  </p>
+                </div>
+              </div>
+              <div class="highlight-item">
+                <div class="highlight-icon">
+                  <i class="fas fa-heart"></i>
+                </div>
+                <div class="highlight-text">
+                  <h4>Hỗ trợ cân bằng nội tiết</h4>
+                  <p>
+                    Hỗ trợ bổ sung Estrogen cân bằng nội tiết tố nữ, giúp phụ nữ
+                    tươi trẻ và khỏe mạnh
+                  </p>
+                </div>
+              </div>
+              <div class="highlight-item">
+                <div class="highlight-icon">
+                  <i class="fas fa-sun"></i>
+                </div>
+                <div class="highlight-text">
+                  <h4>Cải thiện tình trạng lão hóa hiệu quả</h4>
+                  <p>
+                    Chiết xuất Grape seed extract từ hạt nho trung hòa các gốc
+                    tự do (ROS) cải thiện tình trạng lão hóa của da
+                  </p>
+                </div>
+              </div>
+              <div class="highlight-item">
+                <div class="highlight-icon">
+                  <i class="fas fa-seedling"></i>
+                </div>
+                <div class="highlight-text">
+                  <h4>Cải thiện tình trạng khô da</h4>
+                  <p>
+                    Chiết xuất cam thảo và niacinamide giúp làm mờ đốm nâu, đều
+                    màu da an toàn
+                  </p>
+                </div>
+              </div>
             </div>
+          </div>
+
+          <!-- Nghiên cứu khoa học -->
+          <div class="info-box research">
+            <div class="info-header">
+              <i class="fas fa-microscope"></i>
+              <h3>Nghiên cứu khoa học</h3>
+            </div>
+            <div class="info-content">
+              <div class="research-stats">
+                <div class="stat-item">
+                  <div class="stat-number">100%</div>
+                  <div class="stat-label">Nguyên liệu tự nhiên</div>
+                  <div class="stat-description">từ Nhật Bản</div>
+                </div>
+                <div class="stat-item">
+                  <div class="stat-number">15g</div>
+                  <div class="stat-label">Hàm lượng mỗi viên</div>
+                  <div class="stat-description">tiêu chuẩn Nhật</div>
+                </div>
+                <div class="stat-item">
+                  <div class="stat-number">60</div>
+                  <div class="stat-label">Viên/Hộp</div>
+                  <div class="stat-description">sử dụng 1 tháng</div>
+                </div>
+              </div>
+
+              <div class="research-details">
+                <div class="research-item">
+                  <h4><i class="fas fa-certificate"></i> Chứng nhận GMP</h4>
+                  <p>
+                    Sản xuất theo tiêu chuẩn GMP tại Nhật Bản, đảm bảo chất
+                    lượng cao nhất
+                  </p>
+                </div>
+                <div class="research-item">
+                  <h4><i class="fas fa-flask"></i> Thành phần khoa học</h4>
+                  <p>
+                    Chứa Pueraria Mirifica 50,000mg, Fucoidan Mozuku và nhiều
+                    vitamin thiết yếu
+                  </p>
+                </div>
+                <div class="research-item">
+                  <h4>
+                    <i class="fas fa-shield-alt"></i> Kiểm định chất lượng
+                  </h4>
+                  <p>
+                    Được kiểm định nghiêm ngặt bởi Bộ Y tế với độ an toàn tuyệt
+                    đối
+                  </p>
+                </div>
+                <div class="research-item">
+                  <h4><i class="fas fa-leaf"></i> Công nghệ độc quyền</h4>
+                  <p>
+                    Phát triển bởi các chuyên gia hàng đầu Nhật Bản trong lĩnh
+                    vực thực phẩm chức năng
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
+
+        <!-- Cách sử dụng -->
+        <div class="usage-section">
+          <div class="info-box usage">
+            <div class="info-header">
+              <i class="fas fa-hand-sparkles"></i>
+              <h3>Hướng dẫn sử dụng</h3>
+            </div>
+            <div class="info-content">
+              <!-- Công dụng -->
+
+              <!-- Cách sử dụng/Liều dùng -->
+              <div class="dosage-section">
+                <h4><i class="fas fa-pills"></i> Cách sử dụng/Liều dùng</h4>
+                <div class="dosage-info">
+                  <div class="dosage-main">
+                    <div class="dosage-item">
+                      <div class="dosage-icon">
+                        <i class="fas fa-capsules"></i>
+                      </div>
+                      <div class="dosage-text">
+                        <h5>Liều dùng hàng ngày</h5>
+                        <p>
+                          Sử dụng <strong>2 viên/ngày</strong>, uống sau ăn với
+                          nước hoặc nước ấm
+                        </p>
+                      </div>
+                    </div>
+                    <div class="dosage-item">
+                      <div class="dosage-icon">
+                        <i class="fas fa-calendar-alt"></i>
+                      </div>
+                      <div class="dosage-text">
+                        <h5>Chu kỳ sử dụng</h5>
+                        <p>
+                          Nên bổ sung <strong>mỗi năm 2 đợt</strong>, mỗi đợt sử
+                          dụng <strong>3 tháng</strong> để đem lại hiệu quả tốt
+                          nhất
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Đối tượng sử dụng -->
+              <div class="target-section">
+                <h4><i class="fas fa-users"></i> Đối tượng sử dụng</h4>
+                <div class="target-list">
+                  <div class="target-item">
+                    <i class="fas fa-user-nurse"></i>
+                    <span>Độ tuổi phụ nữ sau 30 tuổi</span>
+                  </div>
+                  <div class="target-item">
+                    <i class="fas fa-user-nurse"></i>
+                    <span>Phụ nữ đang bị rối loạn nội tiết</span>
+                  </div>
+                  <div class="target-item">
+                    <i class="fas fa-user-clock"></i>
+                    <span
+                      >Phụ nữ đang trong giai đoạn tiền mãn kinh, mãn kinh</span
+                    >
+                  </div>
+                </div>
+
+                <div class="warning-note">
+                  <i class="fas fa-exclamation-triangle"></i>
+                  <span
+                    ><strong>Lưu ý:</strong>
+                    Tham khảo ý kiến bác sĩ, chuyên gia trước khi sử dụng(nếu có
+                    bệnh nền)
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- Happy Mammoth in the Media Section -->
     <section class="media-testimonials">
-        <div class="container">
-            <h2 class="section-title">Shinzo Kijo trên các phương tiện truyền thông...</h2>
+      <div class="container">
+        <h2 class="section-title">
+          Shinzo Kijo trên các phương tiện truyền thông...
+        </h2>
 
-            <!-- Media Logos -->
-            <div class="media-logos">
-                <div class="media-logo">
-                    <div class="logo-placeholder ">
-                        <img src="images/danTri.png" alt="">
-                    </div>
-                </div>
-                <div class="media-logo">
-                    <div class="logo-placeholder ">
-                        <img src="images/e.jpg" alt="">
-                    </div>
-                </div>
-                <div class="media-logo">
-                    <div class="logo-placeholder vogue">
-                        <img src="images/gdxh.png" alt="">
-                    </div>
-                </div>
-                <div class="media-logo">
-                    <div class="logo-placeholder ">
-                        <img src="images/suckhoe.png" alt="">
-                    </div>
-                </div>
-                <div class="media-logo">
-                    <div class="logo-placeholder ">
-                        <img src="images/thanh_nien.png" alt="">
-                    </div>
-                </div>
-                <div class="media-logo">
-                    <div class="logo-placeholder ">
-                        <img src="images/tienPhong.png" alt="">
-                    </div>
-                </div>
-                 <div class="media-logo">
-                    <div class="logo-placeholder ">
-                        <img src="images/tuoiTre.png" alt="">
-                    </div>
-                </div>
-                 
-                  <div class="media-logo">
-                    <div class="logo-placeholder ">
-                        <img src="images/vtv.png" alt="">
-                    </div>
-                </div>
+        <!-- Media Logos -->
+        <div class="media-logos">
+          <div class="media-logo">
+            <div class="logo-placeholder">
+              <img src="images/danTri.png" alt="" />
             </div>
-
-            <!-- Testimonials -->
-            <div class="testimonials-grid">
-                <div class="testimonial-item">
-                    <div class="testimonial-quote">
-                        "Nó khiến tôi cảm thấy bình tĩnh và tập trung, chồng tôi ngay lập tức nhận ra sự thay đổi."
-                    </div>
-                    <div class="testimonial-source">Theo báo Dân Trí</div>
-                </div>
-
-                <div class="testimonial-item">
-                    <div class="testimonial-quote">
-                        "Sự tự tin của tôi đã trở lại. Bụng tôi cảm thấy phẳng. Và tôi cảm thấy như chính mình một lần
-                        nữa!"
-                    </div>
-                    <div class="testimonial-source">Theo báo Gia Đình và Xã Hội</div>
-                </div>
-
-                <div class="testimonial-item">
-                    <div class="testimonial-quote">
-                        "Những thực phẩm bổ sung ăn kiêng hiệu quả nhất mà tôi đã khám phá gần đây, và thực sự thay đổi
-                        cuộc chơi đối với tôi."
-                    </div>
-                    <div class="testimonial-source">Theo báo Tiền Phong</div>
-                </div>
-
-                <div class="testimonial-item">
-                    <div class="testimonial-quote">
-                        "Lựa chọn của Marie Claire cho thời kỳ tiền mãn kinh"
-                    </div>
-                    <div class="testimonial-source">Theo báo Thanh Niên</div>
-                </div>
-
-                <div class="testimonial-item">
-                    <div class="testimonial-quote">
-                        "Niềm hạnh phúc của tôi đang trở lại và cơ thể tôi mạnh mẽ hơn. Tôi hoàn toàn bị ấn tượng bởi
-                        tốc độ hoạt động của nó!"
-                    </div>
-                    <div class="testimonial-source">Theo báo Tuổi Trẻ Online</div>
-                </div>
-
-                <div class="testimonial-item">
-                    <div class="testimonial-quote">
-                        "Bụng tôi chắc chắn tốt hơn trước, điều này thật tuyệt vời. Tôi sẽ đăng ký Hormone Harmony ngay
-                        lập tức!"
-                    </div>
-                    <div class="testimonial-source">Theo báo Sức khỏe và Đời sống</div>
-                </div>
+          </div>
+          <div class="media-logo">
+            <div class="logo-placeholder">
+              <img src="images/e.jpg" alt="" />
             </div>
-          
+          </div>
+          <div class="media-logo">
+            <div class="logo-placeholder vogue">
+              <img src="images/gdxh.png" alt="" />
+            </div>
+          </div>
+          <div class="media-logo">
+            <div class="logo-placeholder">
+              <img src="images/suckhoe.png" alt="" />
+            </div>
+          </div>
+          <div class="media-logo">
+            <div class="logo-placeholder">
+              <img src="images/thanh_nien.png" alt="" />
+            </div>
+          </div>
+          <div class="media-logo">
+            <div class="logo-placeholder">
+              <img src="images/tienPhong.png" alt="" />
+            </div>
+          </div>
+          <div class="media-logo">
+            <div class="logo-placeholder">
+              <img src="images/tuoiTre.png" alt="" />
+            </div>
+          </div>
+
+          <div class="media-logo">
+            <div class="logo-placeholder">
+              <img src="images/vtv.png" alt="" />
+            </div>
+          </div>
         </div>
+
+        <!-- Testimonials -->
+        <div class="testimonials-grid">
+          <div class="testimonial-item">
+            <div class="testimonial-quote">
+              "Nó khiến tôi cảm thấy bình tĩnh và tập trung, chồng tôi ngay lập
+              tức nhận ra sự thay đổi."
+            </div>
+            <div class="testimonial-source">Theo báo Dân Trí</div>
+          </div>
+
+          <div class="testimonial-item">
+            <div class="testimonial-quote">
+              "Sự tự tin của tôi đã trở lại. Bụng tôi cảm thấy phẳng. Và tôi cảm
+              thấy như chính mình một lần nữa!"
+            </div>
+            <div class="testimonial-source">Theo báo Gia Đình và Xã Hội</div>
+          </div>
+
+          <div class="testimonial-item">
+            <div class="testimonial-quote">
+              "Những thực phẩm bổ sung ăn kiêng hiệu quả nhất mà tôi đã khám phá
+              gần đây, và thực sự thay đổi cuộc chơi đối với tôi."
+            </div>
+            <div class="testimonial-source">Theo báo Tiền Phong</div>
+          </div>
+
+          <div class="testimonial-item">
+            <div class="testimonial-quote">
+              "Lựa chọn của Marie Claire cho thời kỳ tiền mãn kinh"
+            </div>
+            <div class="testimonial-source">Theo báo Thanh Niên</div>
+          </div>
+
+          <div class="testimonial-item">
+            <div class="testimonial-quote">
+              "Niềm hạnh phúc của tôi đang trở lại và cơ thể tôi mạnh mẽ hơn.
+              Tôi hoàn toàn bị ấn tượng bởi tốc độ hoạt động của nó!"
+            </div>
+            <div class="testimonial-source">Theo báo Tuổi Trẻ Online</div>
+          </div>
+
+          <div class="testimonial-item">
+            <div class="testimonial-quote">
+              "Bụng tôi chắc chắn tốt hơn trước, điều này thật tuyệt vời. Tôi sẽ
+              đăng ký Hormone Harmony ngay lập tức!"
+            </div>
+            <div class="testimonial-source">Theo báo Sức khỏe và Đời sống</div>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- Customer Reviews Section -->
     <section class="customer-reviews">
-        <div class="container">
-            <h2 class="section-title">Câu chuyện trước và sau từ khách hàng thực tế</h2>
+      <div class="container">
+        <h2 class="section-title">
+          Câu chuyện trước và sau từ khách hàng thực tế
+        </h2>
 
-            <div class="reviews-grid">
-                <!-- Review 1 -->
-                <div class="review-card">
-                    <div class="review-header">
-                        <div class="customer-info">
-                            <h4>Angela H.</h4>
-                            <div class="verified-badge">
-                                <i class="fas fa-check-circle"></i>
-                                <span>Người mua đã xác thực</span>
-                            </div>
-                        </div>
-                        <div class="star-rating">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
-                    </div>
-
-                    <div class="review-content">
-                        <h5>Không thể sống thiếu nó!</h5>
-                        <p>Tôi đã sử dụng Hormone Harmony từ Happy Mammoth trong vài tháng qua, và tôi thực sự ấn tượng
-                            với kết quả. Tôi đã thử nhiều loại thực phẩm bổ sung trước đây — nhưng Hormone Harmony đã
-                            vượt trội.</p>
-                    </div>
-
-                    <div class="review-image">
-                        <div class="image-placeholder">
-                         <img src="images/phu-33.webp" alt="">
-                        </div>
-                    </div>
+        <div class="reviews-grid">
+          <!-- Review 1 -->
+          <div class="review-card">
+            <div class="review-header">
+              <div class="customer-info">
+                <h4>Angela H.</h4>
+                <div class="verified-badge">
+                  <i class="fas fa-check-circle"></i>
+                  <span>Người mua đã xác thực</span>
                 </div>
-
-                <!-- Review 2 -->
-                <div class="review-card">
-                    <div class="review-header">
-                        <div class="customer-info">
-                            <h4>Scott K.</h4>
-                            <div class="verified-badge">
-                                <i class="fas fa-check-circle"></i>
-                                <span>Người mua đã xác thực</span>
-                            </div>
-                        </div>
-                        <div class="star-rating">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
-                    </div>
-
-                    <div class="review-content">
-                        <h5>Vợ tôi sử dụng Hormone Harmony trong nhiều năm</h5>
-                        <p>Vợ tôi đã sử dụng Hormone Harmony trong nhiều năm và cô ấy thề với nó. Tôi thậm chí còn đặt
-                            mua thêm và tặng bạn bè một lọ để họ bắt đầu.</p>
-                    </div>
-
-                    <div class="review-image">
-                        <div class="image-placeholder">
-                           <img src="images/phu-nu-tuoi-30-15777607264691689948879.webp" alt="">
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Review 3 - Additional Vietnamese Review -->
-                <div class="review-card">
-                    <div class="review-header">
-                        <div class="customer-info">
-                            <h4>Minh N.</h4>
-                            <div class="verified-badge">
-                                <i class="fas fa-check-circle"></i>
-                                <span>Người mua đã xác thực</span>
-                            </div>
-                        </div>
-                        <div class="star-rating">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
-                    </div>
-
-                    <div class="review-content">
-                        <h5>Thay đổi tích cực sau 3 tháng</h5>
-                        <p>Sau 3 tháng sử dụng đều đặn, tôi cảm thấy cơ thể cân bằng hơn, giấc ngủ ngon hơn và tâm trạng
-                            thoải mái hơn nhiều. Sản phẩm thực sự hiệu quả!</p>
-                    </div>
-
-                    <div class="review-image">
-                        <div class="image-placeholder">
-                          <img src="images/phu-nu-tuoi-30.webp" alt="">
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Review 4 -->
-                <div class="review-card">
-                    <div class="review-header">
-                        <div class="customer-info">
-                            <h4>Thảo L.</h4>
-                            <div class="verified-badge">
-                                <i class="fas fa-check-circle"></i>
-                                <span>Người mua đã xác thực</span>
-                            </div>
-                        </div>
-                        <div class="star-rating">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
-                    </div>
-
-                    <div class="review-content">
-                        <h5>Sản phẩm tuyệt vời cho phụ nữ tuổi 40+</h5>
-                        <p>Ở tuổi 45, tôi bắt đầu cảm thấy những thay đổi của cơ thể. Sau khi sử dụng sản phẩm này 2
-                            tháng, tôi cảm thấy năng lượng trở lại và giấc ngủ sâu hơn.</p>
-                    </div>
-
-                    <div class="review-image">
-                        <div class="image-placeholder">
-                            <img src="images/phu-nu3.jpeg" alt="">
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Review 5 -->
-                <div class="review-card">
-                    <div class="review-header">
-                        <div class="customer-info">
-                            <h4>Hương P.</h4>
-                            <div class="verified-badge">
-                                <i class="fas fa-check-circle"></i>
-                                <span>Người mua đã xác thực</span>
-                            </div>
-                        </div>
-                        <div class="star-rating">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
-                    </div>
-
-                    <div class="review-content">
-                        <h5>Giá trị tuyệt vời cho tiền bỏ ra</h5>
-                        <p>So với các sản phẩm khác tôi đã thử, đây là sản phẩm có hiệu quả rõ rệt nhất. Tôi sẽ tiếp tục
-                            sử dụng và giới thiệu cho bạn bè.</p>
-                    </div>
-
-                    <div class="review-image">
-                        <div class="image-placeholder">
-                          <img src="images/nu-35.jpg" alt="">
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Review 6 -->
-                <div class="review-card">
-                    <div class="review-header">
-                        <div class="customer-info">
-                            <h4>Mai T.</h4>
-                            <div class="verified-badge">
-                                <i class="fas fa-check-circle"></i>
-                                <span>Người mua đã xác thực</span>
-                            </div>
-                        </div>
-                        <div class="star-rating">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
-                    </div>
-
-                    <div class="review-content">
-                        <h5>Đặt hàng lần thứ 3 rồi!</h5>
-                        <p>Đây là lần thứ 3 tôi đặt mua sản phẩm này. Hiệu quả thật sự rõ rệt, tôi cảm thấy tự tin và
-                            thoải mái hơn rất nhiều. Dịch vụ giao hàng cũng rất nhanh!</p>
-                    </div>
-
-                    <div class="review-image">
-                        <div class="image-placeholder">
-                               <img src="images/nu-40.webp" alt="">
-                        </div>
-                    </div>
-                </div>
+              </div>
+              <div class="star-rating">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+              </div>
             </div>
 
-            <!-- Additional Reviews Summary -->
-            <div class="reviews-summary">
-                <div class="summary-stats">
-                    <div class="stat-item">
-                        <div class="stat-number">4.8/5</div>
-                        <div class="stat-label">Đánh giá trung bình</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-number">1,247+</div>
-                        <div class="stat-label">Đánh giá tích cực</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-number">95%</div>
-                        <div class="stat-label">Khách hàng hài lòng</div>
-                    </div>
-                </div>
-
-                <div class="more-reviews-btn-container">
-                    <button class="more-reviews-btn">Xem thêm đánh giá</button>
-                </div>
+            <div class="review-content">
+              <h5>Không thể sống thiếu nó!</h5>
+              <p>
+                Tôi đã sử dụng Hormone Harmony từ Happy Mammoth trong vài tháng
+                qua, và tôi thực sự ấn tượng với kết quả. Tôi đã thử nhiều loại
+                thực phẩm bổ sung trước đây — nhưng Hormone Harmony đã vượt
+                trội.
+              </p>
             </div>
+
+            <div class="review-image">
+              <div class="image-placeholder">
+                <img src="images/phu-33.webp" alt="" />
+              </div>
+            </div>
+          </div>
+
+          <!-- Review 2 -->
+          <div class="review-card">
+            <div class="review-header">
+              <div class="customer-info">
+                <h4>Scott K.</h4>
+                <div class="verified-badge">
+                  <i class="fas fa-check-circle"></i>
+                  <span>Người mua đã xác thực</span>
+                </div>
+              </div>
+              <div class="star-rating">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+              </div>
+            </div>
+
+            <div class="review-content">
+              <h5>Vợ tôi sử dụng Hormone Harmony trong nhiều năm</h5>
+              <p>
+                Vợ tôi đã sử dụng Hormone Harmony trong nhiều năm và cô ấy thề
+                với nó. Tôi thậm chí còn đặt mua thêm và tặng bạn bè một lọ để
+                họ bắt đầu.
+              </p>
+            </div>
+
+            <div class="review-image">
+              <div class="image-placeholder">
+                <img
+                  src="images/phu-nu-tuoi-30-15777607264691689948879.webp"
+                  alt=""
+                />
+              </div>
+            </div>
+          </div>
+
+          <!-- Review 3 - Additional Vietnamese Review -->
+          <div class="review-card">
+            <div class="review-header">
+              <div class="customer-info">
+                <h4>Minh N.</h4>
+                <div class="verified-badge">
+                  <i class="fas fa-check-circle"></i>
+                  <span>Người mua đã xác thực</span>
+                </div>
+              </div>
+              <div class="star-rating">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+              </div>
+            </div>
+
+            <div class="review-content">
+              <h5>Thay đổi tích cực sau 3 tháng</h5>
+              <p>
+                Sau 3 tháng sử dụng đều đặn, tôi cảm thấy cơ thể cân bằng hơn,
+                giấc ngủ ngon hơn và tâm trạng thoải mái hơn nhiều. Sản phẩm
+                thực sự hiệu quả!
+              </p>
+            </div>
+
+            <div class="review-image">
+              <div class="image-placeholder">
+                <img src="images/phu-nu-tuoi-30.webp" alt="" />
+              </div>
+            </div>
+          </div>
+
+          <!-- Review 4 -->
+          <div class="review-card">
+            <div class="review-header">
+              <div class="customer-info">
+                <h4>Thảo L.</h4>
+                <div class="verified-badge">
+                  <i class="fas fa-check-circle"></i>
+                  <span>Người mua đã xác thực</span>
+                </div>
+              </div>
+              <div class="star-rating">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+              </div>
+            </div>
+
+            <div class="review-content">
+              <h5>Sản phẩm tuyệt vời cho phụ nữ tuổi 40+</h5>
+              <p>
+                Ở tuổi 45, tôi bắt đầu cảm thấy những thay đổi của cơ thể. Sau
+                khi sử dụng sản phẩm này 2 tháng, tôi cảm thấy năng lượng trở
+                lại và giấc ngủ sâu hơn.
+              </p>
+            </div>
+
+            <div class="review-image">
+              <div class="image-placeholder">
+                <img src="images/phu-nu3.jpeg" alt="" />
+              </div>
+            </div>
+          </div>
+
+          <!-- Review 5 -->
+          <div class="review-card">
+            <div class="review-header">
+              <div class="customer-info">
+                <h4>Hương P.</h4>
+                <div class="verified-badge">
+                  <i class="fas fa-check-circle"></i>
+                  <span>Người mua đã xác thực</span>
+                </div>
+              </div>
+              <div class="star-rating">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+              </div>
+            </div>
+
+            <div class="review-content">
+              <h5>Giá trị tuyệt vời cho tiền bỏ ra</h5>
+              <p>
+                So với các sản phẩm khác tôi đã thử, đây là sản phẩm có hiệu quả
+                rõ rệt nhất. Tôi sẽ tiếp tục sử dụng và giới thiệu cho bạn bè.
+              </p>
+            </div>
+
+            <div class="review-image">
+              <div class="image-placeholder">
+                <img src="images/nu-35.jpg" alt="" />
+              </div>
+            </div>
+          </div>
+
+          <!-- Review 6 -->
+          <div class="review-card">
+            <div class="review-header">
+              <div class="customer-info">
+                <h4>Mai T.</h4>
+                <div class="verified-badge">
+                  <i class="fas fa-check-circle"></i>
+                  <span>Người mua đã xác thực</span>
+                </div>
+              </div>
+              <div class="star-rating">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+              </div>
+            </div>
+
+            <div class="review-content">
+              <h5>Đặt hàng lần thứ 3 rồi!</h5>
+              <p>
+                Đây là lần thứ 3 tôi đặt mua sản phẩm này. Hiệu quả thật sự rõ
+                rệt, tôi cảm thấy tự tin và thoải mái hơn rất nhiều. Dịch vụ
+                giao hàng cũng rất nhanh!
+              </p>
+            </div>
+
+            <div class="review-image">
+              <div class="image-placeholder">
+                <img src="images/nu-40.webp" alt="" />
+              </div>
+            </div>
+          </div>
         </div>
+
+        <!-- Additional Reviews Summary -->
+        <div class="reviews-summary">
+          <div class="summary-stats">
+            <div class="stat-item">
+              <div class="stat-number">4.8/5</div>
+              <div class="stat-label">Đánh giá trung bình</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-number">1,247+</div>
+              <div class="stat-label">Đánh giá tích cực</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-number">95%</div>
+              <div class="stat-label">Khách hàng hài lòng</div>
+            </div>
+          </div>
+
+          <div class="more-reviews-btn-container">
+            <button class="more-reviews-btn">Xem thêm đánh giá</button>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- About Section -->
     <section id="about" class="about">
-        <div class="container">
-            <div class="about-content">
-                <div class="about-text">
-                    <h2>Về Shinzo Kijo</h2>
-                    <p>Là viên uống nội tiết đến từ nhật bản, công thức độc quyền êm dịu chiết xuất từ các thành phần tự nhiên quý hiếm  </p>
-                    <p>Chúng tôi mong muốn đồng hành cùng phụ nữ trong hành trình cân bằng nội tiết một cách dịu êm và khoa học </p>
-                    <button class="learn-more-btn">Tìm hiểu thêm</button>
-                </div>
-                <div class="about-image">
-                    <img src="images/3.png" alt="About Shinzo Kijo">
-                </div>
-            </div>
+      <div class="container">
+        <div class="about-content">
+          <div class="about-text">
+            <h2>Về Shinzo Kijo</h2>
+            <p>
+              Là viên uống nội tiết đến từ nhật bản, công thức độc quyền êm dịu
+              chiết xuất từ các thành phần tự nhiên quý hiếm
+            </p>
+            <p>
+              Chúng tôi mong muốn đồng hành cùng phụ nữ trong hành trình cân
+              bằng nội tiết một cách dịu êm và khoa học
+            </p>
+            <button class="learn-more-btn">Tìm hiểu thêm</button>
+          </div>
+          <div class="about-image">
+            <img src="images/3.png" alt="About Shinzo Kijo" />
+          </div>
         </div>
+      </div>
     </section>
 
     <!-- Manufacturing Facility Section -->
     <section class="manufacturing-facility">
-        <div class="container">
-            <h2 class="section-title">Tại Nhật Bản</h2>
-            <div class="facility-content">
-                <div class="facility-info">
-                    <div class="facility-item">
-                        <div class="facility-icon">
-                            <i class="fas fa-building"></i>
-                        </div>
-                        <div class="facility-text">
-                            <h3>Tập đoàn dược phẩm shiratori</h3>
-                            <p>Các sản phẩm được nghiên cứu và phát triển bởi chính những chuyên gia dược phẩm hàng đầu Nhật Bản cùng với đầy chuyên công nghệ hiện đại và khép kín theo đúng tiêu chuẩn GMP của Bộ Y tế Nhật Bản và FDA Hoa Kỳ.</p>
-                        </div>
-                    </div>
-                    <div class="facility-item">
-                        <div class="facility-icon">
-                            <i class="fas fa-leaf"></i>
-                        </div>
-                        <div class="facility-text">
-                            <h3>Nguồn nguyên liệu</h3>
-                            <p>Shiratori sở hữu nông trại tự túc trong việc sản xuất các nguyên liệu hữu cơ cung ứng cho hoạt động của nhà máy cùng như các công ty được trên toàn nước Nhật.</p>
-                        </div>
-                    </div>
-                    <div class="facility-item">
-                        <div class="facility-icon">
-                            <i class="fas fa-history"></i>
-                        </div>
-                        <div class="facility-text">
-                            <h3>Lịch sử phát triển</h3>
-                            <p>Hơn 100 năm kinh nghiệm về thực phẩm, dinh dưỡng sức khỏe và chăm sóc da, Shiratori là thương hiệu uy tín số 1 tại Nhật Bản.</p>
-                        </div>
-                    </div>
-                    <div class="facility-item">
-                        <div class="facility-icon">
-                            <i class="fas fa-certificate"></i>
-                        </div>
-                        <div class="facility-text">
-                            <h3>Chứng nhận quốc tế</h3>
-                            <p>Đạt các chứng nhận nghiêm ngặt từ Bộ Y tế Nhật Bản và FDA Hoa Kỳ, đảm bảo chất lượng và an toàn tuyệt đối cho người sử dụng.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="facility-images">
-                    <div class="facility-image">
-                        <img src="images/h_th_ng_480x480.avif" alt="Nhà máy sản xuất Shinzo Kijo">
-                    </div>
-                    <div class="facility-image">
-                        <img src="images/s_n_xu_t_1_1_480x480.avif" alt="Dây chuyền sản xuất hiện đại">
-                    </div>
-                </div>
+      <div class="container">
+        <h2 class="section-title">Tại Nhật Bản</h2>
+        <div class="facility-content">
+          <div class="facility-info">
+            <div class="facility-item">
+              <div class="facility-icon">
+                <i class="fas fa-building"></i>
+              </div>
+              <div class="facility-text">
+                <h3>Tập đoàn dược phẩm shiratori</h3>
+                <p>
+                  Các sản phẩm được nghiên cứu và phát triển bởi chính những
+                  chuyên gia dược phẩm hàng đầu Nhật Bản cùng với đầy chuyên
+                  công nghệ hiện đại và khép kín theo đúng tiêu chuẩn GMP của Bộ
+                  Y tế Nhật Bản và FDA Hoa Kỳ.
+                </p>
+              </div>
             </div>
+            <div class="facility-item">
+              <div class="facility-icon">
+                <i class="fas fa-leaf"></i>
+              </div>
+              <div class="facility-text">
+                <h3>Nguồn nguyên liệu</h3>
+                <p>
+                  Shiratori sở hữu nông trại tự túc trong việc sản xuất các
+                  nguyên liệu hữu cơ cung ứng cho hoạt động của nhà máy cùng như
+                  các công ty được trên toàn nước Nhật.
+                </p>
+              </div>
+            </div>
+            <div class="facility-item">
+              <div class="facility-icon">
+                <i class="fas fa-history"></i>
+              </div>
+              <div class="facility-text">
+                <h3>Lịch sử phát triển</h3>
+                <p>
+                  Hơn 100 năm kinh nghiệm về thực phẩm, dinh dưỡng sức khỏe và
+                  chăm sóc da, Shiratori là thương hiệu uy tín số 1 tại Nhật
+                  Bản.
+                </p>
+              </div>
+            </div>
+            <div class="facility-item">
+              <div class="facility-icon">
+                <i class="fas fa-certificate"></i>
+              </div>
+              <div class="facility-text">
+                <h3>Chứng nhận quốc tế</h3>
+                <p>
+                  Đạt các chứng nhận nghiêm ngặt từ Bộ Y tế Nhật Bản và FDA Hoa
+                  Kỳ, đảm bảo chất lượng và an toàn tuyệt đối cho người sử dụng.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="facility-images">
+            <div class="facility-image">
+              <img
+                src="images/h_th_ng_480x480.avif"
+                alt="Nhà máy sản xuất Shinzo Kijo"
+              />
+            </div>
+            <div class="facility-image">
+              <img
+                src="images/s_n_xu_t_1_1_480x480.avif"
+                alt="Dây chuyền sản xuất hiện đại"
+              />
+            </div>
+          </div>
         </div>
+      </div>
     </section>
 
     <!-- Contact Section -->
     <section id="contact" class="contact">
-        <div class="container">
-            <h2 class="section-title">Liên hệ với chúng tôi</h2>
-            <div class="contact-content">
-                <div class="contact-info">
-                    <div class="contact-item">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <div>
-                            <h4>Địa chỉ</h4>
-                            <p> Số 2 ngõ 84 đường Giáp Bát, phường Giáp Bát, quận Hoàng Mai, Hà Nội.</p>
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-phone"></i>
-                        <div>
-                            <h4>Điện thoại</h4>
-                            <p>1800 9255</p>
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-envelope"></i>
-                        <div>
-                            <h4>Email</h4>
-                            <p>shinzovietnam@gmail.com</p>
-                        </div>
-                    </div>
-                </div>
-                <form class="contact-form">
-                    <input type="text" placeholder="Họ và tên" required>
-                    <input type="email" placeholder="Email" required>
-                    <textarea placeholder="Tin nhắn" rows="5" required></textarea>
-                    <button type="submit">Gửi tin nhắn</button>
-                </form>
+      <div class="container">
+        <h2 class="section-title">Liên hệ với chúng tôi</h2>
+        <div class="contact-content">
+          <div class="contact-info">
+            <div class="contact-item">
+              <i class="fas fa-map-marker-alt"></i>
+              <div>
+                <h4>Địa chỉ</h4>
+                <p>
+                  Số 2 ngõ 84 đường Giáp Bát, phường Giáp Bát, quận Hoàng Mai,
+                  Hà Nội.
+                </p>
+              </div>
             </div>
+            <div class="contact-item">
+              <i class="fas fa-phone"></i>
+              <div>
+                <h4>Điện thoại</h4>
+                <p>1800 9255</p>
+              </div>
+            </div>
+            <div class="contact-item">
+              <i class="fas fa-envelope"></i>
+              <div>
+                <h4>Email</h4>
+                <p>shinzovietnam@gmail.com</p>
+              </div>
+            </div>
+          </div>
+          <form class="contact-form">
+            <input type="text" placeholder="Họ và tên" required />
+            <input type="email" placeholder="Email" required />
+            <textarea placeholder="Tin nhắn" rows="5" required></textarea>
+            <button type="submit">Gửi tin nhắn</button>
+          </form>
         </div>
+      </div>
     </section>
 
     <!-- Footer -->
     <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h3>Shinzo Kijo</h3>
-                    <p>Thương hiệu chăm sóc da hàng đầu Việt Nam</p>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-facebook"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-youtube"></i></a>
-                        <a href="#"><i class="fab fa-tiktok"></i></a>
-                    </div>
-                </div>
-                <div class="footer-section">
-                    <h4>Liên kết nhanh</h4>
-                    <ul>
-                        <li><a href="#home">Trang chủ</a></li>
-                        <li><a href="#products">Sản phẩm</a></li>
-                        <li><a href="#about">Về chúng tôi</a></li>
-                        <li><a href="#contact">Liên hệ</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h4>Thông tin</h4>
-                    <ul>
-                        <li><a href="#">Chính sách bảo mật</a></li>
-                        <li><a href="#">Điều khoản sử dụng</a></li>
-                        <li><a href="#">Hướng dẫn mua hàng</a></li>
-                        <li><a href="#">Chăm sóc khách hàng</a></li>
-                    </ul>
-                </div>
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-section">
+            <h3>Shinzo Kijo</h3>
+            <p>Thương hiệu chăm sóc da hàng đầu Việt Nam</p>
+            <div class="social-links">
+              <a href="#"><i class="fab fa-facebook"></i></a>
+              <a href="#"><i class="fab fa-instagram"></i></a>
+              <a href="#"><i class="fab fa-youtube"></i></a>
+              <a href="#"><i class="fab fa-tiktok"></i></a>
             </div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 Shinzo Kijo. Tất cả quyền được bảo lưu.</p>
-            </div>
+          </div>
+          <div class="footer-section">
+            <h4>Liên kết nhanh</h4>
+            <ul>
+              <li><a href="#home">Trang chủ</a></li>
+              <li><a href="#products">Sản phẩm</a></li>
+              <li><a href="#about">Về chúng tôi</a></li>
+              <li><a href="#contact">Liên hệ</a></li>
+            </ul>
+          </div>
+          <div class="footer-section">
+            <h4>Thông tin</h4>
+            <ul>
+              <li><a href="#">Chính sách bảo mật</a></li>
+              <li><a href="#">Điều khoản sử dụng</a></li>
+              <li><a href="#">Hướng dẫn mua hàng</a></li>
+              <li><a href="#">Chăm sóc khách hàng</a></li>
+            </ul>
+          </div>
         </div>
+        <div class="footer-bottom">
+          <p>&copy; 2025 Shinzo Kijo. Tất cả quyền được bảo lưu.</p>
+        </div>
+      </div>
     </footer>
 
     <script src="js/script.js"></script>
-</body>
+  </body>
 </html>
