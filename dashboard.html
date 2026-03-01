@@ -1,0 +1,816 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Shinzo Kijo</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#FFD9E1',
+                        secondary: '#FFB6C1',
+                        accent: '#FF69B4',
+                        dark: '#333',
+                        light: '#666',
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100 min-h-screen">
+    <!-- Sidebar -->
+    <aside id="sidebar" class="fixed left-0 top-0 h-full w-64 bg-white shadow-lg z-50 transform -translate-x-full lg:translate-x-0 transition-transform duration-300">
+        <div class="p-6 border-b border-gray-200">
+            <h2 class="text-accent text-2xl font-bold">Shinzo Kijo</h2>
+            <p class="text-gray-500 text-sm mt-1">Dashboard Quản lý</p>
+        </div>
+
+        <nav class="p-4">
+            <ul class="space-y-2">
+                <li>
+                    <a href="#" onclick="showSection('overview')" class="nav-link flex items-center gap-3 p-3 rounded-lg text-gray-700 hover:bg-primary hover:text-accent transition-colors active">
+                        <i class="fas fa-chart-pie w-5"></i>
+                        <span>Tổng quan</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" onclick="showSection('contacts')" class="nav-link flex items-center gap-3 p-3 rounded-lg text-gray-700 hover:bg-primary hover:text-accent transition-colors">
+                        <i class="fas fa-address-book w-5"></i>
+                        <span>Liên hệ</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" onclick="showSection('buyers')" class="nav-link flex items-center gap-3 p-3 rounded-lg text-gray-700 hover:bg-primary hover:text-accent transition-colors">
+                        <i class="fas fa-users w-5"></i>
+                        <span>Người mua</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" onclick="showSection('orders')" class="nav-link flex items-center gap-3 p-3 rounded-lg text-gray-700 hover:bg-primary hover:text-accent transition-colors">
+                        <i class="fas fa-shopping-cart w-5"></i>
+                        <span>Đơn đặt hàng</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+        <div class="absolute bottom-0 left-0 right-0 p-4 border-t border-gray-200">
+            <a href="index.html" class="flex items-center gap-3 p-3 rounded-lg text-gray-700 hover:bg-gray-100 transition-colors">
+                <i class="fas fa-arrow-left w-5"></i>
+                <span>Quay lại trang chính</span>
+            </a>
+        </div>
+    </aside>
+
+    <!-- Mobile Header -->
+    <header class="lg:hidden fixed top-0 left-0 right-0 bg-white shadow-md z-40 p-4 flex items-center justify-between">
+        <button onclick="toggleSidebar()" class="text-gray-700 text-xl">
+            <i class="fas fa-bars"></i>
+        </button>
+        <h2 class="text-accent text-xl font-bold">Shinzo Kijo</h2>
+        <div class="w-8"></div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="lg:ml-64 pt-16 lg:pt-0 min-h-screen">
+        <div class="p-6">
+            <!-- Header -->
+            <div class="mb-8">
+                <h1 class="text-3xl font-bold text-dark">Dashboard</h1>
+                <p class="text-gray-500 mt-1">Xem và quản lý thông tin khách hàng</p>
+            </div>
+
+            <!-- Overview Section -->
+            <section id="overview" class="dashboard-section">
+                <!-- Stats Cards -->
+                <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 mb-8">
+                    <div class="bg-white rounded-xl shadow-md p-6 border-l-4 border-accent">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <p class="text-gray-500 text-sm">Tổng liên hệ</p>
+                                <h3 class="text-3xl font-bold text-dark mt-1" id="totalContacts">0</h3>
+                            </div>
+                            <div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center">
+                                <i class="fas fa-address-book text-accent text-xl"></i>
+                            </div>
+                        </div>
+                        <p class="text-green-500 text-sm mt-3"><i class="fas fa-arrow-up"></i> +12% so với tuần trước</p>
+                    </div>
+
+                    <div class="bg-white rounded-xl shadow-md p-6 border-l-4 border-blue-500">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <p class="text-gray-500 text-sm">Người mua</p>
+                                <h3 class="text-3xl font-bold text-dark mt-1" id="totalBuyers">0</h3>
+                            </div>
+                            <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
+                                <i class="fas fa-users text-blue-500 text-xl"></i>
+                            </div>
+                        </div>
+                        <p class="text-green-500 text-sm mt-3"><i class="fas fa-arrow-up"></i> +8% so với tuần trước</p>
+                    </div>
+
+                    <div class="bg-white rounded-xl shadow-md p-6 border-l-4 border-green-500">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <p class="text-gray-500 text-sm">Đơn hàng</p>
+                                <h3 class="text-3xl font-bold text-dark mt-1" id="totalOrders">0</h3>
+                            </div>
+                            <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center">
+                                <i class="fas fa-shopping-cart text-green-500 text-xl"></i>
+                            </div>
+                        </div>
+                        <p class="text-green-500 text-sm mt-3"><i class="fas fa-arrow-up"></i> +15% so với tuần trước</p>
+                    </div>
+
+                    <div class="bg-white rounded-xl shadow-md p-6 border-l-4 border-yellow-500">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <p class="text-gray-500 text-sm">Doanh thu</p>
+                                <h3 class="text-3xl font-bold text-dark mt-1" id="totalRevenue">0₫</h3>
+                            </div>
+                            <div class="w-12 h-12 bg-yellow-100 rounded-full flex items-center justify-center">
+                                <i class="fas fa-coins text-yellow-500 text-xl"></i>
+                            </div>
+                        </div>
+                        <p class="text-green-500 text-sm mt-3"><i class="fas fa-arrow-up"></i> +20% so với tuần trước</p>
+                    </div>
+                </div>
+
+                <!-- Recent Activity -->
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                    <div class="bg-white rounded-xl shadow-md p-6">
+                        <h3 class="text-lg font-semibold text-dark mb-4">Liên hệ gần đây</h3>
+                        <div id="recentContacts" class="space-y-4">
+                            <!-- Populated by JS -->
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-xl shadow-md p-6">
+                        <h3 class="text-lg font-semibold text-dark mb-4">Đơn hàng gần đây</h3>
+                        <div id="recentOrders" class="space-y-4">
+                            <!-- Populated by JS -->
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Contacts Section -->
+            <section id="contacts" class="dashboard-section hidden">
+                <div class="bg-white rounded-xl shadow-md">
+                    <div class="p-6 border-b border-gray-200 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+                        <h3 class="text-lg font-semibold text-dark">Danh sách liên hệ</h3>
+                        <div class="flex flex-col md:flex-row gap-3">
+                            <div class="relative">
+                                <input type="text" id="searchContact" placeholder="Tìm kiếm..."
+                                    class="w-full md:w-64 pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent">
+                                <i class="fas fa-search absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
+                            </div>
+                            <button onclick="exportData('contacts')" class="px-4 py-2 bg-accent text-white rounded-lg hover:bg-pink-600 transition-colors">
+                                <i class="fas fa-download mr-2"></i>Xuất Excel
+                            </button>
+                        </div>
+                    </div>
+                    <div class="overflow-x-auto">
+                        <table class="w-full">
+                            <thead class="bg-gray-50">
+                                <tr>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Họ tên</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Email</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Số điện thoại</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Nội dung</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Ngày liên hệ</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Thao tác</th>
+                                </tr>
+                            </thead>
+                            <tbody id="contactsTableBody" class="bg-white divide-y divide-gray-200">
+                                <!-- Populated by JS -->
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="p-4 border-t border-gray-200 flex items-center justify-between">
+                        <p class="text-sm text-gray-500">Hiển thị <span id="contactsShowing">0</span> trên <span id="contactsTotal">0</span> liên hệ</p>
+                        <div class="flex gap-2">
+                            <button onclick="prevPage('contacts')" class="px-3 py-1 border border-gray-300 rounded hover:bg-gray-100"><i class="fas fa-chevron-left"></i></button>
+                            <button onclick="nextPage('contacts')" class="px-3 py-1 border border-gray-300 rounded hover:bg-gray-100"><i class="fas fa-chevron-right"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Buyers Section -->
+            <section id="buyers" class="dashboard-section hidden">
+                <div class="bg-white rounded-xl shadow-md">
+                    <div class="p-6 border-b border-gray-200 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+                        <h3 class="text-lg font-semibold text-dark">Danh sách người mua</h3>
+                        <div class="flex flex-col md:flex-row gap-3">
+                            <div class="relative">
+                                <input type="text" id="searchBuyer" placeholder="Tìm kiếm..."
+                                    class="w-full md:w-64 pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent">
+                                <i class="fas fa-search absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
+                            </div>
+                            <button onclick="exportData('buyers')" class="px-4 py-2 bg-accent text-white rounded-lg hover:bg-pink-600 transition-colors">
+                                <i class="fas fa-download mr-2"></i>Xuất Excel
+                            </button>
+                        </div>
+                    </div>
+                    <div class="overflow-x-auto">
+                        <table class="w-full">
+                            <thead class="bg-gray-50">
+                                <tr>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Họ tên</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Email</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Số điện thoại</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Địa chỉ</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Tổng đơn</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Tổng chi tiêu</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Thao tác</th>
+                                </tr>
+                            </thead>
+                            <tbody id="buyersTableBody" class="bg-white divide-y divide-gray-200">
+                                <!-- Populated by JS -->
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="p-4 border-t border-gray-200 flex items-center justify-between">
+                        <p class="text-sm text-gray-500">Hiển thị <span id="buyersShowing">0</span> trên <span id="buyersTotal">0</span> người mua</p>
+                        <div class="flex gap-2">
+                            <button onclick="prevPage('buyers')" class="px-3 py-1 border border-gray-300 rounded hover:bg-gray-100"><i class="fas fa-chevron-left"></i></button>
+                            <button onclick="nextPage('buyers')" class="px-3 py-1 border border-gray-300 rounded hover:bg-gray-100"><i class="fas fa-chevron-right"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Orders Section -->
+            <section id="orders" class="dashboard-section hidden">
+                <div class="bg-white rounded-xl shadow-md">
+                    <div class="p-6 border-b border-gray-200 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+                        <h3 class="text-lg font-semibold text-dark">Danh sách đơn đặt hàng</h3>
+                        <div class="flex flex-col md:flex-row gap-3">
+                            <select id="filterOrderStatus" class="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent">
+                                <option value="">Tất cả trạng thái</option>
+                                <option value="pending">Chờ xử lý</option>
+                                <option value="confirmed">Đã xác nhận</option>
+                                <option value="shipping">Đang giao</option>
+                                <option value="completed">Hoàn thành</option>
+                                <option value="cancelled">Đã hủy</option>
+                            </select>
+                            <div class="relative">
+                                <input type="text" id="searchOrder" placeholder="Tìm kiếm..."
+                                    class="w-full md:w-64 pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent">
+                                <i class="fas fa-search absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
+                            </div>
+                            <button onclick="exportData('orders')" class="px-4 py-2 bg-accent text-white rounded-lg hover:bg-pink-600 transition-colors">
+                                <i class="fas fa-download mr-2"></i>Xuất Excel
+                            </button>
+                        </div>
+                    </div>
+                    <div class="overflow-x-auto">
+                        <table class="w-full">
+                            <thead class="bg-gray-50">
+                                <tr>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Mã đơn</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Khách hàng</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Sản phẩm</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Số lượng</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Tổng tiền</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Trạng thái</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Ngày đặt</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Thao tác</th>
+                                </tr>
+                            </thead>
+                            <tbody id="ordersTableBody" class="bg-white divide-y divide-gray-200">
+                                <!-- Populated by JS -->
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="p-4 border-t border-gray-200 flex items-center justify-between">
+                        <p class="text-sm text-gray-500">Hiển thị <span id="ordersShowing">0</span> trên <span id="ordersTotal">0</span> đơn hàng</p>
+                        <div class="flex gap-2">
+                            <button onclick="prevPage('orders')" class="px-3 py-1 border border-gray-300 rounded hover:bg-gray-100"><i class="fas fa-chevron-left"></i></button>
+                            <button onclick="nextPage('orders')" class="px-3 py-1 border border-gray-300 rounded hover:bg-gray-100"><i class="fas fa-chevron-right"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Detail Modal -->
+    <div id="detailModal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-xl shadow-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+            <div class="p-6 border-b border-gray-200 flex items-center justify-between">
+                <h3 id="modalTitle" class="text-xl font-semibold text-dark">Chi tiết</h3>
+                <button onclick="closeModal()" class="text-gray-400 hover:text-gray-600">
+                    <i class="fas fa-times text-xl"></i>
+                </button>
+            </div>
+            <div id="modalContent" class="p-6">
+                <!-- Populated by JS -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Overlay for mobile sidebar -->
+    <div id="sidebarOverlay" onclick="toggleSidebar()" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden lg:hidden"></div>
+
+    <script>
+        // Sample Data
+        const contactsData = [
+            { id: 1, name: 'Nguyễn Văn An', email: 'an.nguyen@email.com', phone: '0901234567', message: 'Tôi muốn hỏi về sản phẩm Collagen', date: '2026-02-28' },
+            { id: 2, name: 'Trần Thị Bình', email: 'binh.tran@email.com', phone: '0912345678', message: 'Giá sản phẩm hiện tại là bao nhiêu?', date: '2026-02-27' },
+            { id: 3, name: 'Lê Văn Cường', email: 'cuong.le@email.com', phone: '0923456789', message: 'Sản phẩm có ship tới Đà Nẵng không?', date: '2026-02-26' },
+            { id: 4, name: 'Phạm Thị Dung', email: 'dung.pham@email.com', phone: '0934567890', message: 'Có chương trình khuyến mãi nào không?', date: '2026-02-25' },
+            { id: 5, name: 'Hoàng Văn Em', email: 'em.hoang@email.com', phone: '0945678901', message: 'Tôi muốn đặt hàng số lượng lớn', date: '2026-02-24' },
+            { id: 6, name: 'Võ Thị Phương', email: 'phuong.vo@email.com', phone: '0956789012', message: 'Sản phẩm có bảo hành không?', date: '2026-02-23' },
+            { id: 7, name: 'Đặng Văn Giang', email: 'giang.dang@email.com', phone: '0967890123', message: 'Liên hệ hợp tác kinh doanh', date: '2026-02-22' },
+            { id: 8, name: 'Bùi Thị Hoa', email: 'hoa.bui@email.com', phone: '0978901234', message: 'Thành phần sản phẩm gồm những gì?', date: '2026-02-21' },
+        ];
+
+        const buyersData = [
+            { id: 1, name: 'Nguyễn Thị Mai', email: 'mai.nguyen@email.com', phone: '0901111111', address: '123 Nguyễn Huệ, Q1, TP.HCM', totalOrders: 5, totalSpent: 2500000 },
+            { id: 2, name: 'Trần Văn Hùng', email: 'hung.tran@email.com', phone: '0902222222', address: '456 Lê Lợi, Q3, TP.HCM', totalOrders: 3, totalSpent: 1800000 },
+            { id: 3, name: 'Lê Thị Lan', email: 'lan.le@email.com', phone: '0903333333', address: '789 Võ Văn Tần, Q10, TP.HCM', totalOrders: 8, totalSpent: 4200000 },
+            { id: 4, name: 'Phạm Văn Minh', email: 'minh.pham@email.com', phone: '0904444444', address: '321 Hai Bà Trưng, Q1, Hà Nội', totalOrders: 2, totalSpent: 980000 },
+            { id: 5, name: 'Hoàng Thị Nga', email: 'nga.hoang@email.com', phone: '0905555555', address: '654 Trần Phú, Hải Châu, Đà Nẵng', totalOrders: 6, totalSpent: 3100000 },
+            { id: 6, name: 'Võ Văn Phát', email: 'phat.vo@email.com', phone: '0906666666', address: '987 Lý Thường Kiệt, Ninh Kiều, Cần Thơ', totalOrders: 4, totalSpent: 2200000 },
+        ];
+
+        const ordersData = [
+            { id: 'DH001', customerId: 1, customerName: 'Nguyễn Thị Mai', product: 'Collagen Shinzo Kijo', quantity: 2, total: 1000000, status: 'completed', date: '2026-02-28' },
+            { id: 'DH002', customerId: 2, customerName: 'Trần Văn Hùng', product: 'Collagen Shinzo Kijo', quantity: 1, total: 500000, status: 'shipping', date: '2026-02-27' },
+            { id: 'DH003', customerId: 3, customerName: 'Lê Thị Lan', product: 'Combo 3 Hộp Collagen', quantity: 1, total: 1400000, status: 'confirmed', date: '2026-02-26' },
+            { id: 'DH004', customerId: 4, customerName: 'Phạm Văn Minh', product: 'Collagen Shinzo Kijo', quantity: 2, total: 980000, status: 'pending', date: '2026-02-25' },
+            { id: 'DH005', customerId: 5, customerName: 'Hoàng Thị Nga', product: 'Combo 5 Hộp Collagen', quantity: 1, total: 2200000, status: 'completed', date: '2026-02-24' },
+            { id: 'DH006', customerId: 6, customerName: 'Võ Văn Phát', product: 'Collagen Shinzo Kijo', quantity: 3, total: 1500000, status: 'cancelled', date: '2026-02-23' },
+            { id: 'DH007', customerId: 1, customerName: 'Nguyễn Thị Mai', product: 'Combo 3 Hộp Collagen', quantity: 1, total: 1400000, status: 'shipping', date: '2026-02-22' },
+            { id: 'DH008', customerId: 3, customerName: 'Lê Thị Lan', product: 'Collagen Shinzo Kijo', quantity: 2, total: 1000000, status: 'completed', date: '2026-02-21' },
+        ];
+
+        // Pagination state
+        const pageSize = 5;
+        let currentPages = { contacts: 1, buyers: 1, orders: 1 };
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            updateStats();
+            renderRecentActivity();
+            renderTable('contacts');
+            renderTable('buyers');
+            renderTable('orders');
+            setupSearch();
+            setupFilter();
+        });
+
+        // Sidebar toggle
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('sidebarOverlay');
+            sidebar.classList.toggle('-translate-x-full');
+            overlay.classList.toggle('hidden');
+        }
+
+        // Show section
+        function showSection(sectionId) {
+            document.querySelectorAll('.dashboard-section').forEach(section => {
+                section.classList.add('hidden');
+            });
+            document.getElementById(sectionId).classList.remove('hidden');
+
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.classList.remove('active', 'bg-primary', 'text-accent');
+            });
+            event.target.closest('.nav-link').classList.add('active', 'bg-primary', 'text-accent');
+
+            // Close sidebar on mobile
+            if (window.innerWidth < 1024) {
+                toggleSidebar();
+            }
+        }
+
+        // Update stats
+        function updateStats() {
+            document.getElementById('totalContacts').textContent = contactsData.length;
+            document.getElementById('totalBuyers').textContent = buyersData.length;
+            document.getElementById('totalOrders').textContent = ordersData.length;
+
+            const totalRevenue = ordersData
+                .filter(o => o.status === 'completed')
+                .reduce((sum, o) => sum + o.total, 0);
+            document.getElementById('totalRevenue').textContent = formatCurrency(totalRevenue);
+        }
+
+        // Render recent activity
+        function renderRecentActivity() {
+            const recentContacts = document.getElementById('recentContacts');
+            const recentOrders = document.getElementById('recentOrders');
+
+            recentContacts.innerHTML = contactsData.slice(0, 4).map(c => `
+                <div class="flex items-center gap-4 p-3 bg-gray-50 rounded-lg">
+                    <div class="w-10 h-10 bg-accent rounded-full flex items-center justify-center text-white font-semibold">
+                        ${c.name.charAt(0)}
+                    </div>
+                    <div class="flex-1">
+                        <p class="font-medium text-dark">${c.name}</p>
+                        <p class="text-sm text-gray-500 truncate">${c.message}</p>
+                    </div>
+                    <span class="text-xs text-gray-400">${formatDate(c.date)}</span>
+                </div>
+            `).join('');
+
+            recentOrders.innerHTML = ordersData.slice(0, 4).map(o => `
+                <div class="flex items-center gap-4 p-3 bg-gray-50 rounded-lg">
+                    <div class="w-10 h-10 bg-blue-500 rounded-full flex items-center justify-center text-white font-semibold">
+                        ${o.customerName.charAt(0)}
+                    </div>
+                    <div class="flex-1">
+                        <p class="font-medium text-dark">${o.id} - ${o.customerName}</p>
+                        <p class="text-sm text-gray-500">${formatCurrency(o.total)}</p>
+                    </div>
+                    ${getStatusBadge(o.status)}
+                </div>
+            `).join('');
+        }
+
+        // Render tables
+        function renderTable(type, data = null) {
+            const tableBody = document.getElementById(`${type}TableBody`);
+            const showingEl = document.getElementById(`${type}Showing`);
+            const totalEl = document.getElementById(`${type}Total`);
+
+            let items;
+            if (type === 'contacts') items = data || contactsData;
+            else if (type === 'buyers') items = data || buyersData;
+            else items = data || ordersData;
+
+            const page = currentPages[type];
+            const start = (page - 1) * pageSize;
+            const end = start + pageSize;
+            const paginatedItems = items.slice(start, end);
+
+            showingEl.textContent = Math.min(end, items.length);
+            totalEl.textContent = items.length;
+
+            if (type === 'contacts') {
+                tableBody.innerHTML = paginatedItems.map(c => `
+                    <tr class="hover:bg-gray-50">
+                        <td class="px-6 py-4 whitespace-nowrap">
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 bg-accent rounded-full flex items-center justify-center text-white font-semibold">
+                                    ${c.name.charAt(0)}
+                                </div>
+                                <span class="font-medium text-dark">${c.name}</span>
+                            </div>
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap text-gray-600">${c.email}</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-gray-600">${c.phone}</td>
+                        <td class="px-6 py-4 max-w-xs truncate text-gray-600">${c.message}</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-gray-600">${formatDate(c.date)}</td>
+                        <td class="px-6 py-4 whitespace-nowrap">
+                            <button onclick="viewDetail('contact', ${c.id})" class="text-accent hover:text-pink-600 mr-3">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                            <button onclick="deleteItem('contact', ${c.id})" class="text-red-500 hover:text-red-600">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </td>
+                    </tr>
+                `).join('');
+            } else if (type === 'buyers') {
+                tableBody.innerHTML = paginatedItems.map(b => `
+                    <tr class="hover:bg-gray-50">
+                        <td class="px-6 py-4 whitespace-nowrap">
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 bg-blue-500 rounded-full flex items-center justify-center text-white font-semibold">
+                                    ${b.name.charAt(0)}
+                                </div>
+                                <span class="font-medium text-dark">${b.name}</span>
+                            </div>
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap text-gray-600">${b.email}</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-gray-600">${b.phone}</td>
+                        <td class="px-6 py-4 max-w-xs truncate text-gray-600">${b.address}</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-center">
+                            <span class="bg-blue-100 text-blue-600 px-2 py-1 rounded-full text-sm">${b.totalOrders}</span>
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap text-green-600 font-medium">${formatCurrency(b.totalSpent)}</td>
+                        <td class="px-6 py-4 whitespace-nowrap">
+                            <button onclick="viewDetail('buyer', ${b.id})" class="text-accent hover:text-pink-600 mr-3">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                            <button onclick="deleteItem('buyer', ${b.id})" class="text-red-500 hover:text-red-600">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </td>
+                    </tr>
+                `).join('');
+            } else {
+                tableBody.innerHTML = paginatedItems.map(o => `
+                    <tr class="hover:bg-gray-50">
+                        <td class="px-6 py-4 whitespace-nowrap font-medium text-accent">${o.id}</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-dark">${o.customerName}</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-gray-600">${o.product}</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-center text-gray-600">${o.quantity}</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-green-600 font-medium">${formatCurrency(o.total)}</td>
+                        <td class="px-6 py-4 whitespace-nowrap">${getStatusBadge(o.status)}</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-gray-600">${formatDate(o.date)}</td>
+                        <td class="px-6 py-4 whitespace-nowrap">
+                            <button onclick="viewDetail('order', '${o.id}')" class="text-accent hover:text-pink-600 mr-3">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                            <button onclick="updateOrderStatus('${o.id}')" class="text-blue-500 hover:text-blue-600 mr-3">
+                                <i class="fas fa-edit"></i>
+                            </button>
+                            <button onclick="deleteItem('order', '${o.id}')" class="text-red-500 hover:text-red-600">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </td>
+                    </tr>
+                `).join('');
+            }
+        }
+
+        // Setup search
+        function setupSearch() {
+            ['Contact', 'Buyer', 'Order'].forEach(type => {
+                const input = document.getElementById(`search${type}`);
+                if (input) {
+                    input.addEventListener('input', function() {
+                        const query = this.value.toLowerCase();
+                        let data;
+                        const typeLower = type.toLowerCase() + 's';
+
+                        if (type === 'Contact') {
+                            data = contactsData.filter(c =>
+                                c.name.toLowerCase().includes(query) ||
+                                c.email.toLowerCase().includes(query) ||
+                                c.phone.includes(query)
+                            );
+                        } else if (type === 'Buyer') {
+                            data = buyersData.filter(b =>
+                                b.name.toLowerCase().includes(query) ||
+                                b.email.toLowerCase().includes(query) ||
+                                b.phone.includes(query)
+                            );
+                        } else {
+                            data = ordersData.filter(o =>
+                                o.id.toLowerCase().includes(query) ||
+                                o.customerName.toLowerCase().includes(query)
+                            );
+                        }
+
+                        currentPages[typeLower] = 1;
+                        renderTable(typeLower, data);
+                    });
+                }
+            });
+        }
+
+        // Setup filter for orders
+        function setupFilter() {
+            const filterSelect = document.getElementById('filterOrderStatus');
+            if (filterSelect) {
+                filterSelect.addEventListener('change', function() {
+                    const status = this.value;
+                    const data = status ? ordersData.filter(o => o.status === status) : ordersData;
+                    currentPages.orders = 1;
+                    renderTable('orders', data);
+                });
+            }
+        }
+
+        // Pagination
+        function prevPage(type) {
+            if (currentPages[type] > 1) {
+                currentPages[type]--;
+                renderTable(type);
+            }
+        }
+
+        function nextPage(type) {
+            let totalItems;
+            if (type === 'contacts') totalItems = contactsData.length;
+            else if (type === 'buyers') totalItems = buyersData.length;
+            else totalItems = ordersData.length;
+
+            const maxPage = Math.ceil(totalItems / pageSize);
+            if (currentPages[type] < maxPage) {
+                currentPages[type]++;
+                renderTable(type);
+            }
+        }
+
+        // View detail
+        function viewDetail(type, id) {
+            const modal = document.getElementById('detailModal');
+            const title = document.getElementById('modalTitle');
+            const content = document.getElementById('modalContent');
+
+            let item;
+            if (type === 'contact') {
+                item = contactsData.find(c => c.id === id);
+                title.textContent = 'Chi tiết liên hệ';
+                content.innerHTML = `
+                    <div class="space-y-4">
+                        <div class="flex items-center gap-4 mb-6">
+                            <div class="w-16 h-16 bg-accent rounded-full flex items-center justify-center text-white text-2xl font-bold">
+                                ${item.name.charAt(0)}
+                            </div>
+                            <div>
+                                <h4 class="text-xl font-semibold text-dark">${item.name}</h4>
+                                <p class="text-gray-500">ID: ${item.id}</p>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div class="bg-gray-50 p-4 rounded-lg">
+                                <p class="text-sm text-gray-500">Email</p>
+                                <p class="font-medium">${item.email}</p>
+                            </div>
+                            <div class="bg-gray-50 p-4 rounded-lg">
+                                <p class="text-sm text-gray-500">Số điện thoại</p>
+                                <p class="font-medium">${item.phone}</p>
+                            </div>
+                            <div class="bg-gray-50 p-4 rounded-lg md:col-span-2">
+                                <p class="text-sm text-gray-500">Ngày liên hệ</p>
+                                <p class="font-medium">${formatDate(item.date)}</p>
+                            </div>
+                            <div class="bg-gray-50 p-4 rounded-lg md:col-span-2">
+                                <p class="text-sm text-gray-500">Nội dung</p>
+                                <p class="font-medium">${item.message}</p>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            } else if (type === 'buyer') {
+                item = buyersData.find(b => b.id === id);
+                const buyerOrders = ordersData.filter(o => o.customerId === id);
+                title.textContent = 'Chi tiết người mua';
+                content.innerHTML = `
+                    <div class="space-y-4">
+                        <div class="flex items-center gap-4 mb-6">
+                            <div class="w-16 h-16 bg-blue-500 rounded-full flex items-center justify-center text-white text-2xl font-bold">
+                                ${item.name.charAt(0)}
+                            </div>
+                            <div>
+                                <h4 class="text-xl font-semibold text-dark">${item.name}</h4>
+                                <p class="text-gray-500">ID: ${item.id}</p>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div class="bg-gray-50 p-4 rounded-lg">
+                                <p class="text-sm text-gray-500">Email</p>
+                                <p class="font-medium">${item.email}</p>
+                            </div>
+                            <div class="bg-gray-50 p-4 rounded-lg">
+                                <p class="text-sm text-gray-500">Số điện thoại</p>
+                                <p class="font-medium">${item.phone}</p>
+                            </div>
+                            <div class="bg-gray-50 p-4 rounded-lg md:col-span-2">
+                                <p class="text-sm text-gray-500">Địa chỉ</p>
+                                <p class="font-medium">${item.address}</p>
+                            </div>
+                            <div class="bg-blue-50 p-4 rounded-lg">
+                                <p class="text-sm text-blue-500">Tổng đơn hàng</p>
+                                <p class="text-2xl font-bold text-blue-600">${item.totalOrders}</p>
+                            </div>
+                            <div class="bg-green-50 p-4 rounded-lg">
+                                <p class="text-sm text-green-500">Tổng chi tiêu</p>
+                                <p class="text-2xl font-bold text-green-600">${formatCurrency(item.totalSpent)}</p>
+                            </div>
+                        </div>
+                        <div class="mt-6">
+                            <h5 class="font-semibold text-dark mb-3">Lịch sử đơn hàng</h5>
+                            <div class="space-y-2">
+                                ${buyerOrders.map(o => `
+                                    <div class="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                                        <div>
+                                            <span class="font-medium text-accent">${o.id}</span>
+                                            <span class="text-gray-500 mx-2">•</span>
+                                            <span class="text-gray-600">${o.product}</span>
+                                        </div>
+                                        <div class="flex items-center gap-3">
+                                            <span class="text-green-600 font-medium">${formatCurrency(o.total)}</span>
+                                            ${getStatusBadge(o.status)}
+                                        </div>
+                                    </div>
+                                `).join('')}
+                            </div>
+                        </div>
+                    </div>
+                `;
+            } else {
+                item = ordersData.find(o => o.id === id);
+                const buyer = buyersData.find(b => b.id === item.customerId);
+                title.textContent = 'Chi tiết đơn hàng';
+                content.innerHTML = `
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between mb-6">
+                            <div>
+                                <h4 class="text-2xl font-bold text-accent">${item.id}</h4>
+                                <p class="text-gray-500">${formatDate(item.date)}</p>
+                            </div>
+                            ${getStatusBadge(item.status)}
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div class="bg-gray-50 p-4 rounded-lg">
+                                <p class="text-sm text-gray-500">Khách hàng</p>
+                                <p class="font-medium">${item.customerName}</p>
+                            </div>
+                            <div class="bg-gray-50 p-4 rounded-lg">
+                                <p class="text-sm text-gray-500">Số điện thoại</p>
+                                <p class="font-medium">${buyer ? buyer.phone : 'N/A'}</p>
+                            </div>
+                            <div class="bg-gray-50 p-4 rounded-lg md:col-span-2">
+                                <p class="text-sm text-gray-500">Địa chỉ giao hàng</p>
+                                <p class="font-medium">${buyer ? buyer.address : 'N/A'}</p>
+                            </div>
+                        </div>
+                        <div class="border-t border-gray-200 pt-4 mt-4">
+                            <h5 class="font-semibold text-dark mb-3">Sản phẩm đặt hàng</h5>
+                            <div class="bg-gray-50 p-4 rounded-lg">
+                                <div class="flex items-center justify-between">
+                                    <div>
+                                        <p class="font-medium">${item.product}</p>
+                                        <p class="text-sm text-gray-500">Số lượng: ${item.quantity}</p>
+                                    </div>
+                                    <p class="text-lg font-bold text-green-600">${formatCurrency(item.total)}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }
+
+            modal.classList.remove('hidden');
+        }
+
+        // Close modal
+        function closeModal() {
+            document.getElementById('detailModal').classList.add('hidden');
+        }
+
+        // Delete item (demo only - just shows alert)
+        function deleteItem(type, id) {
+            if (confirm('Bạn có chắc chắn muốn xóa không?')) {
+                alert(`Đã xóa ${type} với ID: ${id}`);
+            }
+        }
+
+        // Update order status (demo only)
+        function updateOrderStatus(orderId) {
+            const order = ordersData.find(o => o.id === orderId);
+            const newStatus = prompt('Nhập trạng thái mới (pending, confirmed, shipping, completed, cancelled):', order.status);
+            if (newStatus && ['pending', 'confirmed', 'shipping', 'completed', 'cancelled'].includes(newStatus)) {
+                order.status = newStatus;
+                renderTable('orders');
+                updateStats();
+                renderRecentActivity();
+                alert('Đã cập nhật trạng thái đơn hàng!');
+            }
+        }
+
+        // Export data (demo only)
+        function exportData(type) {
+            alert(`Xuất dữ liệu ${type} sang Excel...`);
+        }
+
+        // Helper functions
+        function formatCurrency(amount) {
+            return new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(amount);
+        }
+
+        function formatDate(dateStr) {
+            const date = new Date(dateStr);
+            return date.toLocaleDateString('vi-VN');
+        }
+
+        function getStatusBadge(status) {
+            const statusConfig = {
+                pending: { bg: 'bg-yellow-100', text: 'text-yellow-600', label: 'Chờ xử lý' },
+                confirmed: { bg: 'bg-blue-100', text: 'text-blue-600', label: 'Đã xác nhận' },
+                shipping: { bg: 'bg-purple-100', text: 'text-purple-600', label: 'Đang giao' },
+                completed: { bg: 'bg-green-100', text: 'text-green-600', label: 'Hoàn thành' },
+                cancelled: { bg: 'bg-red-100', text: 'text-red-600', label: 'Đã hủy' }
+            };
+            const config = statusConfig[status] || statusConfig.pending;
+            return `<span class="px-2 py-1 rounded-full text-xs font-medium ${config.bg} ${config.text}">${config.label}</span>`;
+        }
+
+        // Close modal on escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') closeModal();
+        });
+
+        // Close modal on outside click
+        document.getElementById('detailModal').addEventListener('click', function(e) {
+            if (e.target === this) closeModal();
+        });
+    </script>
+</body>
+</html>
