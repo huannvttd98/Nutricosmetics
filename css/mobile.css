@@ -286,11 +286,11 @@
 
     .summary-stats {
         grid-template-columns: repeat(3,1fr);
-        gap: 1.5rem;
+        gap: 0.5rem;
     }
 
     .stat-number {
-        font-size: 2rem;
+        font-size: 1.2rem;
     }
 
     .reviews-summary {

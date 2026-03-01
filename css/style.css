@@ -741,7 +741,7 @@ body {
     font-size: 2.5rem;
     font-weight: bold;
     color: var(--accent-color);
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.2rem;
 }
 
 .stat-label {
@@ -1400,7 +1400,7 @@ body {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
     gap: 2.5rem;
-    margin-bottom: 4rem;
+    margin-bottom: 1rem;
 }
 
 .review-card {
@@ -1557,8 +1557,7 @@ body {
 .summary-stats {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: 2rem;
-    margin-bottom: 2rem;
+    gap: 1rem;
 }
 
 .stat-item {
@@ -1566,7 +1565,7 @@ body {
 }
 
 .stat-number {
-    font-size: 2.5rem;
+    font-size: 1.6rem;
     font-weight: 700;
     color: var(--accent-color);
     margin-bottom: 0.5rem;
@@ -1578,12 +1577,12 @@ body {
 
 .stat-label {
     color: var(--text-light);
-    font-size: 0.9rem;
-    font-weight: 500;
+    font-size: 0.8rem;
+    font-weight: 400;
 }
 
 .more-reviews-btn-container {
-    margin-top: 2rem;
+    margin-top: 1rem;
 }
 
 .more-reviews-btn {

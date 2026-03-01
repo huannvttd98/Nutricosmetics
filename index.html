@@ -404,6 +404,92 @@
       </div>
     </section>
 
+    <!-- Product Gallery Section -->
+    <section class="product-gallery py-4 bg-gray-50">
+      <div class="container mx-auto px-4 max-w-[1200px]">
+        <h2 class="text-center text-2xl md:text-3xl font-bold mb-2 text-accent">Hình ảnh sản phẩm</h2>
+
+        <div class="flex flex-col items-center gap-6">
+          <!-- Main Display Image -->
+          <div class="w-full max-w-3xl aspect-[4/3] rounded-2xl shadow-xl overflow-hidden bg-white relative group">
+            <img id="gallery-main-image" src="images/1.png" alt="Sản phẩm Shinzo Kijo chi tiết" class="w-full h-full object-contain transition-all duration-500">
+
+            <!-- Navigation Arrows -->
+            <button onclick="changeGalleryImage(-1)" class="absolute left-4 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-accent hover:text-white p-3 rounded-full shadow-lg transition-all duration-300 opacity-0 group-hover:opacity-100">
+              <i class="fas fa-chevron-left text-xl"></i>
+            </button>
+            <button onclick="changeGalleryImage(1)" class="absolute right-4 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-accent hover:text-white p-3 rounded-full shadow-lg transition-all duration-300 opacity-0 group-hover:opacity-100">
+              <i class="fas fa-chevron-right text-xl"></i>
+            </button>
+          </div>
+
+          <!-- Thumbnails -->
+          <div class="flex gap-4 overflow-x-auto pb-4 max-w-full px-2" id="gallery-thumbnails">
+            <button onclick="setGalleryImage(0)" class="gallery-thumb min-w-[80px] w-20 h-20 rounded-lg border-2 border-accent overflow-hidden shadow-sm hover:shadow-md transition-all">
+              <img src="images/1.png" class="w-full h-full object-cover" alt="Thumbnail 1">
+            </button>
+            <button onclick="setGalleryImage(1)" class="gallery-thumb min-w-[80px] w-20 h-20 rounded-lg border-2 border-transparent overflow-hidden shadow-sm hover:shadow-md transition-all">
+              <img src="images/2.png" class="w-full h-full object-cover" alt="Thumbnail 2">
+            </button>
+            <button onclick="setGalleryImage(2)" class="gallery-thumb min-w-[80px] w-20 h-20 rounded-lg border-2 border-transparent overflow-hidden shadow-sm hover:shadow-md transition-all">
+              <img src="images/3.png" class="w-full h-full object-cover" alt="Thumbnail 3">
+            </button>
+            <button onclick="setGalleryImage(3)" class="gallery-thumb min-w-[80px] w-20 h-20 rounded-lg border-2 border-transparent overflow-hidden shadow-sm hover:shadow-md transition-all">
+              <img src="images/4.png" class="w-full h-full object-cover" alt="Thumbnail 4">
+            </button>
+            <button onclick="setGalleryImage(4)" class="gallery-thumb min-w-[80px] w-20 h-20 rounded-lg border-2 border-transparent overflow-hidden shadow-sm hover:shadow-md transition-all">
+              <img src="images/5.png" class="w-full h-full object-cover" alt="Thumbnail 5">
+            </button>
+          </div>
+        </div>
+
+        <script>
+          const galleryImages = [
+            'images/1.png',
+            'images/2.png',
+            'images/3.png',
+            'images/4.png',
+            'images/5.png'
+          ];
+          let currentGalleryIndex = 0;
+
+          function setGalleryImage(index) {
+            currentGalleryIndex = index;
+            updateGalleryDisplay();
+          }
+
+          function changeGalleryImage(direction) {
+            currentGalleryIndex += direction;
+            if (currentGalleryIndex >= galleryImages.length) currentGalleryIndex = 0;
+            if (currentGalleryIndex < 0) currentGalleryIndex = galleryImages.length - 1;
+            updateGalleryDisplay();
+          }
+
+          function updateGalleryDisplay() {
+            // Update main image with fade effect
+            const mainImg = document.getElementById('gallery-main-image');
+            mainImg.style.opacity = '0';
+            setTimeout(() => {
+              mainImg.src = galleryImages[currentGalleryIndex];
+              mainImg.style.opacity = '1';
+            }, 200);
+
+            // Update active thumbnail styling
+            const thumbs = document.querySelectorAll('.gallery-thumb');
+            thumbs.forEach((thumb, idx) => {
+              if (idx === currentGalleryIndex) {
+                thumb.classList.add('border-accent');
+                thumb.classList.remove('border-transparent');
+              } else {
+                thumb.classList.remove('border-accent');
+                thumb.classList.add('border-transparent');
+              }
+            });
+          }
+        </script>
+      </div>
+    </section>
+
     <!-- Happy Mammoth in the Media Section -->
     <section class="media-testimonials">
       <div class="container">
@@ -452,6 +538,11 @@
           <div class="media-logo">
             <div class="logo-placeholder">
               <img src="images/vtv.png" alt="" />
+            </div>
+          </div>
+          <div class="media-logo">
+            <div class="logo-placeholder">
+              <img src="images/placeholder.png" alt="New Media" />
             </div>
           </div>
         </div>
@@ -735,7 +826,7 @@
           <div class="summary-stats">
             <div class="stat-item">
               <div class="stat-number">4.8/5</div>
-              <div class="stat-label">Đánh giá trung bình</div>
+              <div class="stat-label">Đánh giá trung </div>
             </div>
             <div class="stat-item">
               <div class="stat-number">1,247+</div>
@@ -743,12 +834,8 @@
             </div>
             <div class="stat-item">
               <div class="stat-number">95%</div>
-              <div class="stat-label">Khách hàng hài lòng</div>
+              <div class="stat-label">Khách hài lòng</div>
             </div>
-          </div>
-
-          <div class="more-reviews-btn-container">
-            <button class="more-reviews-btn">Xem thêm đánh giá</button>
           </div>
         </div>
       </div>
@@ -757,9 +844,10 @@
     <!-- About Section -->
     <section id="about" class="about">
       <div class="container">
-        <div class="about-content">
+        <h2 class="text-center text-2xl md:text-4xl lg:text-6xl font-bold">
+                Giới thiệu về Shinzo Kijo</h2>
+        <div class="about-content mt-8 flex flex-col md:flex-row items-center gap-8">
           <div class="about-text">
-            <h2>Về Shinzo Kijo</h2>
             <p>
               Là viên uống nội tiết đến từ nhật bản, công thức độc quyền êm dịu
               chiết xuất từ các thành phần tự nhiên quý hiếm
@@ -768,7 +856,7 @@
               Chúng tôi mong muốn đồng hành cùng phụ nữ trong hành trình cân
               bằng nội tiết một cách dịu êm và khoa học
             </p>
-            <button class="learn-more-btn">Tìm hiểu thêm</button>
+            <button class="text-center text-white bg-accent hover:bg-accent-dark font-bold py-2 px-4 rounded">Tìm hiểu thêm</button>
           </div>
           <div class="about-image">
             <img src="images/3.png" alt="About Shinzo Kijo" />
@@ -780,7 +868,7 @@
     <!-- Manufacturing Facility Section -->
     <section class="manufacturing-facility">
       <div class="container">
-        <h2 class="section-title">Tại Nhật Bản</h2>
+        <h2 class="text-center text-2xl md:text-4xl lg:text-6xl font-bold ">Tại Nhật Bản</h2>
         <div class="facility-content">
           <div class="facility-info">
             <div class="facility-item">
@@ -857,7 +945,7 @@
     <!-- Contact Section -->
     <section id="contact" class="contact">
       <div class="container">
-        <h2 class="section-title">Liên hệ với chúng tôi</h2>
+        <h2 class="text-center text-2xl md:text-4xl lg:text-6xl font-bold">Liên hệ với chúng tôi</h2>
         <div class="contact-content">
           <div class="contact-info">
             <div class="contact-item">
