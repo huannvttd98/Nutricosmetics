@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng nhập - Shinzo Kijo</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#FFD9E1',
+                        secondary: '#FFB6C1',
+                        accent: '#FF69B4',
+                        dark: '#333',
+                        light: '#666',
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body class="bg-gradient-to-br from-primary via-white to-secondary min-h-screen flex items-center justify-center p-4">
+    <div class="w-full max-w-md">
+        <!-- Logo & Title -->
+        <div class="text-center mb-8">
+            <div class="w-20 h-20 bg-accent rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">
+                <i class="fas fa-spa text-white text-3xl"></i>
+            </div>
+            <h1 class="text-3xl font-bold text-accent">Shinzo Kijo</h1>
+            <p class="text-gray-500 mt-2">Đăng nhập vào Dashboard</p>
+        </div>
+
+        <!-- Login Form -->
+        <div class="bg-white rounded-2xl shadow-xl p-8">
+            <form id="loginForm" onsubmit="handleLogin(event)">
+                <!-- Username -->
+                <div class="mb-6">
+                    <label class="block text-sm font-medium text-gray-700 mb-2">
+                        <i class="fas fa-user text-accent mr-2"></i>Tên đăng nhập
+                    </label>
+                    <input type="text" id="username" required
+                        class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-all"
+                        placeholder="Nhập tên đăng nhập">
+                </div>
+
+                <!-- Password -->
+                <div class="mb-6">
+                    <label class="block text-sm font-medium text-gray-700 mb-2">
+                        <i class="fas fa-lock text-accent mr-2"></i>Mật khẩu
+                    </label>
+                    <div class="relative">
+                        <input type="password" id="password" required
+                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-all"
+                            placeholder="Nhập mật khẩu">
+                        <button type="button" onclick="togglePassword()"
+                            class="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600">
+                            <i id="passwordIcon" class="fas fa-eye"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Remember me -->
+                <div class="flex items-center justify-between mb-6">
+                    <label class="flex items-center cursor-pointer">
+                        <input type="checkbox" id="rememberMe" class="w-4 h-4 text-accent border-gray-300 rounded focus:ring-accent">
+                        <span class="ml-2 text-sm text-gray-600">Ghi nhớ đăng nhập</span>
+                    </label>
+                    <a href="#" class="text-sm text-accent hover:underline">Quên mật khẩu?</a>
+                </div>
+
+                <!-- Error message -->
+                <div id="errorMessage" class="hidden mb-4 p-3 bg-red-100 border border-red-400 text-red-700 rounded-lg text-sm">
+                    <i class="fas fa-exclamation-circle mr-2"></i>
+                    <span id="errorText"></span>
+                </div>
+
+                <!-- Login button -->
+                <button type="submit" id="loginBtn"
+                    class="w-full bg-accent text-white py-3 rounded-lg font-semibold hover:bg-pink-600 transition-colors flex items-center justify-center gap-2">
+                    <span>Đăng nhập</span>
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+            </form>
+
+            <!-- Divider -->
+            <div class="flex items-center my-6">
+                <div class="flex-1 border-t border-gray-300"></div>
+                <span class="px-4 text-sm text-gray-500">hoặc</span>
+                <div class="flex-1 border-t border-gray-300"></div>
+            </div>
+
+            <!-- Back to home -->
+            <a href="index.html"
+                class="w-full border border-gray-300 text-gray-700 py-3 rounded-lg font-medium hover:bg-gray-50 transition-colors flex items-center justify-center gap-2">
+                <i class="fas fa-home"></i>
+                <span>Quay lại trang chủ</span>
+            </a>
+        </div>
+
+        <!-- Demo credentials -->
+        <div class="mt-6 text-center">
+            <div class="bg-white/80 backdrop-blur rounded-lg p-4 inline-block">
+                <p class="text-sm text-gray-500 mb-2">
+                    <i class="fas fa-info-circle text-accent mr-1"></i>
+                    Thông tin đăng nhập demo:
+                </p>
+                <p class="text-sm font-mono bg-gray-100 rounded px-3 py-1">
+                    <span class="text-accent">admin</span> / <span class="text-accent">admin123</span>
+                </p>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <p class="text-center text-gray-400 text-sm mt-6">
+            © 2026 Shinzo Kijo. All rights reserved.
+        </p>
+    </div>
+
+    <script>
+        // Demo credentials
+        const VALID_USERS = [
+            { username: 'admin', password: 'admin123', role: 'admin' },
+            { username: 'manager', password: 'manager123', role: 'manager' }
+        ];
+
+        // Check if already logged in
+        document.addEventListener('DOMContentLoaded', function() {
+            const isLoggedIn = sessionStorage.getItem('isLoggedIn') || localStorage.getItem('isLoggedIn');
+            if (isLoggedIn === 'true') {
+                window.location.href = 'dashboard.html';
+            }
+
+            // Focus on username field
+            document.getElementById('username').focus();
+        });
+
+        // Toggle password visibility
+        function togglePassword() {
+            const passwordInput = document.getElementById('password');
+            const passwordIcon = document.getElementById('passwordIcon');
+
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                passwordIcon.classList.remove('fa-eye');
+                passwordIcon.classList.add('fa-eye-slash');
+            } else {
+                passwordInput.type = 'password';
+                passwordIcon.classList.remove('fa-eye-slash');
+                passwordIcon.classList.add('fa-eye');
+            }
+        }
+
+        // Handle login
+        function handleLogin(event) {
+            event.preventDefault();
+
+            const username = document.getElementById('username').value.trim();
+            const password = document.getElementById('password').value;
+            const rememberMe = document.getElementById('rememberMe').checked;
+            const loginBtn = document.getElementById('loginBtn');
+            const errorMessage = document.getElementById('errorMessage');
+            const errorText = document.getElementById('errorText');
+
+            // Show loading state
+            loginBtn.disabled = true;
+            loginBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Đang đăng nhập...';
+
+            // Simulate API call delay
+            setTimeout(() => {
+                // Validate credentials
+                const user = VALID_USERS.find(u => u.username === username && u.password === password);
+
+                if (user) {
+                    // Success - store session
+                    const storage = rememberMe ? localStorage : sessionStorage;
+                    storage.setItem('isLoggedIn', 'true');
+                    storage.setItem('username', user.username);
+                    storage.setItem('userRole', user.role);
+
+                    // Show success message
+                    loginBtn.classList.remove('bg-accent', 'hover:bg-pink-600');
+                    loginBtn.classList.add('bg-green-500');
+                    loginBtn.innerHTML = '<i class="fas fa-check mr-2"></i>Đăng nhập thành công!';
+
+                    // Redirect to dashboard
+                    setTimeout(() => {
+                        window.location.href = 'dashboard.html';
+                    }, 1000);
+                } else {
+                    // Error
+                    errorText.textContent = 'Tên đăng nhập hoặc mật khẩu không đúng!';
+                    errorMessage.classList.remove('hidden');
+
+                    // Shake effect
+                    document.getElementById('loginForm').classList.add('animate-shake');
+                    setTimeout(() => {
+                        document.getElementById('loginForm').classList.remove('animate-shake');
+                    }, 500);
+
+                    // Reset button
+                    loginBtn.disabled = false;
+                    loginBtn.innerHTML = '<span>Đăng nhập</span><i class="fas fa-arrow-right"></i>';
+                }
+            }, 800);
+        }
+
+        // Enter key handler
+        document.getElementById('password').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                handleLogin(e);
+            }
+        });
+    </script>
+
+    <style>
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-10px); }
+            75% { transform: translateX(10px); }
+        }
+        .animate-shake {
+            animation: shake 0.3s ease-in-out;
+        }
+    </style>
+</body>
+</html>
