@@ -1,5 +1,5 @@
 // Gửi dữ liệu tới Google Apps Script Web App
-const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyo-ARZap8tCvdLLhJ6pm39MSWFvBv8ztItxh3Ex_UMVlE0mBmaPLmnKHvt_lLkk8VY/exec"
+const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyPHiK0O7j9xb6Ezh_rPDVzlsecwYqsVg2cl09RjFO6kkv4lq3-5BY22wIkNCFmElA5/exec"
 
 function showNotification(message, type = 'info') {
     // Xóa notification cũ nếu có
@@ -390,18 +390,11 @@ const handleContactFormSubmit = async function (event) {
         pageUrl: window.location.href
     };
 
-    const {
-        loadingMessage = 'Đang gửi thông tin, vui lòng đợi...',
-        successMessage = 'Gửi thông tin thành công! Chúng tôi sẽ liên hệ với bạn sớm nhất.',
-        errorMessage = 'Có lỗi xảy ra khi gửi thông tin. Vui lòng kiểm tra kết nối mạng và thử lại!',
-        showStatus = true,
-        onSuccess,
-        onError
-    } = options || {};
+    const loadingMessage = 'Đang gửi thông tin, vui lòng đợi...';
+    const successMessage = 'Gửi thông tin thành công! Chúng tôi sẽ liên hệ với bạn sớm nhất.';
+    const errorMessage = 'Có lỗi xảy ra khi gửi thông tin. Vui lòng kiểm tra kết nối mạng và thử lại!';
 
-    if (showStatus && loadingMessage) {
-        showNotification(loadingMessage, 'info');
-    }
+    showNotification(loadingMessage, 'info');
 
     try {
         await fetch(GOOGLE_SCRIPT_URL, {
@@ -413,27 +406,13 @@ const handleContactFormSubmit = async function (event) {
             body: JSON.stringify(payload),
         });
 
-        if (showStatus && successMessage) {
-            showNotification(successMessage, 'success');
-        }
-
-        if (typeof onSuccess === 'function') {
-            onSuccess(payload);
-        }
+        showNotification(successMessage, 'success');
+        form.reset();
     } catch (error) {
-        console.error('submitLead error:', error);
-
-        if (showStatus && errorMessage) {
-            showNotification(errorMessage, 'error');
-        }
-
-        if (typeof onError === 'function') {
-            onError(error);
-        }
-
+        console.error('handleContactFormSubmit error:', error);
+        showNotification(errorMessage, 'error');
         throw error;
     }
-
 }
 
 function addInputValidation(input, validator) {
