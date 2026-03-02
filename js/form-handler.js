@@ -190,13 +190,14 @@ function validatePhone(phone) {
 }
 
 function buildPayload(data = {}) {
+    console.log('buildPayload called with data:', data);
     return {
         name: (data.name || '').trim(),
         phone: (data.phone || '').trim(),
         address: (data.address || '').trim(),
         quantity: String(data.quantity || '1'),
         note: (data.note || '').trim(),
-        email: (data.email || '').trim(),
+        email: (data.emailBuyNow || '').trim(),
         product: data.product || 'Shinzo Kijo',
         type: data.source || 'contact-form',
         pageUrl: data.pageUrl || window.location.href,

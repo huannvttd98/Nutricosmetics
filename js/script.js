@@ -375,6 +375,7 @@ function initBuyModal() {
             const formData = new FormData(buyForm);
             const name = (formData.get('name') || '').trim();
             const phone = (formData.get('phone') || '').trim();
+            const emailBuyNow = (formData.get('emailBuyNow') || '').trim();
             const address = (formData.get('address') || '').trim();
             const quantity = formData.get('quantity') || '1';
             const note = (formData.get('note') || '').trim();
@@ -389,6 +390,7 @@ function initBuyModal() {
             const payload = {
                 name,
                 phone,
+                emailBuyNow,
                 address,
                 quantity,
                 note,
