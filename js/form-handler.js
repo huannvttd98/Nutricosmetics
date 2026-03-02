@@ -1,8 +1,6 @@
 // Gửi dữ liệu tới Google Apps Script Web App
-const GOOGLE_SCRIPT_URL =
-    'https://script.google.com/macros/s/AKfycbzFqNEx_NfvVXjYtG_ZPHakH8LQqHDyl_cQ6DOM6B9W7WCcbsWzUtA4WAWAplgWyPFz/exec';
+const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyo-ARZap8tCvdLLhJ6pm39MSWFvBv8ztItxh3Ex_UMVlE0mBmaPLmnKHvt_lLkk8VY/exec"
 
-// Hàm hiển thị notification đẹp
 function showNotification(message, type = 'info') {
     // Xóa notification cũ nếu có
     const existingNotification = document.querySelector('.custom-notification');
@@ -374,68 +372,69 @@ function showErrors(nameErrors, phoneErrors, nameInput, phoneInput) {
     return nameErrors.length === 0 && phoneErrors.length === 0;
 }
 
-document.addEventListener('DOMContentLoaded', function () {
-    const form = document.querySelector('.contact-form[data-sync="apps-script"]');
-    if (!form) return;
 
-    const submitBtn = form.querySelector('.btn-submit') || form.querySelector('button[type="submit"]');
+const handleContactFormSubmit = async function (event) {
+    console.log('handleContactFormSubmit called');
+    event.preventDefault();
+    const form = event.target;
     const nameInput = form.querySelector('input[name="name"], input[placeholder="Họ và tên"]');
     const phoneInput = form.querySelector('input[name="phone"], input[placeholder="Số điện thoại"], input[type="tel"]');
     const emailInput = form.querySelector('input[name="email"], input[placeholder="Email"], input[type="email"]');
     const noteInput = form.querySelector('textarea');
+    const payload = {
+        name: nameInput ? nameInput.value.trim() : '',
+        phone: phoneInput ? phoneInput.value.trim() : '',
+        email: emailInput ? emailInput.value.trim() : '',
+        note: noteInput ? noteInput.value.trim() : '',
+        source: 'contact-form',
+        pageUrl: window.location.href
+    };
 
-    if (!submitBtn || !nameInput || !phoneInput) {
-        console.warn('Contact form chưa cấu hình đủ trường để gửi Apps Script.');
-        return;
+    const {
+        loadingMessage = 'Đang gửi thông tin, vui lòng đợi...',
+        successMessage = 'Gửi thông tin thành công! Chúng tôi sẽ liên hệ với bạn sớm nhất.',
+        errorMessage = 'Có lỗi xảy ra khi gửi thông tin. Vui lòng kiểm tra kết nối mạng và thử lại!',
+        showStatus = true,
+        onSuccess,
+        onError
+    } = options || {};
+
+    if (showStatus && loadingMessage) {
+        showNotification(loadingMessage, 'info');
     }
 
-    form.addEventListener('submit', async function (e) {
-        console.log('Form submitted');
-        e.preventDefault();
+    try {
+        await fetch(GOOGLE_SCRIPT_URL, {
+            method: 'POST',
+            mode: 'no-cors',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(payload),
+        });
 
-        const name = nameInput.value.trim();
-        const phone = phoneInput.value.trim();
-        const email = emailInput ? emailInput.value.trim() : '';
-        const notes = noteInput ? noteInput.value.trim() : '';
-
-        const nameErrors = validateName(name);
-        const phoneErrors = validatePhone(phone);
-
-        const isValid = showErrors(nameErrors, phoneErrors, nameInput, phoneInput);
-        if (!isValid) {
-            return;
+        if (showStatus && successMessage) {
+            showNotification(successMessage, 'success');
         }
 
-        const originalText = submitBtn.innerHTML;
-        submitBtn.disabled = true;
-        submitBtn.innerHTML = 'Đang gửi...';
-
-        try {
-            await submitLead({
-                name,
-                phone,
-                email,
-                note: notes,
-                source: 'contact-form'
-            }, {
-                loadingMessage: 'Đang gửi thông tin, vui lòng đợi...',
-                successMessage: 'Gửi thông tin thành công! Chúng tôi sẽ liên hệ với bạn sớm nhất.',
-                errorMessage: 'Có lỗi xảy ra khi gửi thông tin. Vui lòng kiểm tra kết nối mạng và thử lại!'
-            });
-
-            form.reset();
-            clearAllInputErrors(form);
-        } catch (error) {
-            // Thông báo lỗi đã được submitLead xử lý
-        } finally {
-            submitBtn.disabled = false;
-            submitBtn.innerHTML = originalText;
+        if (typeof onSuccess === 'function') {
+            onSuccess(payload);
         }
-    });
+    } catch (error) {
+        console.error('submitLead error:', error);
 
-    addInputValidation(nameInput, validateName);
-    addInputValidation(phoneInput, validatePhone);
-});
+        if (showStatus && errorMessage) {
+            showNotification(errorMessage, 'error');
+        }
+
+        if (typeof onError === 'function') {
+            onError(error);
+        }
+
+        throw error;
+    }
+
+}
 
 function addInputValidation(input, validator) {
     if (!input) return;
