@@ -495,11 +495,7 @@
               <img src="images/vtv.png" alt="" />
             </div>
           </div>
-          <div class="media-logo">
-            <div class="logo-placeholder">
-              <img src="images/placeholder.png" alt="New Media" />
-            </div>
-          </div>
+
         </div>
 
         <!-- Testimonials -->
@@ -940,11 +936,12 @@
               </div>
             </div>
           </div>
-          <form class="contact-form">
-            <input type="text" placeholder="Họ và tên" required />
-            <input type="email" placeholder="Email" required />
-            <textarea placeholder="Tin nhắn" rows="5" required></textarea>
-            <button type="submit">Gửi tin nhắn</button>
+          <form class="contact-form" data-sync="apps-script">
+            <input type="text" name="name" placeholder="Họ và tên" required />
+            <input type="tel" name="phone" placeholder="Số điện thoại" required />
+            <input type="email" name="email" placeholder="Email" required />
+            <textarea name="note" placeholder="Tin nhắn" rows="5" required></textarea>
+            <button type="submit" class="btn-submit">Gửi tin nhắn</button>
           </form>
         </div>
       </div>
@@ -989,6 +986,58 @@
       </div>
     </footer>
 
+    <!-- Buy Now Modal -->
+    <div id="buyModal" class="buy-modal" aria-hidden="true">
+      <div class="buy-modal__overlay" data-close-modal></div>
+      <div class="buy-modal__panel" role="dialog" aria-modal="true" aria-labelledby="buyModalTitle">
+        <button type="button" class="buy-modal__close" aria-label="Đóng" data-close-modal>
+          <i class="fas fa-times"></i>
+        </button>
+        <div class="buy-modal__header">
+          <p class="buy-modal__badge">Đăng ký tư vấn</p>
+          <h3 id="buyModalTitle">Hoàn tất thông tin đặt hàng</h3>
+          <p>
+            Vui lòng điền thông tin bên dưới. Đội ngũ Shinzo Kijo sẽ liên hệ trong vòng 15 phút để xác nhận đơn hàng
+            và hướng dẫn thanh toán.
+          </p>
+        </div>
+        <form id="buyForm" class="buy-modal__form">
+          <div class="form-group">
+            <label for="buyerName">Họ và tên</label>
+            <input type="text" id="buyerName" name="name" placeholder="Nguyễn Thị Minh" required />
+          </div>
+          <div class="form-group">
+            <label for="buyerPhone">Số điện thoại</label>
+            <input type="tel" id="buyerPhone" name="phone" placeholder="09xx xxx xxx" required />
+          </div>
+          <div class="form-group">
+            <label for="buyerAddress">Địa chỉ nhận hàng</label>
+            <input type="text" id="buyerAddress" name="address" placeholder="Số nhà, phường/xã, quận/huyện" required />
+          </div>
+          <div class="form-group">
+            <label for="modalQuantity">Số lượng mong muốn</label>
+            <div class="modal-quantity">
+              <button type="button" class="quantity-btn minus" data-quantity-action="decrease" aria-label="Giảm số lượng">-</button>
+              <input type="number" id="modalQuantity" name="quantity" min="1" max="10" value="1" required />
+              <button type="button" class="quantity-btn plus" data-quantity-action="increase" aria-label="Tăng số lượng">+</button>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="buyerNote">Ghi chú cho đơn hàng (tuỳ chọn)</label>
+            <textarea id="buyerNote" name="note" rows="3" placeholder="Thời gian nhận hàng mong muốn, ghi chú thêm..."></textarea>
+          </div>
+          <div class="buy-modal__actions">
+            <button type="submit" class="buy-now-btn w-full">Xác nhận đặt hàng</button>
+            <p class="buy-modal__privacy">
+              <i class="fas fa-shield-alt"></i>
+              Dữ liệu của bạn được mã hóa và chỉ sử dụng để xác nhận đơn hàng.
+            </p>
+          </div>
+        </form>
+      </div>
+    </div>
+
     <script src="js/script.js"></script>
+    <script src="js/form-handler.js"></script>
   </body>
 </html>

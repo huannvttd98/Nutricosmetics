@@ -1693,3 +1693,164 @@ body {
     color: var(--text-dark);
     margin-bottom: 0.5rem;
 }
+
+/* Buy Modal */
+body.modal-open {
+    overflow: hidden;
+}
+
+.buy-modal {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    z-index: 1000;
+}
+
+.buy-modal.is-visible {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.buy-modal__overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);
+    backdrop-filter: blur(4px);
+}
+
+.buy-modal__panel {
+    position: relative;
+    width: min(520px, 100%);
+    background: var(--white);
+    border-radius: 28px;
+    padding: 2.5rem;
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.15);
+    max-height: 90vh;
+    overflow-y: auto;
+    z-index: 1;
+}
+
+.buy-modal__close {
+    position: absolute;
+    top: 18px;
+    right: 18px;
+    border: none;
+    background: rgba(0, 0, 0, 0.05);
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    cursor: pointer;
+    color: var(--text-dark);
+    transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.buy-modal__close:hover {
+    background: rgba(255, 105, 180, 0.15);
+    color: var(--accent-color);
+    transform: rotate(6deg);
+}
+
+.buy-modal__header {
+    margin-bottom: 1.5rem;
+}
+
+.buy-modal__header h3 {
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+}
+
+.buy-modal__header p {
+    color: var(--text-light);
+    line-height: 1.6;
+}
+
+.buy-modal__badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.3rem 0.8rem;
+    border-radius: 999px;
+    background: rgba(255, 105, 180, 0.12);
+    color: var(--accent-color);
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+}
+
+.buy-modal__form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.buy-modal__form .form-group label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 0.35rem;
+}
+
+.buy-modal__form input,
+.buy-modal__form textarea {
+    width: 100%;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 14px;
+    padding: 0.85rem 1.1rem;
+    font-size: 1rem;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.buy-modal__form input:focus,
+.buy-modal__form textarea:focus {
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 3px rgba(255, 105, 180, 0.15);
+    outline: none;
+}
+
+.buy-modal__form textarea {
+    resize: none;
+    min-height: 120px;
+}
+
+.modal-quantity {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.modal-quantity input {
+    text-align: center;
+    max-width: 100px;
+    font-weight: 600;
+}
+
+.buy-modal__actions {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-top: 0.5rem;
+}
+
+.buy-modal__privacy {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    color: var(--text-light);
+}
+
+@media (max-width: 640px) {
+    .buy-modal__panel {
+        padding: 2rem 1.5rem;
+        border-radius: 22px;
+    }
+
+    .modal-quantity {
+        gap: 0.5rem;
+    }
+}

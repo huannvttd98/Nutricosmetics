@@ -5,6 +5,9 @@ const slides = document.querySelectorAll('.slide');
 const dots = document.querySelectorAll('.dot');
 const thumbnails = document.querySelectorAll('.thumbnail');
 const totalSlides = slides.length;
+const buyModal = document.getElementById('buyModal');
+const buyForm = document.getElementById('buyForm');
+const modalQuantityInput = document.getElementById('modalQuantity');
 
 // Auto play interval (4 seconds)
 let autoPlayInterval;
@@ -303,30 +306,152 @@ function decreaseQuantity() {
 
 // Buy now functionality
 function buyNow() {
-    const quantity = document.getElementById('quantity').value;
+    const quantityInput = document.getElementById('quantity');
+    const selectedQuantity = quantityInput ? quantityInput.value : '1';
+
+    if (buyModal && modalQuantityInput) {
+        modalQuantityInput.value = selectedQuantity;
+        openBuyModal();
+        return;
+    }
+
+    // Fallback confirm flow if modal is not available
     const productName = "Nutricosmetics Premium Collection";
     const price = "1.299.000 VNĐ";
 
-    // Show confirmation dialog
     const confirmed = confirm(
         `Xác nhận mua hàng:\n\n` +
         `Sản phẩm: ${productName}\n` +
-        `Số lượng: ${quantity}\n` +
-        `Giá: ${price} x ${quantity}\n\n` +
+        `Số lượng: ${selectedQuantity}\n` +
+        `Giá: ${price} x ${selectedQuantity}\n\n` +
         `Bạn có muốn tiếp tục thanh toán không?`
     );
 
     if (confirmed) {
-        // Simulate redirect to checkout page
         alert('Đang chuyển hướng đến trang thanh toán...');
-        // In real application, you would redirect to checkout page
-        // window.location.href = '/checkout';
-
-        // For demo, show success message
         setTimeout(() => {
             alert('Cảm ơn bạn đã mua hàng! Chúng tôi sẽ liên hệ xác nhận đơn hàng sớm nhất.');
         }, 1000);
     }
+}
+
+function openBuyModal() {
+    if (!buyModal) return;
+
+    buyModal.classList.add('is-visible');
+    document.body.classList.add('modal-open');
+
+    const firstInput = buyModal.querySelector('input');
+    if (firstInput) {
+        setTimeout(() => firstInput.focus(), 50);
+    }
+}
+
+function closeBuyModal() {
+    if (!buyModal) return;
+
+    buyModal.classList.remove('is-visible');
+    document.body.classList.remove('modal-open');
+}
+
+function initBuyModal() {
+    if (!buyModal) return;
+
+    const closeTriggers = document.querySelectorAll('[data-close-modal]');
+    closeTriggers.forEach(trigger => {
+        trigger.addEventListener('click', closeBuyModal);
+    });
+
+    document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape' && buyModal.classList.contains('is-visible')) {
+            closeBuyModal();
+        }
+    });
+
+    if (buyForm) {
+        buyForm.addEventListener('submit', async (event) => {
+            event.preventDefault();
+
+            const formData = new FormData(buyForm);
+            const name = (formData.get('name') || '').trim();
+            const phone = (formData.get('phone') || '').trim();
+            const address = (formData.get('address') || '').trim();
+            const quantity = formData.get('quantity') || '1';
+            const note = (formData.get('note') || '').trim();
+            const submitBtn = buyForm.querySelector('button[type="submit"]');
+
+            if (submitBtn) {
+                submitBtn.disabled = true;
+                submitBtn.dataset.originalText = submitBtn.dataset.originalText || submitBtn.innerHTML;
+                submitBtn.innerHTML = 'Đang gửi...';
+            }
+
+            const payload = {
+                name,
+                phone,
+                address,
+                quantity,
+                note,
+                source: 'buy-modal',
+                product: 'Shinzo Kijo - Viên uống nội tiết',
+                pageUrl: window.location.href
+            };
+
+            const finalize = () => {
+                if (submitBtn) {
+                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = submitBtn.dataset.originalText || 'Xác nhận đặt hàng';
+                }
+            };
+
+            try {
+                if (window.FormHandler && typeof window.FormHandler.submitLead === 'function') {
+                    await window.FormHandler.submitLead(payload, { showStatus: false });
+                } else {
+                    throw new Error('FormHandler is not available');
+                }
+
+                const successMessage = `Cảm ơn ${name || 'bạn'}! Đơn ${quantity} hộp sẽ được xác nhận${phone ? ' qua số ' + phone : ''}.`;
+                showNotification(successMessage, 'success');
+
+                closeBuyModal();
+                buyForm.reset();
+
+                const pageQuantityInput = document.getElementById('quantity');
+                if (pageQuantityInput) {
+                    pageQuantityInput.value = quantity;
+                }
+            } catch (error) {
+                console.error('Không thể gửi thông tin đơn hàng', error);
+                showNotification('Không thể gửi thông tin. Vui lòng thử lại trong giây lát.', 'error');
+            } finally {
+                finalize();
+            }
+        });
+    }
+
+    const quantityButtons = buyModal.querySelectorAll('[data-quantity-action]');
+    quantityButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const wrapper = button.closest('.modal-quantity');
+            if (!wrapper) return;
+
+            const input = wrapper.querySelector('input[type="number"]');
+            if (!input) return;
+
+            const min = parseInt(input.min, 10) || 1;
+            const max = parseInt(input.max, 10) || 10;
+            let currentValue = parseInt(input.value, 10) || min;
+
+            if (button.dataset.quantityAction === 'increase' && currentValue < max) {
+                currentValue += 1;
+            } else if (button.dataset.quantityAction === 'decrease' && currentValue > min) {
+                currentValue -= 1;
+            }
+
+            input.value = currentValue;
+        });
+    });
 }
 
 // Add to cart functionality
@@ -355,8 +480,8 @@ function addToCart() {
     }, 2000);
 }
 
-// Show notification
-function showNotification(message) {
+// Show notification (fallback if enhanced notification isn't loaded yet)
+function showNotification(message, type = 'success') {
     // Create notification element
     const notification = document.createElement('div');
     notification.className = 'notification';
@@ -365,12 +490,20 @@ function showNotification(message) {
         <span>${message}</span>
     `;
 
+    const palettes = {
+        success: '#28a745',
+        error: '#dc3545',
+        info: '#17a2b8'
+    };
+
+    const background = palettes[type] || palettes.success;
+
     // Add styles
     notification.style.cssText = `
         position: fixed;
         top: 100px;
         right: 20px;
-        background: #28a745;
+        background: ${background};
         color: white;
         padding: 1rem 1.5rem;
         border-radius: 10px;
@@ -582,6 +715,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initContactForm();
     initKeyboardNavigation();
     initTouchSupport();
+    initBuyModal();
 });
 
 // Handle page visibility change (pause slider when tab is not active)
