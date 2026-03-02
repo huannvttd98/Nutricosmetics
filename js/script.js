@@ -788,11 +788,9 @@ function updateGalleryDisplay() {
     const thumbs = document.querySelectorAll('.gallery-thumb');
     thumbs.forEach((thumb, idx) => {
         if (idx === currentGalleryIndex) {
-            thumb.classList.add('border-accent');
-            thumb.classList.remove('border-transparent');
+            thumb.classList.add('active');
         } else {
-            thumb.classList.remove('border-accent');
-            thumb.classList.add('border-transparent');
+            thumb.classList.remove('active');
         }
     });
 }

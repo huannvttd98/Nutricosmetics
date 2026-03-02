@@ -411,40 +411,42 @@
     </section>
 
     <!-- Product Gallery Section -->
-    <section class="product-gallery py-4 bg-gray-50">
-      <div class="container mx-auto px-4 max-w-[1200px]">
-        <h2 class="text-center text-2xl md:text-3xl font-bold mb-2 text-accent">Hình ảnh sản phẩm</h2>
+    <section class="product-gallery">
+      <div class="gallery-container">
+        <h2 class="gallery-title">Hình ảnh sản phẩm</h2>
 
-        <div class="flex flex-col items-center gap-6">
-          <!-- Main Display Image -->
-          <div class="w-full max-w-3xl aspect-[4/3] rounded-2xl shadow-xl overflow-hidden bg-white relative group">
-            <img id="gallery-main-image" src="images/1.png" alt="Sản phẩm Shinzo Kijo chi tiết" class="w-full h-full object-contain transition-all duration-500">
-
-            <!-- Navigation Arrows -->
-            <button onclick="changeGalleryImage(-1)" class="absolute left-4 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-accent hover:text-white p-3 rounded-full shadow-lg transition-all duration-300 opacity-0 group-hover:opacity-100">
-              <i class="fas fa-chevron-left text-xl"></i>
+        <div class="gallery-layout">
+          <!-- Thumbnails on Left (Desktop) / Bottom (Mobile) -->
+          <div class="gallery-thumbnails" id="gallery-thumbnails">
+            <button onclick="setGalleryImage(0)" class="gallery-thumb active">
+              <img src="images/1.png" alt="Thumbnail 1">
             </button>
-            <button onclick="changeGalleryImage(1)" class="absolute right-4 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-accent hover:text-white p-3 rounded-full shadow-lg transition-all duration-300 opacity-0 group-hover:opacity-100">
-              <i class="fas fa-chevron-right text-xl"></i>
+            <button onclick="setGalleryImage(1)" class="gallery-thumb">
+              <img src="images/2.png" alt="Thumbnail 2">
+            </button>
+            <button onclick="setGalleryImage(2)" class="gallery-thumb">
+              <img src="images/3.png" alt="Thumbnail 3">
+            </button>
+            <button onclick="setGalleryImage(3)" class="gallery-thumb">
+              <img src="images/4.png" alt="Thumbnail 4">
+            </button>
+            <button onclick="setGalleryImage(4)" class="gallery-thumb">
+              <img src="images/5.png" alt="Thumbnail 5">
             </button>
           </div>
 
-          <!-- Thumbnails -->
-          <div class="flex gap-4 overflow-x-auto pb-4 max-w-full px-2" id="gallery-thumbnails">
-            <button onclick="setGalleryImage(0)" class="gallery-thumb min-w-[80px] w-20 h-20 rounded-lg border-2 border-accent overflow-hidden shadow-sm hover:shadow-md transition-all">
-              <img src="images/1.png" class="w-full h-full object-cover" alt="Thumbnail 1">
+          <!-- Main Image with Navigation -->
+          <div class="gallery-main-wrapper">
+            <button onclick="changeGalleryImage(-1)" class="gallery-nav gallery-nav-prev">
+              <i class="fas fa-chevron-left"></i>
             </button>
-            <button onclick="setGalleryImage(1)" class="gallery-thumb min-w-[80px] w-20 h-20 rounded-lg border-2 border-transparent overflow-hidden shadow-sm hover:shadow-md transition-all">
-              <img src="images/2.png" class="w-full h-full object-cover" alt="Thumbnail 2">
-            </button>
-            <button onclick="setGalleryImage(2)" class="gallery-thumb min-w-[80px] w-20 h-20 rounded-lg border-2 border-transparent overflow-hidden shadow-sm hover:shadow-md transition-all">
-              <img src="images/3.png" class="w-full h-full object-cover" alt="Thumbnail 3">
-            </button>
-            <button onclick="setGalleryImage(3)" class="gallery-thumb min-w-[80px] w-20 h-20 rounded-lg border-2 border-transparent overflow-hidden shadow-sm hover:shadow-md transition-all">
-              <img src="images/4.png" class="w-full h-full object-cover" alt="Thumbnail 4">
-            </button>
-            <button onclick="setGalleryImage(4)" class="gallery-thumb min-w-[80px] w-20 h-20 rounded-lg border-2 border-transparent overflow-hidden shadow-sm hover:shadow-md transition-all">
-              <img src="images/5.png" class="w-full h-full object-cover" alt="Thumbnail 5">
+
+            <div class="gallery-main">
+              <img id="gallery-main-image" src="images/1.png" alt="Sản phẩm Shinzo Kijo chi tiết">
+            </div>
+
+            <button onclick="changeGalleryImage(1)" class="gallery-nav gallery-nav-next">
+              <i class="fas fa-chevron-right"></i>
             </button>
           </div>
         </div>
@@ -753,34 +755,76 @@
     <!-- About Section -->
     <section id="about" class="about">
       <div class="container">
-        <h2 class="text-center text-2xl md:text-4xl lg:text-6xl font-bold">
-                Giới thiệu về Shinzo Kijo</h2>
-        <div class="about-content mt-2 flex flex-col md:flex-row items-center gap-8">
-          <div class="about-text">
-            <p class="text-lg leading-relaxed text-gray-700 mb-6">
-              Là viên uống nội tiết đến từ nhật bản, công thức độc quyền êm dịu
+        <h2 class="text-center text-2xl md:text-4xl lg:text-5xl font-bold italic mb-8">
+          Giới thiệu về Shinzo Kijo
+        </h2>
+        <div class="about-grid">
+          <!-- Left: Text Content -->
+          <div class="about-text-box">
+            <p class="text-base md:text-lg leading-relaxed text-gray-700 mb-4">
+              Là viên uống nội tiết đến từ Nhật Bản, công thức độc quyền êm dịu
               chiết xuất từ các thành phần tự nhiên quý hiếm
             </p>
-            <p class="text-lg leading-relaxed text-gray-700 mb-6 font-medium">
+            <p class="text-base md:text-lg leading-relaxed text-gray-700 mb-4 font-medium">
               Chúng tôi mong muốn đồng hành cùng phụ nữ trong hành trình cân
               bằng nội tiết một cách dịu êm và khoa học
             </p>
 
             <div id="about-more-content" class="hidden overflow-hidden transition-all duration-500 ease-in-out">
-              <p class="text-lg leading-relaxed text-gray-700 mb-6">
+              <p class="text-base md:text-lg leading-relaxed text-gray-700 mb-4">
                 Shinzo Kijo được phát triển dựa trên nghiên cứu sâu rộng về cơ thể phụ nữ Á Đông, kết hợp tinh hoa y học cổ truyền và công nghệ hiện đại Nhật Bản.
-              </p>
-              <p class="text-lg leading-relaxed text-gray-700 mb-6">
-                Sản phẩm không chỉ giúp cân bằng nội tiết tố mà còn hỗ trợ làm đẹp da, giảm thâm nám và tăng cường sức khỏe tổng thể. Cam kết mang lại vẻ đẹp tự nhiên và sự tự tin cho phái đẹp.
               </p>
             </div>
 
-            <button onclick="toggleAbout()" id="about-toggle-btn" class="mt-4 text-center text-white bg-accent hover:bg-pink-600 transition-colors font-bold py-2 px-6 rounded-full shadow-md focus:outline-none">
+            <button onclick="toggleAbout()" id="about-toggle-btn" class="mt-2 text-white bg-accent hover:bg-pink-600 transition-colors font-bold py-2 px-6 rounded-full shadow-md focus:outline-none">
               Tìm hiểu thêm
             </button>
           </div>
-          <div class="about-image">
-            <img src="images/3.png" alt="About Shinzo Kijo" />
+
+          <!-- Center: Ingredient Table -->
+          <div class="about-table-box">
+            <div class="ingredient-card">
+              <h3 class="ingredient-title">BẢNG THÀNH PHẦN</h3>
+              <table class="ingredient-table">
+                <thead>
+                  <tr>
+                    <th colspan="2">Thành phần và thành phần</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>[Pueraria Mirifica]</td>
+                    <td>50,000 mg</td>
+                  </tr>
+                  <tr>
+                    <td>[Fucoidan Mozuku]</td>
+                    <td>10,075 mg</td>
+                  </tr>
+                  <tr>
+                    <td>[Grape Seed Extract]</td>
+                    <td>210,530 mg</td>
+                  </tr>
+                  <tr>
+                    <td>[Inulin Extract]</td>
+                    <td>90,000 mg</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <!-- Vitamin Mix Box -->
+            <div class="vitamin-box">
+              <h4 class="vitamin-title">Vitamin mix</h4>
+              <ul class="vitamin-list">
+                <li>[Vitamin B1, B2, B6, B12]</li>
+                <li>[Niacin]</li>
+                <li>[Calcium]</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Right: Product Image -->
+          <div class="about-image-box">
+            <img src="images/3.png" alt="Shinzo Kijo Product" />
           </div>
         </div>
       </div>
