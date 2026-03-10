@@ -1,6 +1,9 @@
 <!doctype html>
 <html lang="vi">
   <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;600;700;800&display=swap" rel="stylesheet">
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Shinzo Kijo- Landing Page</title>
@@ -48,10 +51,15 @@
   </head>
   <body>
     <!-- Header -->
-    <header class="fixed top-0 w-full bg-white/95 backdrop-blur-md z-50 transition-all duration-300 ease-in-out">
-      <nav class="py-4">
+    <header class="fixed top-0 w-full z-50 transition-all duration-300 ease-in-out
+         bg-[#FFF8F4]/95 backdrop-blur-md shadow-sm">
+     <nav class="py-4 relative">
         <div class="container mx-auto px-5 flex justify-between items-center max-w-[1200px]">
-          <div class="nav-logo">
+          <div class="nav-logo flex items-center gap-3">
+           <svg class="w-7 h-5" viewBox="0 0 3 2" xmlns="http://www.w3.org/2000/svg" aria-label="Cờ Nhật Bản" role="img">
+            <rect width="3" height="2" fill="#fff"></rect>
+            <circle cx="1.5" cy="1" r="0.6" fill="#bc002d"></circle>
+            </svg>
             <h2 class="text-accent text-2xl font-bold">Shinzo Kijo</h2>
           </div>
           <ul class="nav-menu hidden md:flex flex-col md:flex-row gap-8 list-none fixed md:relative top-[70px] md:top-0 left-[-100%] md:left-0 w-full md:w-auto bg-white md:bg-transparent p-8 md:p-0 transition-all duration-300 shadow-lg md:shadow-none items-center z-40">
@@ -257,91 +265,139 @@
 
     <!-- Features Section -->
     <section id="products" class="features">
-      <div class="container">
-        <h2 class="text-center text-2xl">Tại sao chọn Shinzo Kijo</h2>
-        <div class="features-grid">
-          <div class="feature-card">
-            <div class="feature-icon">
-              <i class="fas fa-female"></i>
-            </div>
-            <p class="text-lg font-medium text-gray-800 text-center mt-2">Phù hợp với thể trạng phụ nữ Việt</p>
+  <div class="container">
+    <!-- Section header -->
+    <div class="features-header">
+      <h2 class="features-title">
+        Tại sao chọn <span class="features-highlight">Shinzo Kijo</span>
+      </h2>
+    
+    </div>
 
-          </div>
-          <div class="feature-card">
-            <div class="feature-icon">
-              <i class="fas fa-flask"></i>
-            </div>
-            <p class="text-lg font-medium text-gray-800 text-center mt-2">Sản phẩm cao cấp đến từ Nhật Bản</p>
+    <!-- Cards -->
+<div class="mindmap">
+  <div class="mindmap-hub" aria-hidden="true">
+    <span class="hub-dot"></span>
+    <span class="hub-label">3 lý do nổi bật</span>
+  </div>
 
-          </div>
-          <div class="feature-card">
-            <div class="feature-icon">
-              <i class="fas fa-heart"></i>
-            </div>
-            <p class="text-lg font-medium text-gray-800 text-center mt-2">Chất lượng được kiểm định rõ ràng</p>
+  <div class="features-grid mindmap-grid">
+    <div class="feature-card feature-card--1">
+      <span class="mindmap-pin" aria-hidden="true"></span>
 
-          </div>
-        </div>
+      <div class="feature-icon" aria-hidden="true">
+        <i class="fas fa-female"></i>
       </div>
-    </section>
+      <h3 class="feature-title">Phù hợp với thể trạng phụ nữ Việt</h3>
+      <p class="feature-desc">
+        Công thức tối ưu cho nhu cầu nội tiết, hỗ trợ giảm bốc hỏa và khô da.
+      </p>
+    </div>
 
+    <div class="feature-card feature-card--2">
+      <span class="mindmap-pin" aria-hidden="true"></span>
+
+      <div class="feature-icon" aria-hidden="true">
+        <i class="fas fa-flask"></i>
+      </div>
+      <h3 class="feature-title">Sản phẩm cao cấp đến từ Nhật Bản</h3>
+      <p class="feature-desc">
+        Nguồn gốc rõ ràng, quy trình hiện đại, tiêu chuẩn kiểm soát chặt chẽ.
+      </p>
+    </div>
+
+    <div class="feature-card feature-card--3">
+      <span class="mindmap-pin" aria-hidden="true"></span>
+
+      <div class="feature-icon" aria-hidden="true">
+        <i class="fas fa-heart"></i>
+      </div>
+      <h3 class="feature-title">Chất lượng được kiểm định rõ ràng</h3>
+      <p class="feature-desc">
+        Thành phần minh bạch, thông tin đầy đủ, phù hợp dùng lâu dài và ổn định.
+      </p>
+    </div>
+  </div>
+</div>
+      
+    </section>
     <!-- Product Information Section -->
     <section class="product-information">
       <div class="container">
-        <h2 class="text-center text-2xl md:text-4xl lg:text-5xl font-bold">Thông tin sản phẩm</h2>
-        <div class="product-info-grid">
-          <!-- Box 1: Sản phẩm đến từ Nhật Bản -->
-          <div class="info-box research">
-            <div class="research-item">
-              <h4 class="text-xl md:text-2xl font-bold text-gray-800">
-                <i class="fas fa-certificate text-green-500"></i>
-                Sản phẩm đến từ Nhật Bản
-              </h4>
-              <p class="text-base md:text-lg text-gray-600 mt-2 mb-4 leading-relaxed">
-                Sản xuất bởi Seiko Yakuhin Kogyo Co,Ltd (Chiba, Nhật Bản) <br>
-                Đáp ứng tiêu chuẩn GMP trong sản xuất thực phẩm bảo vệ sức khỏe
-              </p>
-            </div>
-          </div>
+       <h2 class="features-title text-center">Thông tin sản phẩm</h2>
+       <div class="product-info-grid">
+  <!-- Box 1: Sản phẩm đến từ Nhật Bản -->
+  <div class="info-box research">
+    <div class="info-content">
+      <h4 class="text-xl md:text-2xl font-bold text-gray-800">
+        <i class="fas fa-certificate text-green-500"></i>
+        Sản phẩm đến từ Nhật Bản
+      </h4>
+      <p class="text-base md:text-lg text-gray-600 mt-2 leading-relaxed">
+        Sản xuất bởi Seiko Yakuhin Kogyo Co.,Ltd (Chiba, Nhật Bản) <br />
+        Đáp ứng tiêu chuẩn GMP trong sản xuất thực phẩm bảo vệ sức khỏe
+      </p>
+    </div>
 
-          <!-- Box 2: Thành phần chính -->
-          <div class="info-box research">
-            <div class="research-item">
-              <h4 class="text-xl md:text-2xl font-bold text-gray-800">
-                <i class="fas fa-vials text-green-500"></i> Thành phần chính
-              </h4>
-              <p class="text-base md:text-lg text-gray-600 mt-2 mb-4 leading-relaxed">
-                Sâm tố nữ (Pueraria Mirifica): 25mg <br>
-                Chiết xuất hạt nho (Vitis Vinifera): 110,5mg <br>
-                Chiết xuất rễ rau diếp xoăn (Inulin): 90mg <br>
-              </p>
-            </div>
-          </div>
+    <div class="info-media">
+      <img src="images/info-japan.jpg" alt="Sản phẩm đến từ Nhật Bản" />
+    </div>
+  </div>
 
-          <!-- Box 3: Kiểm định chất lượng -->
-          <div class="info-box research">
-            <div class="research-item">
-              <h4 class="text-xl md:text-2xl font-bold text-gray-800">
-                <i class="fas fa-shield-alt text-green-500"></i> Kiểm định chất lượng
-              </h4>
-              <p class="text-base md:text-lg text-gray-600 mt-2 mb-4 leading-relaxed">
-                Sản phẩm đã được cấp Giấy phép tiếp nhận đăng ký bản công bố sản phẩm số 885/2025/ĐKSP do Cục An toàn thực phẩm - Bộ Y tế
-              </p>
-            </div>
-          </div>
+  <!-- Box 2: Thành phần chính -->
+  <div class="info-box ingredients">
+    <div class="info-content">
+      <h4 class="text-xl md:text-2xl font-bold text-gray-800">
+        <i class="fas fa-vials text-green-500"></i>
+        Thành phần chính
+      </h4>
+      <ul class="text-base md:text-lg text-gray-600 mt-2 leading-relaxed" style="padding-left:18px; margin:0;">
+        <li>Sâm tố nữ (Pueraria Mirifica): 25mg</li>
+        <li>Chiết xuất hạt nho (Vitis vinifera): 110,5mg</li>
+        <li>Chiết xuất rễ rau diếp xoăn (Inulin): 90mg</li>
+      </ul>
+    </div>
 
-          <!-- Box 4: Công thức sản phẩm độc quyền -->
-          <div class="info-box research">
-            <div class="research-item">
-              <h4 class="text-xl md:text-2xl font-bold text-gray-800">
-                <i class="fas fa-leaf text-green-500"></i> Công thức sản phẩm độc quyền
-              </h4>
-              <p class="text-base md:text-lg text-gray-600 mt-2 leading-relaxed">
-                Phát triển bởi các chuyên gia hàng đầu Nhật Bản trong lĩnh vực thực phẩm chức năng
-              </p>
-            </div>
-          </div>
-        </div>
+    <div class="info-media">
+      <img src="images/info-ingredients.jpg" alt="Thành phần chính" />
+    </div>
+  </div>
+
+  <!-- Box 3: Kiểm định chất lượng -->
+  <div class="info-box quality">
+    <div class="info-content">
+      <h4 class="text-xl md:text-2xl font-bold text-gray-800">
+        <i class="fas fa-shield-alt text-green-500"></i>
+        Kiểm định chất lượng
+      </h4>
+      <p class="text-base md:text-lg text-gray-600 mt-2 leading-relaxed">
+        Sản phẩm đã được cấp Giấy tiếp nhận đăng ký bản công bố sản phẩm số
+        885/2025/ĐKSP do Cục An toàn thực phẩm – Bộ Y tế.
+      </p>
+    </div>
+
+    <div class="info-media">
+      <img src="images/info-quality.jpg" alt="Kiểm định chất lượng" />
+    </div>
+  </div>
+
+  <!-- Box 4: Công thức sản phẩm độc quyền -->
+  <div class="info-box formula">
+    <div class="info-content">
+      <h4 class="text-xl md:text-2xl font-bold text-gray-800">
+        <i class="fas fa-leaf text-green-500"></i>
+        Công thức sản phẩm độc quyền
+      </h4>
+      <p class="text-base md:text-lg text-gray-600 mt-2 leading-relaxed">
+        Phát triển bởi các chuyên gia hàng đầu Nhật Bản trong lĩnh vực thực phẩm chức năng.
+      </p>
+    </div>
+
+    <div class="info-media">
+      <img src="images/info-formula.jpg" alt="Công thức sản phẩm độc quyền" />
+    </div>
+  </div>
+</div>
 
         <!-- Cách sử dụng -->
         <div class="usage-section">
@@ -513,10 +569,7 @@
     <!-- Customer Reviews Section -->
     <section class="customer-reviews">
       <div class="container">
-        <h2 class="text-center text-2xl md:text-4xl lg:text-6xl font-bold">
-          Feedback từ khách hàng
-        </h2>
-
+        <h2 class="reviews-title">Feedback từ khách hàng</h2>
         <div class="reviews-grid">
           <!-- Review 1 -->
           <div class="review-card">
@@ -540,9 +593,9 @@
             <div class="review-content">
               <h5 class="text-xl font-semibold mb-2 text-dark">Không thể sống thiếu nó!</h5>
               <p class="text-gray-600 leading-relaxed italic">
-                Tôi đã sử dụng Hormone Harmony từ Happy Mammoth trong vài tháng
+                Tôi đã sử dụng  Shinzo Kijo trong vài tháng
                 qua, và tôi thực sự ấn tượng với kết quả. Tôi đã thử nhiều loại
-                thực phẩm bổ sung trước đây — nhưng Hormone Harmony đã vượt
+                thực phẩm bổ sung trước đây — nhưng Shinzo Kijo đã vượt
                 trội.
               </p>
             </div>
@@ -574,9 +627,9 @@
             </div>
 
             <div class="review-content">
-              <h5 class="text-xl font-semibold mb-2 text-dark">Vợ tôi sử dụng Hormone Harmony trong nhiều năm</h5>
+              <h5 class="text-xl font-semibold mb-2 text-dark">Vợ tôi sử dụng Shinzo Kijo trong nhiều năm</h5>
               <p class="text-gray-600 leading-relaxed italic">
-                Vợ tôi đã sử dụng Hormone Harmony trong nhiều năm và cô ấy thề
+                Vợ tôi đã sử dụng Shinzo Kijo trong nhiều năm và cô ấy thề
                 với nó. Tôi thậm chí còn đặt mua thêm và tặng bạn bè một lọ để
                 họ bắt đầu.
               </p>
@@ -755,7 +808,7 @@
     <!-- About Section -->
     <section id="about" class="about">
       <div class="container">
-        <h2 class="text-center text-2xl md:text-4xl lg:text-5xl font-bold italic mb-8">
+        <h2 class="text-center text-xl md:text-2xl lg:text-3xl font-bold mb-6 md:mt-12">
           Giới thiệu về Shinzo Kijo
         </h2>
         <div class="about-grid">
@@ -779,54 +832,8 @@
             <button onclick="toggleAbout()" id="about-toggle-btn" class="mt-2 text-white bg-accent hover:bg-pink-600 transition-colors font-bold py-2 px-6 rounded-full shadow-md focus:outline-none">
               Tìm hiểu thêm
             </button>
-          </div>
-
-          <!-- Center: Ingredient Table -->
-          <div class="about-table-box">
-            <div class="ingredient-card">
-              <h3 class="ingredient-title">BẢNG THÀNH PHẦN</h3>
-              <table class="ingredient-table">
-                <thead>
-                  <tr>
-                    <th colspan="2">Thành phần và thành phần</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>[Pueraria Mirifica]</td>
-                    <td>50,000 mg</td>
-                  </tr>
-                  <tr>
-                    <td>[Fucoidan Mozuku]</td>
-                    <td>10,075 mg</td>
-                  </tr>
-                  <tr>
-                    <td>[Grape Seed Extract]</td>
-                    <td>210,530 mg</td>
-                  </tr>
-                  <tr>
-                    <td>[Inulin Extract]</td>
-                    <td>90,000 mg</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-            <!-- Vitamin Mix Box -->
-            <div class="vitamin-box">
-              <h4 class="vitamin-title">Vitamin mix</h4>
-              <ul class="vitamin-list">
-                <li>[Vitamin B1, B2, B6, B12]</li>
-                <li>[Niacin]</li>
-                <li>[Calcium]</li>
-              </ul>
-            </div>
-          </div>
-
-          <!-- Right: Product Image -->
-          <div class="about-image-box">
-            <img src="images/3.png" alt="Shinzo Kijo Product" />
-          </div>
-        </div>
+          </div>        
+          
       </div>
     </section>
 

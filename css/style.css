@@ -2190,3 +2190,676 @@ body.modal-open {
         gap: 0.5rem;
     }
 }
+:root{
+  --accent: #ff5ea8;
+}
+
+.features{
+  padding: 72px 0;
+  /* nền có chút “độ sâu” để bớt phẳng */
+  background: radial-gradient(700px 220px at 50% 0%, rgba(255, 94, 168, 0.10), transparent 60%);
+}
+
+.features-header{
+  text-align: center;
+  max-width: 760px;
+  margin: 0 auto 34px;
+  padding: 0 12px;
+}
+
+.features-title{
+  font-size: 32px;
+  line-height: 1.2;
+  font-weight: 800;
+  color: #111827;
+  margin: 0;
+}
+
+.features-highlight{
+  color: var(--accent);
+}
+
+.features-title::after{
+  content: "";
+  display: block;
+  width: 78px;
+  height: 4px;
+  border-radius: 999px;
+  background: var(--accent);
+  margin: 14px auto 0;
+  opacity: 0.9;
+}
+
+.features-subtitle{
+  margin: 14px auto 0;
+  color: #6b7280;
+  line-height: 1.7;
+  font-size: 15px;
+}
+
+.features-grid{
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+  margin-top: 26px;
+}
+
+/* Responsive */
+@media (max-width: 900px){
+  .features-grid{ grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 600px){
+  .features-grid{ grid-template-columns: 1fr; }
+  .features-title{ font-size: 26px; }
+}
+
+.feature-card{
+  background: #ffffff;
+  border: 1px solid rgba(255, 94, 168, 0.14);
+  border-radius: 22px;
+  padding: 30px 22px;
+  box-shadow: 0 14px 32px rgba(17, 24, 39, 0.08);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+/* “vệt sáng” nhẹ trong card để bớt đơn điệu */
+.feature-card::before{
+  content: "";
+  position: absolute;
+  width: 220px;
+  height: 220px;
+  right: -120px;
+  top: -130px;
+  background: radial-gradient(circle, rgba(255, 94, 168, 0.18), transparent 60%);
+  transform: rotate(12deg);
+}
+
+.feature-card:hover{
+  transform: translateY(-6px);
+  box-shadow: 0 20px 48px rgba(17, 24, 39, 0.12);
+  border-color: rgba(255, 94, 168, 0.30);
+}
+
+.feature-icon{
+  width: 72px;
+  height: 72px;
+  border-radius: 999px;
+  margin: 0 auto 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, rgba(255, 94, 168, 0.18), rgba(255, 160, 205, 0.35));
+  color: var(--accent);
+  transition: transform 0.25s ease;
+}
+
+.feature-card:hover .feature-icon{
+  transform: scale(1.06);
+}
+
+.feature-icon i{
+  font-size: 28px;
+}
+
+.feature-title{
+  margin: 8px 0 10px;
+  text-align: center;
+  font-size: 18px;
+  font-weight: 800;
+  color: #111827;
+}
+
+.feature-desc{
+  margin: 0;
+  text-align: center;
+  font-size: 14px;
+  line-height: 1.75;
+  color: #6b7280;
+  max-width: 340px;
+  margin-inline: auto;
+}
+/* === HOTFIX: Fix font + cân typography cho Features === */
+.features-title,
+.features-subtitle,
+.feature-title,
+.feature-desc{
+  font-family: inherit; /* không dùng font riêng của h2/h3 */
+}
+
+.features-title{
+  font-weight: 700;        /* bớt “gắt” so với 800 */
+  font-size: 30px;         /* cân lại size */
+  letter-spacing: -0.02em; /* nhìn hiện đại hơn */
+}
+
+.features-subtitle{
+  font-size: 16px;
+  color: #6b7280;
+}
+
+.feature-title{
+  font-weight: 700;
+  font-size: 18px;
+}
+
+.feature-desc{
+  color: #4b5563; /* đậm hơn chút để dễ đọc */
+}
+
+/* (tuỳ chọn) card đỡ to, icon đỡ thưa */
+.feature-card{ padding: 26px 22px; }
+.feature-icon{ width: 64px; height: 64px; }
+.features .mindmap{
+  position: relative;
+  margin-top: 18px;
+}
+
+/* Trục liên kết (mindmap line) */
+.features .mindmap::before{
+  content: "";
+  position: absolute;
+  left: 8%;
+  right: 8%;
+  top: 30px;
+  height: 4px;
+  border-radius: 999px;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 94, 168, 0.18),
+    rgba(124, 58, 237, 0.18),
+    rgba(251, 113, 133, 0.18)
+  );
+}
+
+/* “Hub” ở giữa (giống node trung tâm) */
+.features .mindmap-hub{
+  position: absolute;
+  left: 50%;
+  top: 30px;
+  transform: translate(-50%, -50%);
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.85);
+  border: 1px solid rgba(255, 94, 168, 0.20);
+  backdrop-filter: blur(6px);
+  box-shadow: 0 12px 26px rgba(17, 24, 39, 0.10);
+  z-index: 2;
+}
+
+.features .hub-dot{
+  width: 12px;
+  height: 12px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #ff5ea8, #a78bfa);
+  box-shadow: 0 10px 18px rgba(255, 94, 168, 0.22);
+}
+
+.features .hub-label{
+  font-size: 13px;
+  font-weight: 700;
+  color: #111827;
+}
+
+/* Chừa khoảng trống để thấy trục + pin */
+.features .mindmap-grid{
+  padding-top: 58px;
+}
+
+/* Màu từng node (đổi ở đây là nhanh nhất) */
+.features .feature-card--1{ --c1:#ff5ea8; --c2:#ffb4d4; }
+.features .feature-card--2{ --c1:#7c3aed; --c2:#ff5ea8; }
+.features .feature-card--3{ --c1:#fb7185; --c2:#ffb4d4; }
+
+/* Card: viền gradient + top stripe + hover glow */
+.features .feature-card{
+  position: relative;
+  overflow: visible;
+  border-radius: 22px;
+  padding: 30px 22px 24px;
+
+  background:
+    linear-gradient(#ffffff, #ffffff) padding-box,
+    linear-gradient(135deg, var(--c1), var(--c2)) border-box;
+
+  border: 2px solid transparent;
+  box-shadow: 0 14px 32px rgba(17, 24, 39, 0.10);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, filter 0.25s ease;
+}
+
+/* Nhánh nối từ trục xuống card */
+.features .feature-card::before{
+  content: "";
+  position: absolute;
+  top: -28px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2px;
+  height: 28px;
+  background: linear-gradient(180deg, var(--c1), rgba(255,255,255,0));
+  opacity: 0.95;
+}
+
+/* “Stripe” màu ở đầu card để nổi bật */
+.features .feature-card::after{
+  content: "";
+  position: absolute;
+  left: 18px;
+  right: 18px;
+  top: 16px;
+  height: 4px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--c1), var(--c2));
+  opacity: 0.9;
+}
+
+/* Pin trên trục */
+.features .mindmap-pin{
+  position: absolute;
+  top: -34px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 18px;
+  height: 18px;
+  border-radius: 999px;
+  background: #fff;
+  border: 4px solid var(--c1);
+  box-shadow: 0 12px 22px rgba(17, 24, 39, 0.14);
+  z-index: 3;
+}
+
+/* Icon: nền gradient + icon trắng */
+.features .feature-icon{
+  width: 68px;
+  height: 68px;
+  border-radius: 999px;
+  margin: 10px auto 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: linear-gradient(135deg, var(--c1), var(--c2));
+  color: #fff;
+  box-shadow: 0 16px 30px rgba(255, 94, 168, 0.18);
+  transition: transform 0.25s ease;
+}
+
+.features .feature-icon i{
+  font-size: 28px;
+}
+
+.features .feature-card:hover{
+  transform: translateY(-8px);
+  box-shadow: 0 22px 54px rgba(17, 24, 39, 0.14);
+  filter: saturate(1.05);
+}
+
+.features .feature-card:hover .feature-icon{
+  transform: scale(1.06);
+}
+
+/* Text cân lại cho “premium” */
+.features .feature-title{
+  margin: 8px 0 10px;
+  text-align: center;
+  font-size: 18px;
+  font-weight: 800;
+  color: #111827;
+}
+
+.features .feature-desc{
+  margin: 0;
+  text-align: center;
+  font-size: 14px;
+  line-height: 1.75;
+  color: #4b5563;
+  max-width: 360px;
+  margin-inline: auto;
+}
+
+/* Mobile: chuyển mindmap thành trục dọc */
+@media (max-width: 600px){
+  .features .mindmap::before{
+    left: 24px;
+    right: auto;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    height: auto;
+  }
+
+  .features .mindmap-hub{
+    left: 24px;
+    top: 0;
+    transform: translate(-50%, -30%);
+  }
+
+  .features .mindmap-grid{
+    padding-top: 14px;
+    gap: 16px;
+  }
+
+  .features .mindmap-pin{
+    left: 24px;
+    top: 28px;
+    transform: translate(-50%, -50%);
+  }
+
+  /* Nhánh nối ngang từ trục dọc vào card */
+  .features .feature-card::before{
+    left: 24px;
+    top: 28px;
+    transform: none;
+    width: 26px;
+    height: 2px;
+    background: linear-gradient(90deg, var(--c1), rgba(255,255,255,0));
+  }
+}
+.features-header{
+  margin-bottom: 20px; /* vì bỏ subtitle nên giảm khoảng trống */
+}
+
+/* hub to hơn */
+.features .mindmap::before{
+  top: 40px; /* hạ trục xuống chút để hợp hub lớn */
+}
+
+.features .mindmap-hub{
+  top: 40px;
+  padding: 10px 18px;         /* khung dày hơn */
+  border-radius: 999px;
+}
+
+.features .hub-dot{
+  width: 14px;
+  height: 14px;               /* chấm to hơn */
+}
+
+.features .hub-label{
+  font-size: 15px;            /* chữ to hơn */
+  font-weight: 800;
+}
+
+/* chừa khoảng trống nhiều hơn vì hub lớn */
+.features .mindmap-grid{
+  padding-top: 72px;
+}
+
+/* pin to hơn cho nổi */
+.features .mindmap-pin{
+  width: 20px;
+  height: 20px;
+  border-width: 5px;
+  top: -38px;
+}
+.features,
+.features *{
+  font-family: inherit; 
+}
+body{
+  font-family: "Be Vietnam Pro", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+}
+/* Tăng size cho khung "3 lý do nổi bật" */
+.features .mindmap-hub{
+  padding: 14px 26px;     /* khung to hơn */
+  border-radius: 999px;
+}
+
+.features .hub-label{
+  font-size: 18px;        /* chữ to hơn */
+  font-weight: 800;
+}
+
+.features .hub-dot{
+  width: 18px;            /* chấm tròn to hơn */
+  height: 18px;
+}
+.features .mindmap-hub{
+  top: 32px;              /* giảm số này để đi lên (ví dụ 32 -> 26) */
+  transform: translate(-50%, -65%); /* nhấc lên thêm */
+}
+
+/* (Tuỳ chọn) Hạ đường ngang xuống một chút để tách khỏi hub */
+.features .mindmap::before{
+  top: 40px;
+}
+
+/* Vì hub/line đổi vị trí, chỉnh lại khoảng trống của grid */
+.features .mindmap-grid{
+  padding-top: 78px;
+}
+.features{
+  padding-top: 56px;   /* giảm nếu muốn lên nữa: 50px */
+  padding-bottom: 70px;
+}
+
+.features-header{
+  margin-bottom: 6px;  /* kéo mindmap sát tiêu đề hơn */
+}
+
+/* 2) Đặt HUB ở phía trên đường ngang */
+.features .mindmap-hub{
+  top: 20px; /* số nhỏ hơn = lên cao hơn. (ví dụ 30 hoặc 26) */
+  transform: translate(-50%, -50%);
+}
+
+/* 3) Đặt ĐƯỜNG NGANG xuống dưới hub */
+.features .mindmap::before{
+  top: 64px; /* số lớn hơn = đường ngang xuống thấp hơn */
+}
+
+/* 4) Đẩy cards xuống để pin nằm đúng trên đường ngang
+   Công thức: padding-top ≈ top(đường ngang) + 34px */
+.features .mindmap-grid{
+  padding-top: 98px; /* 64 + 34 = 98 => pin khớp đường ngang */
+}
+.product-information .product-info-grid{
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 28px;
+}
+
+/* mỗi box là 2 cột */
+.product-information .info-box{
+  display: flex;
+  align-items: stretch;
+  gap: 18px;
+
+  background: #fff;
+  border-radius: 18px;
+  padding: 18px;
+  box-shadow: 0 14px 34px rgba(17, 24, 39, 0.08);
+}
+
+/* phần chữ */
+.product-information .info-content{
+  flex: 1;                 /* chiếm phần lớn */
+  background: #f3fff8;     /* giống mảng xanh nhạt bạn đang có */
+  border-radius: 14px;
+  padding: 18px 18px 16px;
+  position: relative;
+}
+
+/* tạo đường xanh dọc bên trái giống hình */
+.product-information .info-content::before{
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 16px;
+  bottom: 16px;
+  width: 3px;
+  border-radius: 999px;
+  background: #10b981; /* xanh */
+}
+
+/* phần ảnh bên phải */
+.product-information .info-media{
+  width: 180px;            /* chỉnh to/nhỏ tại đây */
+  flex: 0 0 180px;
+  border-radius: 14px;
+  overflow: hidden;
+  background: #d1d5db;     /* màu nền khi ảnh chưa load */
+}
+
+/* ảnh tự co, không méo */
+.product-information .info-media img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;       /* cực quan trọng */
+  display: block;
+}
+
+/* responsive: mobile xuống 1 cột và ảnh nằm dưới */
+@media (max-width: 900px){
+  .product-information .product-info-grid{
+    grid-template-columns: 1fr;
+  }
+
+  .product-information .info-box{
+    flex-direction: column;
+  }
+
+  .product-information .info-media{
+    width: 100%;
+    flex-basis: auto;
+    height: 180px;         /* chiều cao ảnh trên mobile */
+  }
+}
+/* Tiêu đề của mỗi box (h4) */
+.product-information .info-content h4{
+  font-size: 18px !important;   /* giống kiểu feature-title */
+  font-weight: 800;
+  line-height: 1.3;
+}
+
+/* Nội dung (p, li) */
+.product-information .info-content p,
+.product-information .info-content li{
+  font-size: 14px !important;   /* giống feature-desc */
+  line-height: 1.75;
+}
+
+/* Nếu bạn thấy khoảng cách bị rộng quá */
+.product-information .info-content p{
+  margin-top: 10px;
+}
+/* ===== FIX: Đưa "Hướng dẫn sử dụng" lên trên (không nằm bên trái) ===== */
+.usage-section .info-box.usage{
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: stretch !important;
+}
+
+/* Header nằm trên, căn giữa hoặc trái tuỳ bạn */
+.usage-section .info-box.usage .info-header{
+  width: 100% !important;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+/* Nội dung chiếm toàn chiều ngang */
+.usage-section .info-box.usage .info-content{
+  width: 100% !important;
+}
+.usage-section .info-box.usage .info-header{
+  justify-content: center;
+  text-align: center;
+}
+/* ===== FIX: Nội dung trong Hướng dẫn sử dụng dùng FULL chiều ngang ===== */
+
+/* Ép mọi block con trong info-content chiếm 100% */
+.usage-section .info-box.usage .info-content,
+.usage-section .info-box.usage .info-content > *{
+  width: 100% !important;
+  max-width: none !important;
+}
+
+/* Các khung bên trong không được giới hạn chiều rộng */
+.usage-section .dosage-section,
+.usage-section .dosage-info,
+.usage-section .dosage-main,
+.usage-section .target-section,
+.usage-section .target-list{
+  width: 100% !important;
+  max-width: none !important;
+}
+
+/* Nếu trước đó là flex space-between gây hở bên phải -> cho nó full */
+.usage-section .dosage-main{
+  display: block !important;
+}
+
+/* Mỗi item kéo full chiều ngang */
+.usage-section .dosage-item,
+.usage-section .target-item,
+.usage-section .warning-note{
+  width: 100% !important;
+  max-width: none !important;
+}
+
+/* Nếu target-list đang là grid/flex 2 cột thì ép về 1 cột full */
+.usage-section .target-list{
+  display: grid !important;
+  grid-template-columns: 1fr !important;
+  gap: 14px;
+}
+/* ===== FIX: Nội dung Usage không bị dồn trái, cân giữa trong khung ===== */
+.usage-section{
+  --usage-max: 980px; /* đổi 900-1100 tuỳ bạn */
+}
+
+/* Khung xanh vẫn full, nhưng tăng padding cho “đều” */
+.usage-section .info-box.usage .info-content{
+  padding: 28px 32px !important;
+}
+
+/* Giới hạn chiều ngang cho từng cụm nội dung và căn giữa */
+.usage-section .dosage-section,
+.usage-section .target-section,
+.usage-section .dosage-item,
+.usage-section .warning-note{
+  max-width: var(--usage-max) !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+/* Các item target cũng căn giữa trong khung */
+.usage-section .target-item{
+  max-width: var(--usage-max) !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+/* (tuỳ chọn) nếu bạn muốn các dòng target nhìn “đều” hơn */
+.usage-section .target-list{
+  padding: 0 !important;
+}
+/* ===== Customer Reviews: chỉnh size title cho đồng bộ + không đụng khung ===== */
+.customer-reviews{
+  padding-top: 56px;      /* giảm số này nếu muốn title lên cao hơn (56 -> 44) */
+  padding-bottom: 72px;
+}
+
+.customer-reviews .reviews-title{
+  text-align: center;
+  font-size: 30px;        /* đồng bộ với các title bên trên */
+  line-height: 1.2;
+  font-weight: 700;
+  color: #111827;
+  margin: 0 0 34px;       /* tăng số này nếu title bị sát/đụng khung bên dưới */
+  position: relative;
+  z-index: 2;
+}
+
+@media (max-width: 600px){
+  .customer-reviews .reviews-title{
+    font-size: 26px;
+    margin-bottom: 24px;
+  }
+}
