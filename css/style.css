@@ -1748,6 +1748,10 @@ body {
     border: 1px solid rgba(255, 105, 180, 0.1);
     position: relative;
     overflow: hidden;
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: 16px;
+    align-items: flex-start;
 }
 
 .review-card::before {
@@ -1770,7 +1774,8 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
+    grid-column: 2;
 }
 
 .customer-info h4 {
@@ -1807,6 +1812,10 @@ body {
 }
 
 /* Review Content */
+.review-content {
+    grid-column: 2;
+}
+
 .review-content h5 {
     color: var(--accent-color);
     font-size: 1.2rem;
@@ -1822,16 +1831,21 @@ body {
     margin-bottom: 1.5rem;
 }
 
-/* Review Image */
+/* Review Image - Avatar Style */
 .review-image {
-    border-radius: 15px;
+    border-radius: 50%;
     overflow: hidden;
-    height: 200px;
+    width: 120px;
+    height: 120px;
     background: linear-gradient(45deg, #f8f9fa, #e9ecef);
     display: flex;
     align-items: center;
     justify-content: center;
     position: relative;
+    border: 3px solid var(--secondary-color);
+    flex-shrink: 0;
+    box-shadow: 0 4px 12px rgba(255,105,180,0.15);
+    grid-row: 1 / 3;
 }
 
 .image-placeholder {
@@ -1863,13 +1877,13 @@ body {
     transition: transform 0.3s ease;
 }
 
-.review-card:hover .review-image img {
-    transform: scale(1.05);
+.review-card:hover .review-image {
+    box-shadow: 0 8px 20px rgba(255,105,180,0.25);
+    transform: translateY(-4px);
 }
 
-.review-card:hover .image-placeholder i {
-    transform: scale(1.1);
-    opacity: 0.8;
+.review-card:hover .review-image img {
+    transform: scale(1.08);
 }
 
 /* Placeholder for missing images - Remove this rule since we're using custom placeholder */
@@ -2598,7 +2612,7 @@ body.modal-open {
 }
 .features,
 .features *{
-  font-family: inherit; 
+  font-family: inherit;
 }
 body{
   font-family: "Be Vietnam Pro", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
@@ -2862,4 +2876,214 @@ body{
     font-size: 26px;
     margin-bottom: 24px;
   }
+}
+
+/* ===== USAGE SECTION – Modern Redesign ===== */
+.usage-section { margin-top: 3rem; }
+
+.usage-modern-card {
+  background: #fff;
+  border-radius: 20px;
+  box-shadow: 0 4px 32px rgba(255,105,180,0.1), 0 1px 6px rgba(0,0,0,0.06);
+  overflow: hidden;
+  border: 1px solid var(--secondary-color);
+}
+
+.usage-modern-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: linear-gradient(135deg, var(--accent-color) 0%, var(--secondary-color) 100%);
+  padding: 24px 32px;
+  color: #fff;
+}
+
+.usage-header-icon {
+  width: 52px;
+  height: 52px;
+  background: rgba(255,255,255,0.2);
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  flex-shrink: 0;
+}
+
+.usage-modern-title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin: 0 0 4px;
+  color: #fff;
+}
+
+.usage-modern-subtitle {
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.8);
+  margin: 0;
+}
+
+.usage-modern-body {
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+/* Steps */
+.usage-steps {
+  display: flex;
+  align-items: flex-start;
+  gap: 0;
+}
+
+.usage-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+  text-align: center;
+  gap: 10px;
+  position: relative;
+}
+
+.usage-step-num {
+  width: 44px;
+  height: 44px;
+  background: linear-gradient(135deg, var(--accent-color), var(--secondary-color));
+  color: #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  font-weight: 700;
+  flex-shrink: 0;
+  box-shadow: 0 4px 12px rgba(255,105,180,0.35);
+}
+
+.usage-step-content h5 {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #111827;
+  margin: 0 0 4px;
+}
+
+.usage-step-content p {
+  font-size: 0.85rem;
+  color: #6b7280;
+  margin: 0;
+  line-height: 1.5;
+}
+
+.usage-step-divider {
+  flex: 0 0 40px;
+  height: 2px;
+  background: linear-gradient(90deg, rgba(255,105,180,0.5), rgba(255,182,193,0.5));
+  align-self: flex-start;
+  margin-top: 21px; /* = (44px số tròn) / 2 - (2px height) / 2 */
+  border-radius: 2px;
+}
+
+/* Dosage badge */
+.usage-dosage-badge {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: #fff5fa;
+  border: 1.5px solid var(--secondary-color);
+  border-radius: 12px;
+  padding: 14px 20px;
+  font-size: 0.95rem;
+  color: #374151;
+}
+
+.usage-dosage-badge i {
+  font-size: 1.3rem;
+  color: var(--accent-color);
+  flex-shrink: 0;
+}
+
+/* Target block */
+.usage-target-block { display: flex; flex-direction: column; gap: 14px; }
+
+.usage-target-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #111827;
+}
+
+.usage-target-title i { color: var(--accent-color); }
+
+.usage-target-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+.usage-target-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 8px;
+  background: var(--primary-color);
+  border: 1px solid var(--secondary-color);
+  border-radius: 14px;
+  padding: 18px 12px;
+  font-size: 0.85rem;
+  color: #374151;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.usage-target-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 18px rgba(255,105,180,0.2);
+}
+
+.usage-target-card i {
+  font-size: 1.5rem;
+  color: var(--accent-color);
+}
+
+/* Warning */
+.usage-warning {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  background: #fffbeb;
+  border: 1.5px solid #fcd34d;
+  border-radius: 12px;
+  padding: 14px 20px;
+  font-size: 0.9rem;
+  color: #92400e;
+  line-height: 1.55;
+}
+
+.usage-warning-icon {
+  width: 32px;
+  height: 32px;
+  background: #fef3c7;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: #d97706;
+  font-size: 1rem;
+}
+
+.usage-warning p { margin: 0; }
+
+/* Responsive */
+@media (max-width: 768px) {
+  .usage-modern-header { padding: 20px; }
+  .usage-modern-body { padding: 20px; gap: 20px; }
+  .usage-steps { flex-direction: column; align-items: stretch; }
+  .usage-step { flex-direction: row; text-align: left; align-items: flex-start; }
+  .usage-step-divider { width: 2px; height: 24px; flex: 0 0 24px; margin: 0 0 0 21px; background: linear-gradient(180deg, rgba(255,105,180,0.35), rgba(255,182,193,0.35)); }
+  .usage-target-grid { grid-template-columns: 1fr; }
 }

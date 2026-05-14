@@ -1,4 +1,4 @@
-// Slider functionality
+﻿// Slider functionality
 let currentSlideIndex = 0;
 const slider = document.querySelector('.slider');
 const slides = document.querySelectorAll('.slide');
@@ -732,11 +732,11 @@ document.addEventListener('visibilitychange', function() {
 // Preload images for better performance
 function preloadImages() {
     const imageUrls = [
-        'images/1.png',
-        'images/2.png',
-        'images/3.png',
-        'images/4.png',
-        'images/5.png'
+        'image_ver2/31460566802055795581.jpg',
+        'image_ver2/31460566802055795582.jpg',
+        'image_ver2/31460566802055795583.jpg',
+        'image_ver2/31460566802055795584.jpg',
+        'image_ver2/31460566802055795585.jpg'
     ];
 
     imageUrls.forEach(url => {
@@ -750,11 +750,11 @@ preloadImages();
 
 // Product Gallery Logic
 const galleryImages = [
-    'images/1.png',
-    'images/2.png',
-    'images/3.png',
-    'images/4.png',
-    'images/5.png'
+    'image_ver2/31460566802055795581.jpg',
+    'image_ver2/31460566802055795582.jpg',
+    'image_ver2/31460566802055795583.jpg',
+    'image_ver2/31460566802055795584.jpg',
+    'image_ver2/31460566802055795585.jpg'
 ];
 // let currentGalleryIndex = 0; // Already declared in script.js line 2, wait.
 // No, line 2 is currentSlideIndex. This one is currentGalleryIndex. Safe.
